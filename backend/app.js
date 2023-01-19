@@ -9,9 +9,9 @@ const cookieParser = require('cookie-parser');
 const { environment } = require('./config');
 const isProduction = environment === 'production';
 
-app.use(routes); // Connect all the routes
-
 const app = express();
+
+app.use(routes); // Connect all the routes
 
 app.use(morgan('dev'));
 
