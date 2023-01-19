@@ -13,7 +13,6 @@ const routes = require('./routes');
 
 const app = express();
 
-app.use(routes); // Connect all the routes
 
 app.use(morgan('dev'));
 
@@ -42,9 +41,10 @@ app.use(
             httpOnly: true
         }
     })
-    );
+);
 
 // backend/app.js
 
+app.use(routes); // Connect all the routes
 
 module.exports = app;
