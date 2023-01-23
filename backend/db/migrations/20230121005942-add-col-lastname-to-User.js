@@ -8,8 +8,8 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-
-    await queryInterface.addColumn('Users', 'lastName', {
+    options.tableName = "Users";
+    await queryInterface.addColumn(options, 'lastName', {
       type: Sequelize.STRING(30)
     }, options);
 
