@@ -28,6 +28,12 @@ module.exports = {
         userId: 1,
         review: 'amazing host!',
         stars: 5
+      },
+      {
+        spotId: 3,
+        userId: 2,
+        review: 'meh',
+        stars: 2
       }
     ], {});
   },
