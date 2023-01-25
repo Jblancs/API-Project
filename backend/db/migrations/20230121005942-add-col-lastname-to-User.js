@@ -12,7 +12,7 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.addColumn(options, 'lastName', {
       type: Sequelize.STRING(30)
-    }, options);
+    });
   },
 
   async down(queryInterface, Sequelize) {
