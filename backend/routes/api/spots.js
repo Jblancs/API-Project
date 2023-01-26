@@ -165,7 +165,7 @@ router.post('/:spotId/images', requireAuth, async (req, res, next) => {
     const spot = await Spot.findOne({
         where: {
             id: req.params.spotId,
-            ownerId: 3
+            ownerId: req.user.id
         }
     })
 
@@ -186,6 +186,50 @@ router.post('/:spotId/images', requireAuth, async (req, res, next) => {
         })
 
         return res.json(newImage)
+    }
+})
+
+// PUT edit a spot
+router.put('/:spotId', requireAuth, async (req, res, next) => {
+    const spot = await Spot.findOne({
+        where: {
+            id: req.params.spotId,
+            ownerId: req.user.id
+        }
+    })
+
+    if (!spot) {
+        let err = new Error("Spot couldn't be found")
+        err.status = 404
+        return next(err)
+    } else {
+
+        let { address, city, state, country, lat, lng, name, description } = req.body
+        let array = [address, city, state, country, lat, lng, name, description]
+
+        for (let value of array) {
+            if (!value || value === "") {
+                let err = new Error("Validation Error")
+                err.status = 400
+                err.errors = {
+                    address: "Street address is required",
+                    city: "City is required",
+                    state: "State is required",
+                    country: "Country is required",
+                    lat: "Latitude is not valid",
+                    lng: "Longitude is not valid",
+                    name: "Name must be less than 50 characters",
+                    description: "Description is required",
+                    price: "Price per day is required"
+                }
+                return next(err)
+            }
+
+            const editSpot = await spot.update({
+                ...req.body
+            })
+            res.json(editSpot)
+        }
     }
 })
 
