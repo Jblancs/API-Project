@@ -130,26 +130,38 @@ router.get('/:spotId', async (req, res, next) => {
 
 // POST create spot
 router.post('/', requireAuth, async (req, res, next) => {
-    let { address, city, state, country, lat, lng, name, description } = req.body
-    let array = [address, city, state, country, lat, lng, name, description]
 
-    for (let value of array) {
-        if (!value || value === "") {
-            let err = new Error("Validation Error")
-            err.status = 400
-            err.errors = {
-                address: "Street address is required",
-                city: "City is required",
-                state: "State is required",
-                country: "Country is required",
-                lat: "Latitude is not valid",
-                lng: "Longitude is not valid",
-                name: "Name must be less than 50 characters",
-                description: "Description is required",
-                price: "Price per day is required"
-            }
-            return next(err)
+    let possibleErrors = {
+        address: "Street address is required",
+        city: "City is required",
+        state: "State is required",
+        country: "Country is required",
+        lat: "Latitude is not valid",
+        lng: "Longitude is not valid",
+        name: "Name must be less than 50 characters",
+        description: "Description is required",
+        price: "Price per day is required"
+    }
+
+    let errorObj = {}
+
+    for (let key in possibleErrors) {
+        if (!req.body[key] || req.body[key] === "") {
+            errorObj[key] = possibleErrors[key]
         }
+        if ((key === "lat" || key === "lng") && typeof req.body[key] !== "number") {
+            errorObj[key] = possibleErrors[key]
+        }
+        if (key === "name" && req.body[key].length > 50) {
+            errorObj[key] = possibleErrors[key]
+        }
+    }
+
+    if (Object.keys(errorObj).length) {
+        let err = new Error("Validation Error")
+        err.status = 400
+        err.errors = errorObj
+        return next(err)
     }
 
     const newSpot = await Spot.create({
@@ -204,32 +216,44 @@ router.put('/:spotId', requireAuth, async (req, res, next) => {
         return next(err)
     } else {
 
-        let { address, city, state, country, lat, lng, name, description } = req.body
-        let array = [address, city, state, country, lat, lng, name, description]
-
-        for (let value of array) {
-            if (!value || value === "") {
-                let err = new Error("Validation Error")
-                err.status = 400
-                err.errors = {
-                    address: "Street address is required",
-                    city: "City is required",
-                    state: "State is required",
-                    country: "Country is required",
-                    lat: "Latitude is not valid",
-                    lng: "Longitude is not valid",
-                    name: "Name must be less than 50 characters",
-                    description: "Description is required",
-                    price: "Price per day is required"
-                }
-                return next(err)
-            }
-
-            const editSpot = await spot.update({
-                ...req.body
-            })
-            res.json(editSpot)
+        let possibleErrors = {
+            address: "Street address is required",
+            city: "City is required",
+            state: "State is required",
+            country: "Country is required",
+            lat: "Latitude is not valid",
+            lng: "Longitude is not valid",
+            name: "Name must be less than 50 characters",
+            description: "Description is required",
+            price: "Price per day is required"
         }
+
+        let errorObj = {}
+
+        for (let key in possibleErrors) {
+            if (!req.body[key] || req.body[key] === "") {
+                errorObj[key] = possibleErrors[key]
+            }
+            if ((key === "lat" || key === "lng") && typeof req.body[key] !== "number") {
+                errorObj[key] = possibleErrors[key]
+            }
+            if (key === "name" && req.body[key].length > 50) {
+                errorObj[key] = possibleErrors[key]
+            }
+        }
+
+        if (Object.keys(errorObj).length) {
+            let err = new Error("Validation Error")
+            err.status = 400
+            err.errors = errorObj
+            return next(err)
+        }
+
+        const editSpot = await spot.update({
+            ...req.body
+        })
+
+        return res.json(editSpot)
     }
 })
 
