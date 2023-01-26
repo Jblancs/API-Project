@@ -22,7 +22,6 @@ router.get('/', async (req, res, next) => {
             ]
         })
 
-
         const previewImage = await SpotImage.findOne({
             where: {
                 spotId: spot.toJSON().id,
@@ -30,8 +29,6 @@ router.get('/', async (req, res, next) => {
             },
             attributes: ["url"]
         })
-
-        console.log(previewImage)
 
         spot.dataValues.avgRating = rating[0].dataValues.avgRating
 
@@ -44,7 +41,6 @@ router.get('/', async (req, res, next) => {
     }
 
     res.json(spots)
-
 })
 
 // GET all spots by the Current User
@@ -70,7 +66,6 @@ router.get('/current', async (req, res, next) => {
                 ]
             })
 
-
             const previewImage = await SpotImage.findOne({
                 where: {
                     spotId: spot.toJSON().id,
@@ -78,8 +73,6 @@ router.get('/current', async (req, res, next) => {
                 },
                 attributes: ["url"]
             })
-
-            console.log(previewImage)
 
             spot.dataValues.avgRating = rating[0].dataValues.avgRating
 
@@ -93,9 +86,8 @@ router.get('/current', async (req, res, next) => {
 
         res.json(spots)
     }
-
 })
 
-// GET
+// GET details of Spot from an id
 
 module.exports = router;
