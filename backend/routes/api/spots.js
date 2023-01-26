@@ -105,6 +105,17 @@ router.get('/:spotId', async (req, res, next) => {
         ]
     })
 
+    const rating = await Review.findAll({
+        where: {
+            spotId: req.params.spotId
+        },
+        attributes: [
+            [sequelize.fn("AVG", sequelize.col("stars")), "avgRating"]
+        ]
+    })
+
+    spotInfo.dataValues.avgStarRating = rating[0].dataValues.avgRating
+
     if (!spotInfo) {
         let err = new Error("Spot couldn't be found")
         err.status = 404
