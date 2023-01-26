@@ -114,6 +114,13 @@ router.get('/:spotId', async (req, res, next) => {
         ]
     })
 
+    const reviews = await Review.count({
+        where: {
+            spotId: req.params.spotId
+        }
+    })
+
+    spotInfo.dataValues.numReviews = reviews
     spotInfo.dataValues.avgStarRating = rating[0].dataValues.avgRating
 
     if (!spotInfo) {
