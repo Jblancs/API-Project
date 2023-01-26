@@ -253,7 +253,7 @@ router.put('/:spotId', requireAuth, async (req, res, next) => {
             ...req.body
         })
 
-        res.json(editSpot)
+        return res.json(editSpot)
     }
 })
 
