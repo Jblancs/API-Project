@@ -114,7 +114,7 @@ router.get('/:spotId', async (req, res, next) => {
         ]
     })
 
-    spotInfo.dataValues.avgRating = rating[0].dataValues.avgRating
+    spotInfo.dataValues.avgStarRating = rating[0].dataValues.avgRating
 
     if (!spotInfo) {
         let err = new Error("Spot couldn't be found")
