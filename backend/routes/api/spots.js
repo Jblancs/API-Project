@@ -19,15 +19,19 @@ router.get('/', async (req, res, next) => {
             },
             attributes: [
                 [sequelize.fn("AVG", sequelize.col("stars")), "avgRating"]
-            ],
-            include: {
-                model: ReviewImage,
-                attributes: ["url"]
-            }
+            ]
+        })
+
+        const previewImage = await SpotImage.findOne({
+            where: {
+                spotId: spot.toJSON().id,
+                preview: true
+            },
+            attributes: ["url"]
         })
 
         spot.dataValues.avgRating = rating[0].dataValues.avgRating
-        spot.dataValues.previewImage = rating[0].ReviewImages[0].dataValues.url
+        spot.dataValues.previewImage = previewImage.dataValues.url
 
     }
 
@@ -55,15 +59,19 @@ router.get('/current', async (req, res, next) => {
                 },
                 attributes: [
                     [sequelize.fn("AVG", sequelize.col("stars")), "avgRating"]
-                ],
-                include: {
-                    model: ReviewImage,
-                    attributes: ["url"]
-                }
+                ]
+            })
+
+            const previewImage = await SpotImage.findOne({
+                where: {
+                    spotId: spot.toJSON().id,
+                    preview: true
+                },
+                attributes: ["url"]
             })
 
             spot.dataValues.avgRating = rating[0].dataValues.avgRating
-            spot.dataValues.previewImage = rating[0].ReviewImages[0].dataValues.url
+            spot.dataValues.previewImage = previewImage.dataValues.url
 
         }
 
@@ -72,5 +80,7 @@ router.get('/current', async (req, res, next) => {
     }
 
 })
+
+// GET
 
 module.exports = router;
