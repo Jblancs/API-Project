@@ -1,12 +1,13 @@
 const express = require('express')
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
-const { Spot, Review, ReviewImage, SpotImage, sequelize } = require('../../db/models');
+const { Spot, Review, User, SpotImage, sequelize } = require('../../db/models');
 
 const router = express.Router();
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const user = require('../../db/models/user');
+const e = require('express');
 
 // GET all spots
 router.get('/', async (req, res, next) => {
@@ -89,5 +90,29 @@ router.get('/current', async (req, res, next) => {
 })
 
 // GET details of Spot from an id
+router.get('/:spotId', async (req, res, next) => {
+    const spotInfo = await Spot.findByPk(req.params.spotId, {
+        include: [
+            {
+                model: SpotImage,
+                attributes: ["id", "url", "preview"]
+            },
+            {
+                model: User,
+                as: 'Owner',
+                attributes: ["id", "firstName", "lastName"]
+            }
+        ]
+    })
+
+    if (!spotInfo) {
+        let err = new Error("Spot couldn't be found")
+        err.status = 404
+        next(err)
+    } else {
+        res.json(spotInfo)
+    }
+
+})
 
 module.exports = router;
