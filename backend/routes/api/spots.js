@@ -22,6 +22,7 @@ router.get('/', async (req, res, next) => {
             ]
         })
 
+
         const previewImage = await SpotImage.findOne({
             where: {
                 spotId: spot.toJSON().id,
@@ -30,8 +31,15 @@ router.get('/', async (req, res, next) => {
             attributes: ["url"]
         })
 
+        console.log(previewImage)
+
         spot.dataValues.avgRating = rating[0].dataValues.avgRating
-        spot.dataValues.previewImage = previewImage.dataValues.url
+
+        if (!previewImage) {
+            spot.dataValues.previewImage = "No preview image found"
+        } else {
+            spot.dataValues.previewImage = previewImage.dataValues.url
+        }
 
     }
 
@@ -62,6 +70,7 @@ router.get('/current', async (req, res, next) => {
                 ]
             })
 
+
             const previewImage = await SpotImage.findOne({
                 where: {
                     spotId: spot.toJSON().id,
@@ -70,13 +79,19 @@ router.get('/current', async (req, res, next) => {
                 attributes: ["url"]
             })
 
+            console.log(previewImage)
+
             spot.dataValues.avgRating = rating[0].dataValues.avgRating
-            spot.dataValues.previewImage = previewImage.dataValues.url
+
+            if (!previewImage) {
+                spot.dataValues.previewImage = "No preview image found"
+            } else {
+                spot.dataValues.previewImage = previewImage.dataValues.url
+            }
 
         }
 
         res.json(spots)
-
     }
 
 })

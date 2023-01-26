@@ -24,7 +24,7 @@ module.exports = {
       {
         spotId: 3,
         url: 'https://www.rocketmortgage.com/resources-cmsassets/RocketMortgage.com/Article_Images/Large_Images/TypesOfHomes/types-of-homes-co-op-3.jpg',
-        preview: true
+        preview: false
       }
     ], {});
   },
