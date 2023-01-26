@@ -39,7 +39,7 @@ router.get('/', async (req, res, next) => {
             spot.dataValues.previewImage = previewImage.dataValues.url
         }
     }
-    res.json(spots)
+    return res.json(spots)
 })
 
 // GET all spots by the Current User
@@ -81,7 +81,7 @@ router.get('/current', async (req, res, next) => {
                 spot.dataValues.previewImage = previewImage.dataValues.url
             }
         }
-        res.json(spots)
+        return res.json(spots)
     }
 })
 
@@ -124,7 +124,7 @@ router.get('/:spotId', async (req, res, next) => {
     } else {
         spotInfo.dataValues.numReviews = reviews;
         spotInfo.dataValues.avgStarRating = rating[0].dataValues.avgRating;
-        res.json(spotInfo)
+        return res.json(spotInfo)
     }
 })
 
@@ -152,15 +152,41 @@ router.post('/', requireAuth, async (req, res, next) => {
         }
     }
 
-
     const newSpot = await Spot.create({
         ownerId: req.user.id,
         ...req.body
     })
 
-    res.json(newSpot)
+    return res.json(newSpot)
 })
 
+// POST add image by spotId
+router.post('/:spotId/images', requireAuth, async (req, res, next) => {
+    const spot = await Spot.findOne({
+        where: {
+            id: req.params.spotId,
+            ownerId: 3
+        }
+    })
 
+    if (!spot) {
+        let err = new Error("Spot couldn't be found")
+        err.status = 404
+        return next(err)
+    } else {
+        const createImage = await SpotImage.create({
+            spotId: req.params.spotId,
+            ...req.body
+        })
+
+        const newImage = await SpotImage.findAll({
+            order: [["id", "DESC"]],
+            limit: 1,
+            attributes: ["id", "url", "preview"]
+        })
+
+        return res.json(newImage)
+    }
+})
 
 module.exports = router;
