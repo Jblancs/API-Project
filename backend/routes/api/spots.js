@@ -38,9 +38,7 @@ router.get('/', async (req, res, next) => {
         } else {
             spot.dataValues.previewImage = previewImage.dataValues.url
         }
-
     }
-
     res.json(spots)
 })
 
@@ -82,9 +80,7 @@ router.get('/current', async (req, res, next) => {
             } else {
                 spot.dataValues.previewImage = previewImage.dataValues.url
             }
-
         }
-
         res.json(spots)
     }
 })
@@ -120,18 +116,51 @@ router.get('/:spotId', async (req, res, next) => {
         }
     })
 
-
     if (!spotInfo) {
         let err = new Error("Spot couldn't be found")
         err.status = 404
+
         next(err)
     } else {
         spotInfo.dataValues.numReviews = reviews;
         spotInfo.dataValues.avgStarRating = rating[0].dataValues.avgRating;
         res.json(spotInfo)
     }
-
-
 })
+
+// POST create spot
+router.post('/', requireAuth, async (req, res, next) => {
+    let { address, city, state, country, lat, lng, name, description } = req.body
+    let array = [address, city, state, country, lat, lng, name, description]
+
+    for (let value of array) {
+        if (!value || value === "") {
+            let err = new Error("Validation Error")
+            err.status = 400
+            err.errors = {
+                address: "Street address is required",
+                city: "City is required",
+                state: "State is required",
+                country: "Country is required",
+                lat: "Latitude is not valid",
+                lng: "Longitude is not valid",
+                name: "Name must be less than 50 characters",
+                description: "Description is required",
+                price: "Price per day is required"
+            }
+            return next(err)
+        }
+    }
+
+
+    const newSpot = await Spot.create({
+        ownerId: req.user.id,
+        ...req.body
+    })
+
+    res.json(newSpot)
+})
+
+
 
 module.exports = router;
