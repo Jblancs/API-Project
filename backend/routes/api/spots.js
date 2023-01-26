@@ -120,16 +120,17 @@ router.get('/:spotId', async (req, res, next) => {
         }
     })
 
-    spotInfo.dataValues.numReviews = reviews
-    spotInfo.dataValues.avgStarRating = rating[0].dataValues.avgRating
 
     if (!spotInfo) {
         let err = new Error("Spot couldn't be found")
         err.status = 404
         next(err)
     } else {
+        spotInfo.dataValues.numReviews = reviews;
+        spotInfo.dataValues.avgStarRating = rating[0].dataValues.avgRating;
         res.json(spotInfo)
     }
+
 
 })
 
