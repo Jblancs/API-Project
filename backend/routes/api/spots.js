@@ -1,6 +1,6 @@
 const express = require('express')
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
-const { Spot, Review, User, SpotImage, sequelize } = require('../../db/models');
+const { Spot, Review, User, SpotImage, ReviewImage, sequelize } = require('../../db/models');
 
 const router = express.Router();
 
@@ -277,6 +277,39 @@ router.delete('/:spotId', requireAuth, async (req, res, next) => {
             message: "Successfully deleted",
             statusCode: res.statusCode
         })
+    }
+})
+
+// GET all reviews by spotId
+router.get('/:spotId/reviews', async (req, res, next) => {
+    const spot = await Spot.findByPk(req.params.spotId, {
+        include: [
+            {
+                model: Review,
+                include: [
+                    {
+                        model: User,
+                        attributes: ["id", "firstName", "lastName"]
+                    },
+                    {
+                        model: ReviewImage,
+                        attributes: ["id", "url"]
+                    }
+                ]
+            },
+        ]
+    })
+
+    if (!spot) {
+        let err = new Error("Spot couldn't be found")
+        err.status = 404
+        return next(err)
+
+    } else {
+        const spotReviews = {};
+        spotReviews.Reviews = spot.Reviews
+
+        return res.json(spotReviews)
     }
 })
 
