@@ -441,4 +441,85 @@ router.get('/:spotId/bookings', async (req, res, next) => {
     return res.json(returnObj)
 })
 
+// POST create booking from spotId
+router.post('/:spotId/bookings', requireAuth, async (req, res, next) => {
+    const spot = await Spot.findByPk(req.params.spotId)
+
+    if (!spot) {
+        let err = new Error("Spot couldn't be found")
+        err.status = 404
+        return next(err)
+    }
+    if (req.user.id === spot.toJSON().id) {
+        let err = new Error("Forbidden")
+        err.status = 403
+        return next(err)
+    }
+
+    let { startDate, endDate } = req.body
+    let bodyStartMS = Date.parse(startDate)
+    let bodyEndMS = Date.parse(endDate)
+
+    //req.body error handler
+    let errorObj = {}
+
+    if (!bodyStartMS || bodyStartMS === "") {
+        errorObj.endDate = "Please enter valid startDate"
+    }
+    if (!bodyEndMS || bodyEndMS === "") {
+        errorObj.endDate = "Please enter valid endDate"
+    }
+
+    if (Object.keys(errorObj).length) {
+        let err = new Error("Invalid Date Range")
+        err.status = 403
+        err.errors = errorObj
+        return next(err)
+    }
+
+    if (bodyStartMS >= bodyEndMS) {
+        let err = new Error("Validation error")
+        err.status = 400
+        err.errors = {
+            endDate: "endDate cannot be on or before startDate"
+        }
+        return next(err)
+    }
+
+    const bookings = await Booking.findAll({
+        where: {
+            spotId: req.params.spotId
+        }
+    })
+
+    // req.body conflict error handler
+    for (let booking of bookings) {
+        let bookingJson = booking.toJSON()
+        let bookingStartMS = Date.parse(bookingJson.startDate)
+        let bookingEndMS = Date.parse(bookingJson.endDate)
+
+        if (bodyStartMS >= bookingStartMS && bodyStartMS <= bookingEndMS) {
+            errorObj.startDate = "Start date conflicts with an existing booking"
+        }
+        if (bodyEndMS >= bookingStartMS && bodyEndMS <= bookingEndMS) {
+            errorObj.endDate = "End date conflicts with an existing booking"
+        }
+    }
+
+    if (Object.keys(errorObj).length) {
+        let err = new Error("Sorry, this spot is already booked for the specified dates")
+        err.status = 403
+        err.errors = errorObj
+        return next(err)
+    }
+
+    let newBooking = await Booking.create({
+        spotId: spot.toJSON().id,
+        userId: req.user.id,
+        ...req.body
+    })
+
+    return res.json(newBooking)
+})
+
 module.exports = router;
