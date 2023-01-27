@@ -29,9 +29,8 @@ router.get('/current', async (req, res, next) => {
     })
 
     for (let booking of bookingsList) {
-        const spot = await Spot.findOne({
+        const spot = await Spot.scope('currentSpotnoDesc').findOne({
             where: { id: booking.spotId },
-            attributes: ['id', 'ownerId', 'address', 'city', 'state', 'country', 'lat', 'lng', 'name', 'price']
         })
 
         booking.Spot = spot

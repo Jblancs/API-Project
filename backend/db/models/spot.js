@@ -50,6 +50,14 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Spot',
+    scopes: {
+      currentSpot: {
+        attributes: { exclude: ["createdAt", "updatedAt"] }
+      },
+      currentSpotnoDesc: {
+        attributes: { exclude: ["description", "createdAt", "updatedAt"] }
+      }
+    }
   });
   return Spot;
 };
