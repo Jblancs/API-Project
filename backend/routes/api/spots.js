@@ -187,7 +187,7 @@ router.post('/:spotId/images', requireAuth, async (req, res, next) => {
         return next(err)
     } else {
         const createImage = await SpotImage.create({
-            spotId: req.params.spotId,
+            spotId: spot.toJSON().id,
             ...req.body
         })
 
