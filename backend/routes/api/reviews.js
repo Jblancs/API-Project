@@ -119,4 +119,51 @@ router.post('/:reviewId/images', requireAuth, async (req, res, next) => {
     return res.json(newReviewImg)
 })
 
+// PUT edit a review
+router.put('/:reviewId', requireAuth, async (req, res, next) => {
+    const review = await Review.findByPk(req.params.reviewId)
+
+    if (!review) {
+        let err = new Error("Review couldn't be found")
+        err.status = 404
+        return next(err)
+    }
+    if (req.user.id !== review.toJSON().userId) {
+        let err = new Error("Can only edit your own review")
+        err.status = 400
+        return next(err)
+    }
+
+    //req.body error handler
+    let possibleErrors = {
+        review: "Review text is required",
+        stars: "Stars must be an integer from 1 to 5"
+    }
+
+    let errorObj = {}
+    let ratings = [1, 2, 3, 4, 5]
+
+    for (let key in possibleErrors) {
+        if (!req.body[key] || req.body[key] === "") {
+            errorObj[key] = possibleErrors[key]
+        }
+        if (key === "stars" && (!Number.isInteger(req.body[key]) || !ratings.includes(req.body[key]))) {
+            errorObj[key] = possibleErrors[key]
+        }
+    }
+
+    if (Object.keys(errorObj).length) {
+        let err = new Error("Validation Error")
+        err.status = 400
+        err.errors = errorObj
+        return next(err)
+    }
+
+    const editReview = await review.update({
+        ...req.body
+    })
+
+    return res.json(editReview)
+})
+
 module.exports = router;
