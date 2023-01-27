@@ -504,7 +504,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res, next) => {
         if (bodyEndMS >= bookingStartMS && bodyEndMS <= bookingEndMS) {
             errorObj.endDate = "End date conflicts with an existing booking"
         }
-        if(bodyStartMS <= bookingStartMS && bodyEndMS >= bookingEndMS){
+        if (bodyStartMS < bookingStartMS && bodyEndMS > bookingEndMS) {
             errorObj.endDate = "End date conflicts with an existing booking"
             errorObj.startDate = "Start date conflicts with an existing booking"
         }
