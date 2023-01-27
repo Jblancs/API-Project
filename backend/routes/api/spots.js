@@ -46,7 +46,7 @@ router.get('/', async (req, res, next) => {
 router.get('/current', async (req, res, next) => {
     if (!req.user) {
         let err = new Error("Please log in")
-        next(err)
+        return next(err)
 
     } else {
         const spots = await Spot.findAll({
