@@ -12,7 +12,7 @@ const e = require('express');
 // GET all Reviews of current user
 router.get('/current', async (req, res, next) => {
     if (!req.user) {
-        let err = new Error("Please log in")
+        let err = new Error("Authentication required")
         err.status = 401
         return next(err)
     }
@@ -83,8 +83,8 @@ router.post('/:reviewId/images', requireAuth, async (req, res, next) => {
         return next(err)
     }
     if (req.user.id !== review.toJSON().userId) {
-        let err = new Error("Can only add image to your own review")
-        err.status = 400
+        let err = new Error("Forbidden")
+        err.status = 403
         return next(err)
     }
 
@@ -128,8 +128,8 @@ router.put('/:reviewId', requireAuth, async (req, res, next) => {
         return next(err)
     }
     if (req.user.id !== review.toJSON().userId) {
-        let err = new Error("Can only edit your own review")
-        err.status = 400
+        let err = new Error("Forbidden")
+        err.status = 403
         return next(err)
     }
 
@@ -175,8 +175,8 @@ router.delete('/:reviewId', requireAuth, async (req, res, next) => {
         return next(err)
     }
     if (req.user.id !== review.toJSON().userId) {
-        let err = new Error("Can only edit your own review")
-        err.status = 400
+        let err = new Error("Forbidden")
+        err.status = 403
         return next(err)
     }
 

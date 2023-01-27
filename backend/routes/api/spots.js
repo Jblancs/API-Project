@@ -1,6 +1,6 @@
 const express = require('express')
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
-const { Spot, Review, User, SpotImage, ReviewImage, sequelize } = require('../../db/models');
+const { Spot, Review, User, SpotImage, ReviewImage, Booking, sequelize } = require('../../db/models');
 
 const router = express.Router();
 
@@ -8,6 +8,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const user = require('../../db/models/user');
 const e = require('express');
+const booking = require('../../db/models/booking');
 
 // GET all spots
 router.get('/', async (req, res, next) => {
@@ -45,7 +46,8 @@ router.get('/', async (req, res, next) => {
 // GET all spots by the Current User
 router.get('/current', async (req, res, next) => {
     if (!req.user) {
-        let err = new Error("Please log in")
+        let err = new Error("Authentication required")
+        err.status = 401
         return next(err)
 
     } else {
@@ -177,7 +179,6 @@ router.post('/:spotId/images', requireAuth, async (req, res, next) => {
     const spot = await Spot.findOne({
         where: {
             id: req.params.spotId,
-            ownerId: req.user.id
         }
     })
 
@@ -185,20 +186,27 @@ router.post('/:spotId/images', requireAuth, async (req, res, next) => {
         let err = new Error("Spot couldn't be found")
         err.status = 404
         return next(err)
-    } else {
-        const createImage = await SpotImage.create({
-            spotId: spot.toJSON().id,
-            ...req.body
-        })
-
-        const newImage = await SpotImage.findAll({
-            order: [["id", "DESC"]],
-            limit: 1,
-            attributes: ["id", "url", "preview"]
-        })
-
-        return res.json(newImage)
     }
+
+    if (req.user.id !== spot.toJSON().ownerId) {
+        let err = new Error("Forbidden")
+        err.status = 403
+        return next(err)
+    }
+
+    const createImage = await SpotImage.create({
+        spotId: spot.toJSON().id,
+        ...req.body
+    })
+
+    const newImage = await SpotImage.findAll({
+        order: [["id", "DESC"]],
+        limit: 1,
+        attributes: ["id", "url", "preview"]
+    })
+
+    return res.json(newImage)
+
 })
 
 // PUT edit a spot
@@ -372,6 +380,65 @@ router.post('/:spotId/reviews', requireAuth, async (req, res, next) => {
 
     return res.json(newReview)
 
+})
+
+// GET bookings based on spotId
+router.get('/:spotId/bookings', async (req, res, next) => {
+    if (!req.user) {
+        let err = new Error("Authentication required")
+        err.status = 401
+        return next(err)
+    }
+
+    const spot = await Spot.findOne({
+        where: {
+            id: req.params.spotId,
+        }
+    })
+
+    if (!spot) {
+        let err = new Error("Spot couldn't be found")
+        err.status = 404
+        return next(err)
+    }
+
+    let bookingsList = []
+
+    if (req.user.id !== spot.toJSON().ownerId) {
+        const bookings = await Booking.findAll({
+            where: {
+                spotId: req.params.spotId
+            },
+            attributes: ["spotId", "startDate", "endDate"]
+        })
+
+        bookings.forEach(booking => {
+            bookingsList.push(booking.toJSON())
+        })
+    } else {
+        const bookings = await Booking.findAll({
+            where: {
+                spotId: req.params.spotId
+            }
+        })
+
+        bookings.forEach(booking => {
+            bookingsList.push(booking.toJSON())
+        })
+
+        const user = await User.findByPk(req.user.id, {
+            attributes: ["id", "firstName", "lastName"]
+        })
+
+        bookingsList.forEach(booking => {
+            booking.User = user.toJSON()
+        })
+    }
+
+    let returnObj = {}
+    returnObj.Bookings = bookingsList
+
+    return res.json(returnObj)
 })
 
 module.exports = router;

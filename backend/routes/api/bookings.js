@@ -12,7 +12,7 @@ const e = require('express');
 // GET all current user booking
 router.get('/current', async (req, res, next) => {
     if (!req.user) {
-        let err = new Error("Please log in")
+        let err = new Error("Authentication required")
         err.status = 401
         return next(err)
     }
