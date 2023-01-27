@@ -51,7 +51,12 @@ router.get('/current', async (req, res, next) => {
             attributes: ['url']
         })
 
-        review.Spot.dataValues.previewImage = previewImg.toJSON().url
+        if (previewImg) {
+            review.Spot.dataValues.previewImage = previewImg.dataValues.url
+        } else {
+            review.Spot.dataValues.previewImage = "no preview image"
+
+        }
 
         const reviewImg = await ReviewImage.findAll({
             where: {
@@ -60,7 +65,6 @@ router.get('/current', async (req, res, next) => {
             attributes: ['id', 'url']
         })
 
-        console.log(review)
         review.ReviewImages = reviewImg
     }
 
