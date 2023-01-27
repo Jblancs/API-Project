@@ -9,7 +9,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 const user = require('../../db/models/user');
 const e = require('express');
 
-// GET all Reviews of current user
+//--------------------------- GET all Reviews of current user
 router.get('/current', async (req, res, next) => {
     if (!req.user) {
         let err = new Error("Authentication required")
@@ -73,7 +73,7 @@ router.get('/current', async (req, res, next) => {
     return res.json(returnObj)
 })
 
-// POST add image to review based on review id
+//--------------------------- POST add image to review based on review id
 router.post('/:reviewId/images', requireAuth, async (req, res, next) => {
     const review = await Review.findByPk(req.params.reviewId)
 
@@ -118,7 +118,7 @@ router.post('/:reviewId/images', requireAuth, async (req, res, next) => {
     return res.json(newReviewImg)
 })
 
-// PUT edit a review
+//--------------------------- PUT edit a review
 router.put('/:reviewId', requireAuth, async (req, res, next) => {
     const review = await Review.findByPk(req.params.reviewId)
 
@@ -165,7 +165,7 @@ router.put('/:reviewId', requireAuth, async (req, res, next) => {
     return res.json(editReview)
 })
 
-// DELETE a review
+//--------------------------- DELETE a review
 router.delete('/:reviewId', requireAuth, async (req, res, next) => {
     const review = await Review.findByPk(req.params.reviewId)
 
@@ -187,5 +187,7 @@ router.delete('/:reviewId', requireAuth, async (req, res, next) => {
         statusCode: res.statusCode
     })
 })
+
+
 
 module.exports = router;

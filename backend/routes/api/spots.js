@@ -10,7 +10,7 @@ const user = require('../../db/models/user');
 const e = require('express');
 const booking = require('../../db/models/booking');
 
-// GET all spots
+//--------------------------- GET all spots
 router.get('/', async (req, res, next) => {
     const spots = await Spot.findAll()
 
@@ -43,7 +43,7 @@ router.get('/', async (req, res, next) => {
     return res.json(spots)
 })
 
-// GET all spots by the Current User
+//--------------------------- GET all spots by the Current User
 router.get('/current', async (req, res, next) => {
     if (!req.user) {
         let err = new Error("Authentication required")
@@ -87,7 +87,7 @@ router.get('/current', async (req, res, next) => {
     }
 })
 
-// GET details of Spot from an id
+//--------------------------- GET details of Spot from an id
 router.get('/:spotId', async (req, res, next) => {
     const spotInfo = await Spot.findByPk(req.params.spotId, {
         include: [
@@ -130,7 +130,7 @@ router.get('/:spotId', async (req, res, next) => {
     }
 })
 
-// POST create spot
+//--------------------------- POST create spot
 router.post('/', requireAuth, async (req, res, next) => {
 
     let possibleErrors = {
@@ -174,7 +174,7 @@ router.post('/', requireAuth, async (req, res, next) => {
     return res.json(newSpot)
 })
 
-// POST add image by spotId
+//--------------------------- POST add image by spotId
 router.post('/:spotId/images', requireAuth, async (req, res, next) => {
     const spot = await Spot.findOne({
         where: {
@@ -209,7 +209,7 @@ router.post('/:spotId/images', requireAuth, async (req, res, next) => {
 
 })
 
-// PUT edit a spot
+//--------------------------- PUT edit a spot
 router.put('/:spotId', requireAuth, async (req, res, next) => {
     const spot = await Spot.findOne({
         where: {
@@ -265,7 +265,7 @@ router.put('/:spotId', requireAuth, async (req, res, next) => {
     }
 })
 
-// DELETE a spot
+//--------------------------- DELETE a spot
 router.delete('/:spotId', requireAuth, async (req, res, next) => {
     const spot = await Spot.findOne({
         where: {
@@ -288,7 +288,7 @@ router.delete('/:spotId', requireAuth, async (req, res, next) => {
     }
 })
 
-// GET all reviews by spotId
+//--------------------------- GET all reviews by spotId
 router.get('/:spotId/reviews', async (req, res, next) => {
     const spot = await Spot.findByPk(req.params.spotId, {
         include: [
@@ -321,7 +321,7 @@ router.get('/:spotId/reviews', async (req, res, next) => {
     }
 })
 
-// POST create review by spotId
+//--------------------------- POST create review by spotId
 router.post('/:spotId/reviews', requireAuth, async (req, res, next) => {
     const spot = await Spot.findByPk(req.params.spotId, {
         include: [
@@ -382,7 +382,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res, next) => {
 
 })
 
-// GET bookings based on spotId
+//--------------------------- GET bookings based on spotId
 router.get('/:spotId/bookings', async (req, res, next) => {
     if (!req.user) {
         let err = new Error("Authentication required")
@@ -441,7 +441,7 @@ router.get('/:spotId/bookings', async (req, res, next) => {
     return res.json(returnObj)
 })
 
-// POST create booking from spotId
+//--------------------------- POST create booking from spotId
 router.post('/:spotId/bookings', requireAuth, async (req, res, next) => {
     const spot = await Spot.findByPk(req.params.spotId)
 

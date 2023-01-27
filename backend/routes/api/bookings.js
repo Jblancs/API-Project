@@ -10,7 +10,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 const user = require('../../db/models/user');
 const e = require('express');
 
-// GET all current user booking
+//--------------------------- GET all current user booking
 router.get('/current', async (req, res, next) => {
     if (!req.user) {
         let err = new Error("Authentication required")
@@ -57,7 +57,7 @@ router.get('/current', async (req, res, next) => {
     return res.json(returnObj)
 })
 
-// PUT edit booking
+//--------------------------- PUT edit booking
 router.put('/:bookingId', requireAuth, async (req, res, next) => {
     const booking = await Booking.findByPk(req.params.bookingId)
 
@@ -153,6 +153,41 @@ router.put('/:bookingId', requireAuth, async (req, res, next) => {
     const updatedBooking = await Booking.findByPk(req.params.bookingId)
 
     return res.json(updatedBooking)
+})
+
+//--------------------------- DELETE booking
+router.delete('/:bookingId', requireAuth, async (req, res, next) => {
+    const booking = await Booking.findByPk(req.params.bookingId)
+
+    if (!booking) {
+        let err = new Error("Booking couldn't be found")
+        err.status = 404
+        return next(err)
+    }
+    if (req.user.id !== booking.userId) {
+        let err = new Error("Forbidden")
+        err.status = 403
+        return next(err)
+    }
+
+    let startdateMS = Date.parse(booking.startDate)
+    let enddateMS = Date.parse(booking.endDate)
+    let nowMS = Date.now()
+
+    if (startdateMS <= nowMS && enddateMS >= nowMS) {
+        let err = new Error("Bookings that have been started can't be deleted")
+        err.status = 403
+        return next(err)
+    }
+
+    await booking.destroy()
+    res.status(200)
+
+    return res.json({
+        message: "Successfully deleted",
+        statusCode: res.statusCode
+    })
+
 })
 
 module.exports = router;
