@@ -32,14 +32,39 @@ const validateSignup = [
 router.post(
     '/',
     validateSignup,
-    async (req, res) => {
+    async (req, res, next) => {
         const { email, password, username, firstName, lastName } = req.body;
+
+        const errorObj = {}
+        if (!email || email === "") {
+            errorObj.email = "Invalid email"
+        }
+        if (!username || username === "") {
+            errorObj.username = "Username is required"
+        }
+        if (!firstName || firstName === "") {
+            errorObj.firstName = "First Name is required"
+        }
+        if (!lastName || lastName === "") {
+            errorObj.lastName = "Last Name is required"
+        }
+
+        if (Object.keys(errorObj).length) {
+            let err = new Error("Validation error")
+            err.status = 400
+            err.errors = errorObj
+            return next(err)
+        }
+
         const user = await User.signup({ email, username, password, firstName, lastName });
 
-        await setTokenCookie(res, user);
+        let token = await setTokenCookie(res, user);
 
         return res.json({
-            user: user
+            user: {
+                ...user.toJSON(),
+                token: token
+            }
         });
     }
 );
