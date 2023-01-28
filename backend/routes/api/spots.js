@@ -272,7 +272,6 @@ router.put('/:spotId', requireAuth, async (req, res, next) => {
     const spot = await Spot.findOne({
         where: {
             id: req.params.spotId,
-            ownerId: req.user.id
         }
     })
 
@@ -280,47 +279,53 @@ router.put('/:spotId', requireAuth, async (req, res, next) => {
         let err = new Error("Spot couldn't be found")
         err.status = 404
         return next(err)
-    } else {
-
-        let possibleErrors = {
-            address: "Street address is required",
-            city: "City is required",
-            state: "State is required",
-            country: "Country is required",
-            lat: "Latitude is not valid",
-            lng: "Longitude is not valid",
-            name: "Name must be less than 50 characters",
-            description: "Description is required",
-            price: "Price per day is required"
-        }
-
-        let errorObj = {}
-
-        for (let key in possibleErrors) {
-            if (!req.body[key] || req.body[key] === "") {
-                errorObj[key] = possibleErrors[key]
-            }
-            if ((key === "lat" || key === "lng") && typeof req.body[key] !== "number") {
-                errorObj[key] = possibleErrors[key]
-            }
-            if (key === "name" && req.body[key].length > 50) {
-                errorObj[key] = possibleErrors[key]
-            }
-        }
-
-        if (Object.keys(errorObj).length) {
-            let err = new Error("Validation Error")
-            err.status = 400
-            err.errors = errorObj
-            return next(err)
-        }
-
-        const editSpot = await spot.update({
-            ...req.body
-        })
-
-        return res.json(editSpot)
     }
+    if (spot.ownerId !== req.user.id) {
+        let err = new Error("Forbidden")
+        err.status = 403
+        return next(err)
+    }
+
+
+    let possibleErrors = {
+        address: "Street address is required",
+        city: "City is required",
+        state: "State is required",
+        country: "Country is required",
+        lat: "Latitude is not valid",
+        lng: "Longitude is not valid",
+        name: "Name must be less than 50 characters",
+        description: "Description is required",
+        price: "Price per day is required"
+    }
+
+    let errorObj = {}
+
+    for (let key in possibleErrors) {
+        if (!req.body[key] || req.body[key] === "") {
+            errorObj[key] = possibleErrors[key]
+        }
+        if ((key === "lat" || key === "lng") && typeof req.body[key] !== "number") {
+            errorObj[key] = possibleErrors[key]
+        }
+        if (key === "name" && req.body[key].length > 50) {
+            errorObj[key] = possibleErrors[key]
+        }
+    }
+
+    if (Object.keys(errorObj).length) {
+        let err = new Error("Validation Error")
+        err.status = 400
+        err.errors = errorObj
+        return next(err)
+    }
+
+    const editSpot = await spot.update({
+        ...req.body
+    })
+
+    return res.json(editSpot)
+
 })
 
 //--------------------------- DELETE a spot
@@ -328,7 +333,6 @@ router.delete('/:spotId', requireAuth, async (req, res, next) => {
     const spot = await Spot.findOne({
         where: {
             id: req.params.spotId,
-            ownerId: req.user.id
         }
     })
 
@@ -336,14 +340,21 @@ router.delete('/:spotId', requireAuth, async (req, res, next) => {
         let err = new Error("Spot couldn't be found")
         err.status = 404
         return next(err)
-    } else {
-        await spot.destroy()
-        res.status(200)
-        return res.json({
-            message: "Successfully deleted",
-            statusCode: res.statusCode
-        })
     }
+
+    if (spot.ownerId !== req.user.id) {
+        let err = new Error("Forbidden")
+        err.status = 403
+        return next(err)
+    }
+
+    await spot.destroy()
+    res.status(200)
+    return res.json({
+        message: "Successfully deleted",
+        statusCode: res.statusCode
+    })
+
 })
 
 //--------------------------- GET all reviews by spotId
