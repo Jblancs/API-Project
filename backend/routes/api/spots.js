@@ -202,7 +202,7 @@ router.post('/:spotId/images', requireAuth, async (req, res, next) => {
     const newImage = await SpotImage.findAll({
         order: [["id", "DESC"]],
         limit: 1,
-        attributes: ["id", "url", "preview"]
+        // attributes: ["id", "url", "preview"]
     })
 
     return res.json(newImage)
