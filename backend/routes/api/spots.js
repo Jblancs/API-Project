@@ -12,35 +12,92 @@ const booking = require('../../db/models/booking');
 
 //--------------------------- GET all spots
 router.get('/', async (req, res, next) => {
-    const spots = await Spot.findAll()
+    let pagination = {}
+    let { page, size } = req.query
 
-    for (let spot of spots) {
+    //pagination error handler
+    let errorObj = {}
+    if (page <= 0) {
+        errorObj.page = "Page must be greater than or equal to 1"
+    }
+    if (size <= 0) {
+        errorObj.size = "Size must be greater than or equal to 1"
+    }
+
+    if (Object.keys(errorObj).length) {
+        let err = new Error("Validation Error")
+        err.status = 400
+        err.errors = errorObj
+        return next(err)
+    }
+
+    if (!size || size > 20) {
+        size = 20
+        pagination.limit = size
+    }
+    if (!page) {
+        page = 1
+        pagination.offset = size * (page - 1)
+    }
+    if (page > 10) {
+        page = 10
+        pagination.offset = size * (page - 1)
+    }
+
+    if (size >= 1 && size <= 20) {
+        size = parseInt(size)
+        pagination.limit = size
+    }
+    if (page >= 1 && page <= 10) {
+        page = parseInt(page)
+        pagination.offset = size * (page - 1)
+    }
+
+
+    const spots = await Spot.findAll({
+        ...pagination,
+    })
+
+    let spotsList = []
+
+    spots.forEach(spot => {
+        spotsList.push(spot.toJSON())
+    })
+
+    for (let spot of spotsList) {
         const rating = await Review.findAll({
             where: {
-                spotId: spot.toJSON().id
+                spotId: spot.id
             },
             attributes: [
                 [sequelize.fn("AVG", sequelize.col("stars")), "avgRating"]
             ]
         })
 
+        spot.avgRating = rating[0].dataValues.avgRating
+
         const previewImage = await SpotImage.findOne({
             where: {
-                spotId: spot.toJSON().id,
+                spotId: spot.id,
                 preview: true
             },
             attributes: ["url"]
         })
 
-        spot.dataValues.avgRating = rating[0].dataValues.avgRating
-
         if (!previewImage) {
-            spot.dataValues.previewImage = "No preview image found"
+            spot.previewImage = "No preview image found"
         } else {
-            spot.dataValues.previewImage = previewImage.dataValues.url
+            spot.previewImage = previewImage.url
         }
     }
-    return res.json(spots)
+
+    let returnObj = {}
+    returnObj.Spots = spotsList
+    returnObj.page = page
+    returnObj.size = size
+
+
+    return res.json(returnObj)
 })
 
 //--------------------------- GET all spots by the Current User
