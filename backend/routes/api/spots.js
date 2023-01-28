@@ -15,12 +15,21 @@ router.get('/', async (req, res, next) => {
     let pagination = {}
     let { page, size } = req.query
 
+    if (!page) {
+        page = 1
+        pagination.offset = size * (page - 1)
+    }
+    if (!size || size > 20) {
+        size = 20
+        pagination.limit = size
+    }
+
     //pagination error handler
     let errorObj = {}
-    if (page <= 0) {
+    if (page <= 0 || isNaN(page)) {
         errorObj.page = "Page must be greater than or equal to 1"
     }
-    if (size <= 0) {
+    if (size <= 0 || isNaN(size)) {
         errorObj.size = "Size must be greater than or equal to 1"
     }
 
@@ -31,14 +40,6 @@ router.get('/', async (req, res, next) => {
         return next(err)
     }
 
-    if (!size || size > 20) {
-        size = 20
-        pagination.limit = size
-    }
-    if (!page) {
-        page = 1
-        pagination.offset = size * (page - 1)
-    }
     if (page > 10) {
         page = 10
         pagination.offset = size * (page - 1)
