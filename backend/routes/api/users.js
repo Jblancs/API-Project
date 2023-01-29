@@ -12,15 +12,28 @@ const validateSignup = [
     check('email')
         .exists({ checkFalsy: true })
         .isEmail()
-        .withMessage('Please provide a valid email.'),
+        .withMessage('Invalid email'),
+
+    check('username')
+        .notEmpty()
+        .withMessage('Username is required'),
+
     check('username')
         .exists({ checkFalsy: true })
         .isLength({ min: 4 })
         .withMessage('Please provide a username with at least 4 characters.'),
+
+    check('firstName')
+        .notEmpty()
+        .withMessage('First Name is required'),
+    check('lastName')
+        .notEmpty()
+        .withMessage('Last Name is required'),
+
     check('username')
         .not()
         .isEmail()
-        .withMessage('Username cannot be an email.'),
+        .withMessage('Username cannot be an email'),
     check('password')
         .exists({ checkFalsy: true })
         .isLength({ min: 6 })
@@ -34,27 +47,6 @@ router.post(
     validateSignup,
     async (req, res, next) => {
         const { email, password, username, firstName, lastName } = req.body;
-
-        const errorObj = {}
-        if (!email || email === "") {
-            errorObj.email = "Invalid email"
-        }
-        if (!username || username === "") {
-            errorObj.username = "Username is required"
-        }
-        if (!firstName || firstName === "") {
-            errorObj.firstName = "First Name is required"
-        }
-        if (!lastName || lastName === "") {
-            errorObj.lastName = "Last Name is required"
-        }
-
-        if (Object.keys(errorObj).length) {
-            let err = new Error("Validation error")
-            err.status = 400
-            err.errors = errorObj
-            return next(err)
-        }
 
         const user = await User.signup({ email, username, password, firstName, lastName });
 
