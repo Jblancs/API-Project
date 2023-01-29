@@ -232,11 +232,11 @@ router.post('/', requireAuth, async (req, res, next) => {
         city,
         state,
         country,
-        lat: +lat,
-        lng: +lng,
+        lat: lat * 1,
+        lng: lng * 1,
         name,
         description,
-        price: +price
+        price: price * 1
     })
 
     return res.json(newSpot)
