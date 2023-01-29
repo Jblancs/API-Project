@@ -141,7 +141,7 @@ router.get('/current', async (req, res, next) => {
                 spot.dataValues.previewImage = previewImage.dataValues.url
             }
         }
-        return res.json({Spots: spots})
+        return res.json({ Spots: spots })
     }
 })
 
@@ -224,9 +224,19 @@ router.post('/', requireAuth, async (req, res, next) => {
         return next(err)
     }
 
+    const { address, city, state, country, lat, lng, name, description, price } = req.body
+
     const newSpot = await Spot.create({
         ownerId: req.user.id,
-        ...req.body
+        address,
+        city,
+        state,
+        country,
+        lat: parseFloat(lat),
+        lng: parseFloat(lng),
+        name,
+        description,
+        price: parseFloat(price)
     })
 
     return res.json(newSpot)
