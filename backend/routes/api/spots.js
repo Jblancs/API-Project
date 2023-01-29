@@ -330,8 +330,19 @@ router.put('/:spotId', requireAuth, async (req, res, next) => {
         return next(err)
     }
 
-    const editSpot = await spot.update({
-        ...req.body
+    const { address, city, state, country, lat, lng, name, description, price } = req.body
+
+    const editSpot = await Spot.create({
+        ownerId: req.user.id,
+        address,
+        city,
+        state,
+        country,
+        lat: Number(lat),
+        lng: Number(lng),
+        name,
+        description,
+        price: Number(price)
     })
 
     return res.json(editSpot)
