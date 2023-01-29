@@ -13,18 +13,33 @@ module.exports = {
     return queryInterface.bulkInsert(options, [
       {
         spotId: 1,
-        url: 'https://www.rocketmortgage.com/resources-cmsassets/RocketMortgage.com/Article_Images/Large_Images/TypesOfHomes/types-of-homes-hero.jpg',
+        url: 'image url',
         preview: true
       },
       {
         spotId: 2,
-        url: 'https://www.rocketmortgage.com/resources-cmsassets/RocketMortgage.com/Article_Images/Large_Images/TypesOfHomes/types-of-homes-townhome-6.jpg',
+        url: 'image url',
         preview: true
       },
       {
         spotId: 3,
-        url: 'https://www.rocketmortgage.com/resources-cmsassets/RocketMortgage.com/Article_Images/Large_Images/TypesOfHomes/types-of-homes-co-op-3.jpg',
-        preview: false
+        url: 'image url',
+        preview: true
+      },
+      {
+        spotId: 4,
+        url: 'image url',
+        preview: true
+      },
+      {
+        spotId: 5,
+        url: 'image url',
+        preview: true
+      },
+      {
+        spotId: 6,
+        url: 'image url',
+        preview: true
       }
     ], {});
   },

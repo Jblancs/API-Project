@@ -273,7 +273,8 @@ router.post('/:spotId/images', requireAuth, async (req, res, next) => {
         attributes: ["id", "url", "preview"]
     })
 
-    return res.json(newImage)
+
+    return res.json(newImage[0])
 
 })
 

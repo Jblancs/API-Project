@@ -46,6 +46,42 @@ module.exports = {
         name: 'Apartment',
         description: '2 bedroom apartment',
         price: 425.00
+      },
+      {
+        ownerId: 4,
+        address: '1925 Federal St',
+        city: 'Philadelphia',
+        state: 'PA',
+        country: 'USA',
+        lat: 27.687479,
+        lng: 57.332589,
+        name: 'Apartment',
+        description: '2 bedroom apartment',
+        price: 425.00
+      },
+      {
+        ownerId: 5,
+        address: '1999 Reed St',
+        city: 'Philadelphia',
+        state: 'PA',
+        country: 'USA',
+        lat: 27.687479,
+        lng: 57.332589,
+        name: 'Apartment',
+        description: '2 bedroom apartment',
+        price: 425.00
+      },
+      {
+        ownerId: 6,
+        address: '2432 Frankford St',
+        city: 'Philadelphia',
+        state: 'PA',
+        country: 'USA',
+        lat: 27.687479,
+        lng: 57.332589,
+        name: 'Apartment',
+        description: '2 bedroom apartment',
+        price: 425.00
       }
     ], {});
   },

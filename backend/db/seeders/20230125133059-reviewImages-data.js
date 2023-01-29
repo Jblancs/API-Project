@@ -13,15 +13,51 @@ module.exports = {
     return queryInterface.bulkInsert(options, [
       {
         reviewId: 1,
-        url: 'https://www.rocketmortgage.com/resources-cmsassets/RocketMortgage.com/Article_Images/Large_Images/TypesOfHomes/types-of-homes-hero.jpg'
+        url: 'image url'
       },
       {
         reviewId: 2,
-        url: 'https://www.rocketmortgage.com/resources-cmsassets/RocketMortgage.com/Article_Images/Large_Images/TypesOfHomes/types-of-homes-townhome-6.jpg'
+        url: 'image url'
       },
       {
         reviewId: 3,
-        url: 'https://www.rocketmortgage.com/resources-cmsassets/RocketMortgage.com/Article_Images/Large_Images/TypesOfHomes/types-of-homes-co-op-3.jpg'
+        url: 'image url'
+      },
+      {
+        reviewId: 4,
+        url: 'image url'
+      },
+      {
+        reviewId: 5,
+        url: 'image url'
+      },
+      {
+        reviewId: 6,
+        url: 'image url'
+      },
+      {
+        reviewId: 7,
+        url: 'image url'
+      },
+      {
+        reviewId: 8,
+        url: 'image url'
+      },
+      {
+        reviewId: 9,
+        url: 'image url'
+      },
+      {
+        reviewId: 10,
+        url: 'image url'
+      },
+      {
+        reviewId: 11,
+        url: 'image url'
+      },
+      {
+        reviewId: 12,
+        url: 'image url'
       }
     ], {});
   },

@@ -15,13 +15,13 @@ module.exports = {
         spotId: 1,
         userId: 2,
         review: 'great place with nice view',
-        stars: 4
+        stars: 5
       },
       {
         spotId: 2,
         userId: 3,
         review: 'would come back again',
-        stars: 4
+        stars: 5
       },
       {
         spotId: 3,
@@ -33,13 +33,57 @@ module.exports = {
         spotId: 3,
         userId: 2,
         review: 'meh',
-        stars: 2
+        stars: 1
       },
       {
         spotId: 1,
         userId: 3,
         review: 'nice',
         stars: 3
+      },
+      {
+        spotId: 2,
+        userId: 1,
+        review: 'nice',
+        stars: 1
+
+
+      },
+      {
+        spotId: 4,
+        userId: 5,
+        review: 'nice',
+        stars: 5
+      },
+      {
+        spotId: 4,
+        userId: 6,
+        review: 'nice',
+        stars: 1
+      },
+      {
+        spotId: 5,
+        userId: 4,
+        review: 'nice',
+        stars: 5
+      },
+      {
+        spotId: 5,
+        userId: 6,
+        review: 'nice',
+        stars: 1
+      },
+      {
+        spotId: 6,
+        userId: 4,
+        review: 'nice',
+        stars: 5
+      },
+      {
+        spotId: 6,
+        userId: 5,
+        review: 'nice',
+        stars: 1
       }
     ], {});
   },
