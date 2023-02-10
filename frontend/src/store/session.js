@@ -57,6 +57,8 @@ export const signup = (user) => async (dispatch) => {
     return response;
 };
 
+
+// session reducer
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {
