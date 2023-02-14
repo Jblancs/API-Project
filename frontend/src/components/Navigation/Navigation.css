@@ -1,3 +1,53 @@
 .hidden {
     display: none
 }
+
+.nav__bar {
+    border-bottom: 1px solid lightgrey;
+    padding: 30px 10px;
+    text-decoration: none;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(3, 20px);
+    grid-template-areas:
+        "logo logo none none none none none none none button button button"
+        "logo logo none none none none none none none button button button"
+        "logo logo none none none none none none none button button button";
+}
+
+.nav__buttons {
+    grid-area: button;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 5px;
+}
+
+.nav__logo {
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+}
+
+.nav__logo__img {
+    width: 80px;
+}
+
+.nav__logo__text {
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: brown;
+    font-weight: bold;
+}
+
+.fa-user-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+}
+
+.profile-dropdown {
+    font-size: 12px;
+}
