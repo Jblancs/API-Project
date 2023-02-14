@@ -30,7 +30,7 @@ const SpotsShow = () => {
                             </div>
                             <div key={`rate${spot.id}`} className="spots__prev__rate">
                                 <i className="fa-solid fa-star" />
-                                {spot.avgRating === null ? "new" : spot.avgRating}
+                                {spot.avgRating === "NaN" ? "new" : spot.avgRating}
                             </div>
                         </div>
                         <div key={`price${spot.id}`} className="spots__prev__price">

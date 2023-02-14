@@ -75,7 +75,9 @@ router.get('/', async (req, res, next) => {
             ]
         })
 
-        spot.avgRating = rating[0].dataValues.avgRating
+        const avgRateRound = rating[0].dataValues.avgRating
+
+        spot.avgRating = Number.parseFloat(avgRateRound).toFixed(2)
 
         const previewImage = await SpotImage.findOne({
             where: {
