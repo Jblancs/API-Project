@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import pearHouse from './images/pear-house.png'
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
@@ -13,13 +14,13 @@ function Navigation({ isLoaded }) {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-            <li>
+            <div>
                 <ProfileButton user={sessionUser} />
-            </li>
+            </div>
         );
     } else {
         sessionLinks = (
-            <li>
+            <div>
                 <OpenModalButton
                     buttonText="Log In"
                     modalComponent={<LoginFormModal />}
@@ -28,17 +29,22 @@ function Navigation({ isLoaded }) {
                     buttonText="Sign Up"
                     modalComponent={<SignupFormModal />}
                 />
-            </li>
+            </div>
         );
     }
 
     return (
-        <ul>
-            <li>
-                <NavLink exact to="/">Home</NavLink>
-            </li>
-            {isLoaded && sessionLinks}
-        </ul>
+        <nav className='nav__bar'>
+            <NavLink exact to="/">
+                <div className='nav__logo'>
+                    <img className="nav__logo__img" src={pearHouse} alt="pearImage" />
+                    <span className="nav__logo__text">pearbnb</span>
+                </div>
+            </NavLink>
+            <div className='nav__buttons'>
+                {isLoaded && sessionLinks}
+            </div>
+        </nav>
     );
 }
 
