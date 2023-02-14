@@ -66,6 +66,9 @@ router.get('/', async (req, res, next) => {
     })
 
     for (let spot of spotsList) {
+
+        spot.price = Number.parseFloat(spot.price).toFixed(2)
+
         const rating = await Review.findAll({
             where: {
                 spotId: spot.id
@@ -100,6 +103,7 @@ router.get('/', async (req, res, next) => {
     returnObj.size = size
 
 
+
     return res.json(returnObj)
 })
 
@@ -118,6 +122,8 @@ router.get('/current', async (req, res, next) => {
         })
 
         for (let spot of spots) {
+            spot.dataValues.price = Number.parseFloat(spot.dataValues.price).toFixed(2)
+
             const rating = await Review.findAll({
                 where: {
                     spotId: spot.toJSON().id
@@ -135,7 +141,9 @@ router.get('/current', async (req, res, next) => {
                 attributes: ["url"]
             })
 
-            spot.dataValues.avgRating = rating[0].dataValues.avgRating
+            const avgRateRound = rating[0].dataValues.avgRating
+
+            spot.dataValues.avgRating = Number.parseFloat(avgRateRound).toFixed(2)
 
             if (!previewImage) {
                 spot.dataValues.previewImage = "No preview image found"
@@ -185,7 +193,11 @@ router.get('/:spotId', async (req, res, next) => {
         next(err)
     } else {
         spotInfo.dataValues.numReviews = reviews;
-        spotInfo.dataValues.avgStarRating = rating[0].dataValues.avgRating;
+
+        spotInfo.dataValues.price = Number.parseFloat(spotInfo.dataValues.price).toFixed(2)
+
+        const avgRateRound = rating[0].dataValues.avgRating
+        spotInfo.dataValues.avgStarRating = Number.parseFloat(avgRateRound).toFixed(2)
         return res.json(spotInfo)
     }
 })
@@ -238,7 +250,7 @@ router.post('/', requireAuth, async (req, res, next) => {
         lng: Number(lng),
         name,
         description,
-        price: Number(price)
+        price: Number.parseFloat(price).toFixed(2)
     })
 
     return res.json(newSpot)
@@ -345,7 +357,7 @@ router.put('/:spotId', requireAuth, async (req, res, next) => {
         lng: Number(lng),
         name,
         description,
-        price: Number(price)
+        price: Number.parseFloat(price).toFixed(2)
     })
 
     return res.json(editSpot)
