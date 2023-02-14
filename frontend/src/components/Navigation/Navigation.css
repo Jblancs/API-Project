@@ -3,10 +3,9 @@
 }
 
 .nav__bar {
-    /* display: flex;
-    justify-content: space-between;
-    align-items: center; */
-    border: 1px solid black;
+    border-bottom: 1px solid lightgrey;
+    padding: 30px 10px;
+    text-decoration: none;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(3, 20px);
@@ -21,6 +20,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    padding: 5px;
 }
 
 .nav__logo {
@@ -30,5 +30,24 @@
 }
 
 .nav__logo__img {
-    width: 60px;
+    width: 80px;
+}
+
+.nav__logo__text {
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: brown;
+    font-weight: bold;
+}
+
+.fa-user-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+}
+
+.profile-dropdown {
+    font-size: 12px;
 }

@@ -35,10 +35,10 @@ function Navigation({ isLoaded }) {
 
     return (
         <nav className='nav__bar'>
-            <NavLink exact to="/">
+            <NavLink exact to="/" style={{ textDecoration: 'none' }}>
                 <div className='nav__logo'>
                     <img className="nav__logo__img" src={pearHouse} alt="pearImage" />
-                    <span className="nav__logo__text">pearbnb</span>
+                    <span className="nav__logo__text">Pearbnb</span>
                 </div>
             </NavLink>
             <div className='nav__buttons'>

@@ -1,13 +1,19 @@
 import { csrfFetch } from "./csrf"
 
 const LOAD_ALL_SPOTS = 'spots/LOAD_ALL_SPOTS'
+const GET_SPOT_DETAIL = 'spots/GET_SPOT_DETAIL'
 
 const loadAllSpots = spotsList => ({
     type: LOAD_ALL_SPOTS,
     spotsList
 })
 
-// Landing Page: Load all spots
+const getSpotDetail = spotDetail => ({
+    type: GET_SPOT_DETAIL,
+    spotDetail
+})
+
+// Landing Page: Load all spots Thunk
 export const getAllSpots = () => async dispatch => {
     const res = await csrfFetch('/api/spots');
 
@@ -20,6 +26,16 @@ export const getAllSpots = () => async dispatch => {
 const initialState = {
     allSpots: {},
     singleSpot: {}
+}
+
+// Single Spot Detail Thunk
+export const getSingleSpot = (spotId) => async dispatch => {
+    const res = await csrfFetch(`/api/spots${spotId}`)
+
+    if (res.ok) {
+        const spotDetail = res.json()
+        
+    }
 }
 
 const spotsReducer = (state = initialState, action) => {

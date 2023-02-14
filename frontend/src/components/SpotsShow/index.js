@@ -4,19 +4,17 @@ import { Link } from "react-router-dom"
 import { getAllSpots } from "../../store/spotsReducer"
 import "./index.css"
 
-const AllSpots = () => {
+const SpotsShow = () => {
     const allSpotsObj = useSelector(state => state.spots.allSpots)
     const allSpotsArr = Object.values(allSpotsObj)
 
     const dispatch = useDispatch()
-
 
     useEffect(() => {
         dispatch(getAllSpots())
     }, [dispatch])
 
     if (!allSpotsObj) return null
-
 
     return (
         <div className="spots">
@@ -31,7 +29,8 @@ const AllSpots = () => {
                                 {spot.city}, {spot.state}
                             </div>
                             <div key={`rate${spot.id}`} className="spots__prev__rate">
-                                <i className="fa-solid fa-star" />{spot.avgRating}
+                                <i className="fa-solid fa-star" />
+                                {spot.avgRating === null ? "new" : spot.avgRating}
                             </div>
                         </div>
                         <div key={`price${spot.id}`} className="spots__prev__price">
@@ -44,4 +43,4 @@ const AllSpots = () => {
     )
 }
 
-export default AllSpots;
+export default SpotsShow;

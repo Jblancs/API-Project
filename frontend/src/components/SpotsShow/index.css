@@ -28,17 +28,18 @@
 
 .spots__prev__img {
     grid-area: a;
-    box-shadow: 3px 3px 3px rgb(128, 128, 128);
+    box-shadow: 4px 4px 4px rgb(128, 128, 128);
+    border-radius: 8px;
+    /* border: 2px solid black; */
     width: 270px;
     height: 250px;
     margin: 5px;
     display: flex;
     justify-content: center;
-    /* border: 2px solid black; */
 }
 
 .spots__prev__img:hover {
-    box-shadow: 5px 5px 5px gray;
+    box-shadow: 6px 6px 6px gray;
 }
 
 .spots__prev__locrate {
