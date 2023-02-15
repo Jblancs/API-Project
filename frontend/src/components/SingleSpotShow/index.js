@@ -13,7 +13,6 @@ const SingleSpotShow = () => {
     }, [dispatch])
 
     const currentSpotState = useSelector(state => state.spots.singleSpot)
-    console.log(currentSpotState)
     if (Object.values(currentSpotState).length === 0) return null
 
 
@@ -49,7 +48,6 @@ const SingleSpotShow = () => {
                         <button className="booking__button">Reserve</button>
                     </div>
                 </div>
-
             </div>
         </div>
     )

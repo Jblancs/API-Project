@@ -16,13 +16,15 @@ const SpotsShow = () => {
 
     if (!allSpotsArr.length) return null
 
+    let noImageLink = "https://us.123rf.com/450wm/bebuntoon/bebuntoon2001/bebuntoon200100033/137481601-camera-icon-vector-illustration.jpg?ver=6"
+
     return (
         <div className="spots">
             <div className="spots__container">
                 {allSpotsArr && allSpotsArr.map(spot => (
                     <div className="spots__prev">
                         <Link key={`link${spot.id}`} to={`/spots/${spot.id}`}>
-                            <img key={`img${spot.id}`} className="spots__prev__img" src={spot.previewImage} />
+                            <img key={`img${spot.id}`} className="spots__prev__img" src={spot.previewImage === "No preview image found" ? noImageLink : spot.previewImage} />
                         </Link>
                         <div className="spots__prev__locrate">
                             <div key={`loc${spot.id}`} className="spots__prev__loc">
