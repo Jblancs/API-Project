@@ -14,7 +14,7 @@ const SpotsShow = () => {
         dispatch(getAllSpots())
     }, [dispatch])
 
-    if (!allSpotsObj) return null
+    if (!allSpotsArr.length) return null
 
     return (
         <div className="spots">

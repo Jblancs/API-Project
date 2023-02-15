@@ -22,21 +22,21 @@ export const getAllSpots = () => async dispatch => {
         dispatch(loadAllSpots(allSpotsList))
     }
 }
+// Single Spot Detail Thunk
+export const getSingleSpot = (spotId) => async dispatch => {
+    const res = await csrfFetch(`/api/spots/${spotId}`)
+
+    if (res.ok) {
+        const spotDetail = await res.json()
+        dispatch(getSpotDetail(spotDetail))
+    }
+}
 
 const initialState = {
     allSpots: {},
     singleSpot: {}
 }
 
-// Single Spot Detail Thunk
-export const getSingleSpot = (spotId) => async dispatch => {
-    const res = await csrfFetch(`/api/spots${spotId}`)
-
-    if (res.ok) {
-        const spotDetail = res.json()
-        
-    }
-}
 
 const spotsReducer = (state = initialState, action) => {
     let newState = { ...state }
@@ -47,6 +47,13 @@ const spotsReducer = (state = initialState, action) => {
                 allSpotsState[spot.id] = spot
             })
             newState.allSpots = allSpotsState
+            return newState
+        case GET_SPOT_DETAIL:
+            const newSpotDetail = {}
+            newSpotDetail.spotData = { ...action.spotDetail }
+            newSpotDetail.SpotImages = [...action.spotDetail.SpotImages]
+            newSpotDetail.Owner = {...action.spotDetail.Owner}
+            newState.singleSpot = newSpotDetail
             return newState
         default:
             return state;

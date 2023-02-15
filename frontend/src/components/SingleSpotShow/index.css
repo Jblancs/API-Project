@@ -1,0 +1,9 @@
+.detail__img__prev {
+    width: 50%;
+    height: 412px
+}
+
+img[class*="other"] {
+    width: 25%;
+    height: 205px;
+}
