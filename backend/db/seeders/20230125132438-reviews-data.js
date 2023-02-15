@@ -14,37 +14,37 @@ module.exports = {
       {
         spotId: 1,
         userId: 2,
-        review: 'great place with nice view',
+        review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Leo duis ut diam quam nulla porttitor massa. ',
         stars: 5
       },
       {
         spotId: 2,
         userId: 3,
-        review: 'would come back again',
+        review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Leo duis ut diam quam nulla porttitor massa. ',
         stars: 5
       },
       {
         spotId: 3,
         userId: 1,
-        review: 'amazing host!',
+        review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Leo duis ut diam quam nulla porttitor massa. ',
         stars: 5
       },
       {
         spotId: 3,
         userId: 2,
-        review: 'meh',
+        review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Leo duis ut diam quam nulla porttitor massa. ',
         stars: 1
       },
       {
         spotId: 1,
         userId: 3,
-        review: 'nice',
+        review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Leo duis ut diam quam nulla porttitor massa. ',
         stars: 3
       },
       {
         spotId: 2,
         userId: 1,
-        review: 'nice',
+        review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Leo duis ut diam quam nulla porttitor massa. ',
         stars: 1
 
 
@@ -52,37 +52,37 @@ module.exports = {
       {
         spotId: 4,
         userId: 5,
-        review: 'nice',
+        review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Leo duis ut diam quam nulla porttitor massa. ',
         stars: 5
       },
       {
         spotId: 4,
         userId: 6,
-        review: 'nice',
+        review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Leo duis ut diam quam nulla porttitor massa. ',
         stars: 1
       },
       {
         spotId: 5,
         userId: 4,
-        review: 'nice',
+        review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Leo duis ut diam quam nulla porttitor massa. ',
         stars: 5
       },
       {
         spotId: 5,
         userId: 6,
-        review: 'nice',
+        review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Leo duis ut diam quam nulla porttitor massa. ',
         stars: 1
       },
       {
         spotId: 6,
         userId: 4,
-        review: 'nice',
+        review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Leo duis ut diam quam nulla porttitor massa. ',
         stars: 5
       },
       {
         spotId: 6,
         userId: 5,
-        review: 'nice',
+        review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Leo duis ut diam quam nulla porttitor massa. ',
         stars: 1
       }
     ], {});
