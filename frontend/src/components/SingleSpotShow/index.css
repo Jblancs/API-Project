@@ -1,0 +1,109 @@
+.detail-container {
+    margin: 0 50px
+}
+
+/* image show formatting ----------------- */
+
+.detail__img {
+    /* border: 2px solid black; */
+    display: grid;
+    grid-template-rows: repeat(2, 208px);
+    grid-template-columns: repeat(4, 25%);
+    grid-template-areas:
+        "a a b b"
+        "a a b b";
+}
+
+.detail__img__prev {
+    grid-area: a;
+    width: 99%;
+    height: 412px;
+    padding: 1px 3px;
+}
+
+.detail__img__small {
+    grid-area: b;
+    display: flex;
+    flex-wrap: wrap;
+    /* border: 2px solid black; */
+    height: 412px;
+    width: 100%
+}
+
+img[class*="other"] {
+    width: 49%;
+    height: 205px;
+    padding: 1px 1px;
+}
+
+/* description formatting ----------------- */
+
+.detail__info{
+    /* border: 2px solid black; */
+    display: grid;
+    border-bottom: 1px solid black;
+    grid-template-rows: repeat(6, 65px);
+    grid-template-columns: repeat(5, 20%);
+    grid-template-areas:
+    "host host host book book"
+    "desc desc desc book book"
+    "desc desc desc book book"
+    "desc desc desc none none"
+    "desc desc desc none none"
+    "desc desc desc none none";
+}
+
+.detail__info__owner {
+    grid-area: host;
+    display: flex;
+    align-items: center;
+    /* border: 2px solid black; */
+}
+
+.detail__info__descript {
+    grid-area: desc;
+    /* border: 2px solid black; */
+}
+
+.booking__div {
+    grid-area: book;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding-top: 30px;
+    margin: 30px 5px 30px 30px;
+    display: grid;
+    grid-template-rows: repeat(3, 33%);
+    grid-template-columns: repeat(6, 16.6%);
+    grid-template-areas:
+    "cost cost cost rate rev rev"
+    "resv resv resv resv resv resv"
+    "resv resv resv resv resv resv";
+}
+
+.booking__price {
+    grid-area: cost;
+    margin: 0px 20px 20px 20px;
+}
+.booking__rating {
+    grid-area: rate;
+    text-align: right;
+}
+.booking__review {
+    grid-area: rev;
+    text-align: right;
+    margin-right: 20px;
+
+}
+.booking__button{
+    grid-area: resv;
+    margin: 0px 20px 20px 20px;
+    background-color: rgb(242, 101, 105);
+    box-shadow: 2px 2px 1px black;
+    color: white;
+}
+
+.booking__button:hover{
+    box-shadow: 2px 2px 2px black;
+    border: 3px solid black;
+    font-weight: bold;
+}
