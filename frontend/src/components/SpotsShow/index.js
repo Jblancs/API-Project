@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import { getAllSpots } from "../../store/spotsReducer"
 import "./index.css"
 
-const SpotsShow = () => {
+function SpotsShow () {
     const allSpotsObj = useSelector(state => state.spots.allSpots)
     const allSpotsArr = Object.values(allSpotsObj)
 

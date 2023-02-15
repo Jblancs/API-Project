@@ -1,7 +1,7 @@
 import './index.css'
 
 
-const SpotImageShow = ({ images }) => {
+function SpotImageShow ({ images }) {
 
     let prevLink = null
     let otherImages = []

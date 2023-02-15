@@ -21,6 +21,7 @@
     justify-content: flex-end;
     align-items: center;
     padding: 5px;
+    margin-top: 20px;
 }
 
 .nav__logo {
@@ -38,6 +39,7 @@
     font-family: Arial, Helvetica, sans-serif;
     color: brown;
     font-weight: bold;
+    margin-top: 10px;
 }
 
 .fa-user-circle {
@@ -50,4 +52,26 @@
 
 .profile-dropdown {
     font-size: 12px;
+}
+
+.nav-button-div {
+    display: flex;
+}
+
+.nav-button__spot {
+    margin: 0px 5px;
+    /* border: 2px solid black; */
+}
+
+.nav-button__spot__btn {
+    border: none;
+    background-color: white;
+    color: rgb(37, 130, 151);
+    font-size: 13px;
+    width: 150px;
+    /* border: 2px solid black; */
+}
+
+.nav-button__spot__btn:hover {
+    font-weight: bold;
 }

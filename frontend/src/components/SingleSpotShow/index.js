@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import { getSingleSpot } from "../../store/spotsReducer"
 import SpotImageShow from "./SpotImageShow"
 
-const SingleSpotShow = () => {
+function SingleSpotShow () {
     const dispatch = useDispatch()
     const { spotId } = useParams()
 
@@ -39,14 +39,17 @@ const SingleSpotShow = () => {
                         </span>
                         <span className="booking__rating">
                             <i className="fa-solid fa-star" />
-                            {currentSpotState.spotData.avgStarRating}
-                            <i className="fa-solid fa-circle" />
+                            {currentSpotState.spotData.numReviews !== 0 ? currentSpotState.spotData.avgStarRating : "new"}
+                            {/* <i className="fa-solid fa-circle" /> */}
                         </span>
                         <span className="booking__review">
-                            {currentSpotState.spotData.numReviews ? `${currentSpotState.spotData.numReviews} reviews` : "new"}
+                            {`${currentSpotState.spotData.numReviews} reviews`}
                         </span>
                         <button className="booking__button">Reserve</button>
                     </div>
+                </div>
+                <div className="review container">
+                    Reviews Placeholder
                 </div>
             </div>
         </div>
