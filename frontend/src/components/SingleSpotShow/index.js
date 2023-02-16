@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { getSingleSpot } from "../../store/spotsReducer"
 import SpotImageShow from "./SpotImageShow"
 
@@ -51,6 +51,9 @@ function SingleSpotShow() {
                         <button className="booking__button" onClick={clickHandler}>Reserve</button>
                     </div>
                 </div>
+                <Link to={`/spots/${currentSpotState.spotData.id}/edit`}>
+                    TEMPORARY: Update Spot Click
+                </Link>
                 <div className="review container">
                     Reviews Placeholder
                 </div>

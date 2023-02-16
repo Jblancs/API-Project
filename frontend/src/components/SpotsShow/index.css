@@ -28,6 +28,11 @@
         "c c c c";
 }
 
+.spots-link {
+    text-decoration: none;
+    color: black;
+}
+
 .spots__prev__img {
     grid-area: a;
     box-shadow: 4px 4px 4px rgb(128, 128, 128);
@@ -40,7 +45,7 @@
     justify-content: center;
 }
 
-.spots__prev__img:hover {
+.spots__prev:hover>.spots__prev__img {
     box-shadow: 6px 6px 6px gray;
 }
 
@@ -51,7 +56,7 @@
 
 }
 
-.spots__prev__name{
+.spots__prev__name {
     grid-area: d;
 }
 
