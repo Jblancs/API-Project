@@ -19,8 +19,8 @@ module.exports = {
         country: 'USA',
         lat: 39.933579,
         lng: 75.155543,
-        name: 'Single Family',
-        description: '2 Story 1400sqft home',
+        name: 'malesuada fames',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dapibus ultrices in iaculis nunc sed augue. Donec adipiscing tristique risus nec feugiat in. Magna etiam tempor orci eu lobortis elementum. Massa eget egestas purus viverra accumsan in nisl. Vulputate odio ut enim blandit volutpat maecenas volutpat. Sagittis orci a scelerisque purus semper eget duis at tellus. Faucibus ornare suspendisse sed nisi lacus sed viverra tellus in. Volutpat diam ut venenatis tellus. Nisi vitae suscipit tellus mauris a diam maecenas. Fringilla urna porttitor rhoncus dolor purus non enim praesent elementum. Scelerisque felis imperdiet proin fermentum leo vel orci. Sit amet mauris commodo quis. Netus et malesuada fames ac turpis egestas. Volutpat sed cras ornare arcu dui vivamus.',
         price: 350.00
       },
       {
@@ -31,8 +31,8 @@ module.exports = {
         country: 'USA',
         lat: 40.545579,
         lng: 80.546967,
-        name: 'Duplex',
-        description: '3 Story 1800sqft home',
+        name: 'malesuada fames',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dapibus ultrices in iaculis nunc sed augue. Donec adipiscing tristique risus nec feugiat in. Magna etiam tempor orci eu lobortis elementum. Massa eget egestas purus viverra accumsan in nisl. Vulputate odio ut enim blandit volutpat maecenas volutpat. Sagittis orci a scelerisque purus semper eget duis at tellus. Faucibus ornare suspendisse sed nisi lacus sed viverra tellus in. Volutpat diam ut venenatis tellus. Nisi vitae suscipit tellus mauris a diam maecenas. Fringilla urna porttitor rhoncus dolor purus non enim praesent elementum. Scelerisque felis imperdiet proin fermentum leo vel orci. Sit amet mauris commodo quis. Netus et malesuada fames ac turpis egestas. Volutpat sed cras ornare arcu dui vivamus.',
         price: 400.00
       },
       {
@@ -43,8 +43,8 @@ module.exports = {
         country: 'USA',
         lat: 27.687479,
         lng: 57.332589,
-        name: 'Apartment',
-        description: '2 bedroom apartment',
+        name: 'malesuada fames',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dapibus ultrices in iaculis nunc sed augue. Donec adipiscing tristique risus nec feugiat in. Magna etiam tempor orci eu lobortis elementum. Massa eget egestas purus viverra accumsan in nisl. Vulputate odio ut enim blandit volutpat maecenas volutpat. Sagittis orci a scelerisque purus semper eget duis at tellus. Faucibus ornare suspendisse sed nisi lacus sed viverra tellus in. Volutpat diam ut venenatis tellus. Nisi vitae suscipit tellus mauris a diam maecenas. Fringilla urna porttitor rhoncus dolor purus non enim praesent elementum. Scelerisque felis imperdiet proin fermentum leo vel orci. Sit amet mauris commodo quis. Netus et malesuada fames ac turpis egestas. Volutpat sed cras ornare arcu dui vivamus.',
         price: 425.00
       },
       {
@@ -55,8 +55,8 @@ module.exports = {
         country: 'USA',
         lat: 27.687479,
         lng: 57.332589,
-        name: 'Apartment',
-        description: '2 bedroom apartment',
+        name: 'malesuada fames',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dapibus ultrices in iaculis nunc sed augue. Donec adipiscing tristique risus nec feugiat in. Magna etiam tempor orci eu lobortis elementum. Massa eget egestas purus viverra accumsan in nisl. Vulputate odio ut enim blandit volutpat maecenas volutpat. Sagittis orci a scelerisque purus semper eget duis at tellus. Faucibus ornare suspendisse sed nisi lacus sed viverra tellus in. Volutpat diam ut venenatis tellus. Nisi vitae suscipit tellus mauris a diam maecenas. Fringilla urna porttitor rhoncus dolor purus non enim praesent elementum. Scelerisque felis imperdiet proin fermentum leo vel orci. Sit amet mauris commodo quis. Netus et malesuada fames ac turpis egestas. Volutpat sed cras ornare arcu dui vivamus.',
         price: 425.00
       },
       {
@@ -67,8 +67,8 @@ module.exports = {
         country: 'USA',
         lat: 27.687479,
         lng: 57.332589,
-        name: 'Apartment',
-        description: '2 bedroom apartment',
+        name: 'malesuada fames',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dapibus ultrices in iaculis nunc sed augue. Donec adipiscing tristique risus nec feugiat in. Magna etiam tempor orci eu lobortis elementum. Massa eget egestas purus viverra accumsan in nisl. Vulputate odio ut enim blandit volutpat maecenas volutpat. Sagittis orci a scelerisque purus semper eget duis at tellus. Faucibus ornare suspendisse sed nisi lacus sed viverra tellus in. Volutpat diam ut venenatis tellus. Nisi vitae suscipit tellus mauris a diam maecenas. Fringilla urna porttitor rhoncus dolor purus non enim praesent elementum. Scelerisque felis imperdiet proin fermentum leo vel orci. Sit amet mauris commodo quis. Netus et malesuada fames ac turpis egestas. Volutpat sed cras ornare arcu dui vivamus.',
         price: 425.00
       },
       {
@@ -79,8 +79,8 @@ module.exports = {
         country: 'USA',
         lat: 27.687479,
         lng: 57.332589,
-        name: 'Apartment',
-        description: '2 bedroom apartment',
+        name: 'malesuada fames',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dapibus ultrices in iaculis nunc sed augue. Donec adipiscing tristique risus nec feugiat in. Magna etiam tempor orci eu lobortis elementum. Massa eget egestas purus viverra accumsan in nisl. Vulputate odio ut enim blandit volutpat maecenas volutpat. Sagittis orci a scelerisque purus semper eget duis at tellus. Faucibus ornare suspendisse sed nisi lacus sed viverra tellus in. Volutpat diam ut venenatis tellus. Nisi vitae suscipit tellus mauris a diam maecenas. Fringilla urna porttitor rhoncus dolor purus non enim praesent elementum. Scelerisque felis imperdiet proin fermentum leo vel orci. Sit amet mauris commodo quis. Netus et malesuada fames ac turpis egestas. Volutpat sed cras ornare arcu dui vivamus.',
         price: 425.00
       }
     ], {});
