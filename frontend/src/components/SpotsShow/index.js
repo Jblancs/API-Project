@@ -16,31 +16,29 @@ function SpotsShow() {
 
     if (!allSpotsArr.length) return null
 
-    let noImageLink = "https://us.123rf.com/450wm/bebuntoon/bebuntoon2001/bebuntoon200100033/137481601-camera-icon-vector-illustration.jpg?ver=6"
-
     return (
         <div className="spots">
             <div className="spots__container">
                 {allSpotsArr && allSpotsArr.map(spot => (
                     <Link key={`link${spot.id}`} className="spots-link" to={`/spots/${spot.id}`}>
-                            <div key={`spots__prev${spot.id}`} className="spots__prev">
-                                <img key={`img${spot.id}`} className="spots__prev__img" src={spot.previewImage === "No preview image found" ? noImageLink : spot.previewImage} />
-                                <div key={`spots__prev__locrate${spot.id}`} className="spots__prev__locrate">
-                                    <div key={`loc${spot.id}`} className="spots__prev__loc">
+                        <div key={`spots__prev${spot.id}`} className="spots__prev">
+                            <img key={`img${spot.id}`} className="spots__prev__img" src={spot.previewImage} />
+                            <div key={`spots__prev__locrate${spot.id}`} className="spots__prev__locrate">
+                                {/* <div key={`loc${spot.id}`} className="spots__prev__loc">
                                         {spot.city}, {spot.state}
-                                    </div>
-                                    <div key={`rate${spot.id}`} className="spots__prev__rate">
-                                        <i className="fa-solid fa-star" />
-                                        {spot.avgRating === "NaN" ? "new" : spot.avgRating}
-                                    </div>
-                                </div>
+                                    </div> */}
                                 <div key={`name${spot.id}`} className="spots__prev__name">
                                     {spot.name}
                                 </div>
-                                <div key={`price${spot.id}`} className="spots__prev__price">
-                                    ${spot.price} night
+                                <div key={`rate${spot.id}`} className="spots__prev__rate">
+                                    <i className="fa-solid fa-star" />
+                                    {spot.avgRating === "NaN" ? "new" : spot.avgRating}
                                 </div>
                             </div>
+                            <div key={`price${spot.id}`} className="spots__prev__price">
+                                ${spot.price} night
+                            </div>
+                        </div>
                     </Link>
                 ))}
             </div>
