@@ -51,9 +51,6 @@ function SingleSpotShow() {
                         <button className="booking__button" onClick={clickHandler}>Reserve</button>
                     </div>
                 </div>
-                <Link to={`/spots/${currentSpotState.spotData.id}/edit`}>
-                    TEMPORARY: Update Spot Click
-                </Link>
                 <div className="review container">
                     Reviews Placeholder
                 </div>

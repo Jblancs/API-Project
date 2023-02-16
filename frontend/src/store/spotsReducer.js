@@ -89,8 +89,6 @@ export const createNewImages = (imageInfo, newSpotId) => async dispatch => {
 // Update Spot Info -----------------------------------------------------
 export const updateSpot = (updatedInfo, spotId) => async dispatch => {
 
-    console.log("thunk updatedInfo---------", updatedInfo)
-
     const res = await csrfFetch(`/api/spots/${spotId}`, {
         method: 'PUT',
         headers: { "Content-Type": "application/json" },
@@ -101,6 +99,17 @@ export const updateSpot = (updatedInfo, spotId) => async dispatch => {
         const updatedSpotInfo = await res.json()
         dispatch(addNewSpot(updatedSpotInfo))
         return updatedSpotInfo
+    }
+}
+
+// Get current user spots (ManageSpots) ---------------------------------
+export const getCurrentSpots = (userId) => async dispatch => {
+
+    const res = await csrfFetch(`/api/spots/current`)
+
+    if(res.ok){
+        const userSpots = await res.json()
+        dispatch(loadAllSpots(userSpots))
     }
 }
 

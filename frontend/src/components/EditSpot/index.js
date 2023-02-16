@@ -84,10 +84,7 @@ function EditSpotForm() {
             price: Number(price)
         }
 
-        console.log("component updatedSpotInfo------------", updatedSpotInfo)
-
         const updatedSpot = await dispatch(updateSpot(updatedSpotInfo, spotId))
-        console.log(updatedSpot)
 
         if (updatedSpot) {
             history.push(`/spots/${spotId}`)
