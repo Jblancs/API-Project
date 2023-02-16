@@ -35,6 +35,9 @@ function SpotsShow() {
                                 {spot.avgRating === "NaN" ? "new" : spot.avgRating}
                             </div>
                         </div>
+                        <div key={`name${spot.id}`} className="spots__prev__name">
+                            {spot.name}
+                        </div>
                         <div key={`price${spot.id}`} className="spots__prev__price">
                             ${spot.price} night
                         </div>

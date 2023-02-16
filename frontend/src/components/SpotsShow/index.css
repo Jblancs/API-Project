@@ -8,13 +8,14 @@
     display: flex;
     flex-wrap: wrap;
     width: 1175px;
+    font-size: 14px;
     /* border: 2px solid black; */
 }
 
 .spots__prev {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     width: 275px;
     height: 310px;
     padding: 8px;
@@ -23,6 +24,7 @@
         "a a a a"
         "a a a a"
         "b b b b"
+        "d d d d"
         "c c c c";
 }
 
@@ -47,6 +49,10 @@
     display: flex;
     justify-content: space-between;
 
+}
+
+.spots__prev__name{
+    grid-area: d;
 }
 
 .spots__prev__price {
