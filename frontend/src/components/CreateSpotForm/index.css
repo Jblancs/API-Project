@@ -38,18 +38,15 @@ input {
 .city-state-div {
     display: flex;
     height: 50px;
-    /* border: 2px solid black; */
 }
 
 .city-div {
-    /* border: 2px solid black; */
     display: flex;
     flex-direction: column;
     width: 66%;
 }
 
 .state-comma {
-    /* border: 2px solid black; */
     width: 50px;
     width: 4%;
     display: flex;
@@ -58,17 +55,16 @@ input {
 }
 
 .state-div {
-    /* border: 2px solid black; */
     display: flex;
     flex-direction: column;
     width: 30%;
+    margin-right: 5px;
 }
 
 
 .lat-lng-div {
     display: flex;
     height: 50px;
-    /* border: 2px solid black; */
 }
 
 .lat-div {
@@ -89,6 +85,7 @@ input {
     display: flex;
     flex-direction: column;
     width: 48%;
+    margin-right: 5px;
 }
 
 /* other div formatting ------------ */
@@ -96,6 +93,15 @@ input {
 .description-div {
     border-bottom: 2px solid black;
     padding-bottom: 20px;
+}
+
+.description-area {
+    border: 2px solid black;
+    border-radius: 3px;
+    width: 98%;
+    background-color: rgb(225, 240, 255);
+    margin: 0px 0px;
+    height: 100px
 }
 
 .name-div {

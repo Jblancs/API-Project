@@ -1,4 +1,7 @@
 import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { useHistory } from "react-router-dom"
+import { createNewImages, createNewSpot } from "../../store/spotsReducer"
 import "./index.css"
 
 function CreateSpotForm() {
@@ -24,12 +27,60 @@ function CreateSpotForm() {
         setFormInfo({ ...formInfo })
     }
 
-    console.log(formInfo)
+    const dispatch = useDispatch()
+    const history = useHistory();
 
     const submitHandler = async (e) => {
         e.preventDefault()
 
         const { country, address, city, state, lat, lng, description, name, price, preview, image1, image2, image3, image4 } = formInfo
+
+        const newSpotInfo = {
+            country,
+            address,
+            city,
+            state,
+            lat: Number(lat),
+            lng: Number(lng),
+            description,
+            name,
+            price: Number(price)
+        }
+
+        const createdSpot = await dispatch(createNewSpot(newSpotInfo))
+
+        const createdSpotId = createdSpot.id
+
+        const newImagesInfo = {
+            preview,
+            image1,
+            image2,
+            image3,
+            image4
+        }
+
+        const createdImages = await dispatch(createNewImages(newImagesInfo, createdSpotId))
+
+        if (createdSpot) {
+            history.push(`/spots/${createdSpotId}`)
+            setFormInfo({
+                country: "",
+                address: "",
+                city: "",
+                state: "",
+                lat: "",
+                lng: "",
+                description: "",
+                name: "",
+                price: "",
+                preview: "",
+                image1: "",
+                image2: "",
+                image3: "",
+                image4: "",
+            })
+        }
+
     }
 
     return (
@@ -138,7 +189,8 @@ function CreateSpotForm() {
                             <p>Mention the best features of your space, any special amentities like
                                 fast wifi or parking, and what you love about the neighborhood</p>
                         </div>
-                        <input
+                        <textarea
+                            className="description-area"
                             type="text"
                             name="description"
                             placeholder="Please write at least 30 characters"
