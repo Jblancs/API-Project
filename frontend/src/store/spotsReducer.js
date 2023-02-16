@@ -4,6 +4,7 @@ const LOAD_ALL_SPOTS = 'spots/LOAD_ALL_SPOTS'
 const GET_SPOT_DETAIL = 'spots/GET_SPOT_DETAIL'
 const ADD_NEW_SPOT = 'spots/ADD_NEW_SPOT'
 const ADD_NEW_IMAGE = 'spots/ADD_NEW_IMAGE'
+const UPDATE_SPOT = 'spots/UPDATE_SPOT'
 
 const loadAllSpots = spotsList => ({
     type: LOAD_ALL_SPOTS,
@@ -25,7 +26,8 @@ const addNewImage = spotId => ({
     spotId
 })
 
-// Landing Page: Load all spots Thunk
+
+// Landing Page: Load all spots Thunk -------------------------------
 export const getAllSpots = () => async dispatch => {
     const res = await csrfFetch('/api/spots');
 
@@ -34,7 +36,7 @@ export const getAllSpots = () => async dispatch => {
         dispatch(loadAllSpots(allSpotsList))
     }
 }
-// Single Spot Detail Thunk
+// Single Spot Detail Thunk -----------------------------------------
 export const getSingleSpot = (spotId) => async dispatch => {
     const res = await csrfFetch(`/api/spots/${spotId}`)
 
@@ -44,7 +46,7 @@ export const getSingleSpot = (spotId) => async dispatch => {
     }
 }
 
-// Create New Spot Thunk
+// Create New Spot Thunk --------------------------------------------
 export const createNewSpot = (spotInfo) => async dispatch => {
     const res = await csrfFetch('/api/spots', {
         method: 'POST',
@@ -52,7 +54,6 @@ export const createNewSpot = (spotInfo) => async dispatch => {
         body: JSON.stringify(spotInfo)
     })
 
-    console.log("res----------", res)
     if (res.ok) {
         const newSpotDetail = await res.json()
         dispatch(addNewSpot(newSpotDetail))
@@ -60,23 +61,17 @@ export const createNewSpot = (spotInfo) => async dispatch => {
     }
 }
 
-// Create New Spot Images from create new spot form
+// Create New Spot Images from create new spot form ------------------
 export const createNewImages = (imageInfo, newSpotId) => async dispatch => {
     const imageInfoKeys = Object.keys(imageInfo)
 
-    console.log("arg********", imageInfo)
-    console.log("key********", imageInfoKeys)
-
     for (let key of imageInfoKeys) {
-        console.log("imageinfo key in --------", imageInfo[key])
 
         if (imageInfo[key]) {
             const imageReqBody = {
                 url: imageInfo[key],
                 preview: key === "preview" ? true : false
             }
-
-            console.log("imageReq-------------", imageReqBody)
 
             const res = await csrfFetch(`/api/spots/${newSpotId}/images`, {
                 method: 'POST',
@@ -91,6 +86,23 @@ export const createNewImages = (imageInfo, newSpotId) => async dispatch => {
     }
 }
 
+// Update Spot Info -----------------------------------------------------
+export const updateSpot = (updatedInfo, spotId) => async dispatch => {
+
+    console.log("thunk updatedInfo---------", updatedInfo)
+
+    const res = await csrfFetch(`/api/spots/${spotId}`, {
+        method: 'PUT',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedInfo)
+    })
+
+    if (res.ok) {
+        const updatedSpotInfo = await res.json()
+        dispatch(addNewSpot(updatedSpotInfo))
+        return updatedSpotInfo
+    }
+}
 
 const initialState = {
     allSpots: {},

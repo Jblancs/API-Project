@@ -1,0 +1,143 @@
+.page-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.form-container {
+    /* margin: 5px 350px; */
+    width: 330px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+/* input formatting ------------ */
+
+input {
+    border: 2px solid black;
+    border-radius: 3px;
+    width: 98%;
+    background-color: rgb(225, 240, 255);
+    margin: 0px 0px;
+}
+
+.input-price {
+    width: 92%;
+    margin-left: 7px;
+}
+
+.location-div {
+    border-bottom: 2px solid black;
+    padding-bottom: 20px;
+}
+
+/* location format: city, state and lat, lng ------------ */
+
+.city-state-div {
+    display: flex;
+    height: 50px;
+}
+
+.city-div {
+    display: flex;
+    flex-direction: column;
+    width: 66%;
+}
+
+.state-comma {
+    width: 50px;
+    width: 4%;
+    display: flex;
+    align-items: flex-end;
+    margin: 0 0 5px 7px;
+}
+
+.state-div {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin-right: 5px;
+}
+
+
+.lat-lng-div {
+    display: flex;
+    height: 50px;
+}
+
+.lat-div {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+}
+
+.lat-comma {
+    width: 50px;
+    width: 4%;
+    display: flex;
+    align-items: flex-end;
+    margin: 0 0 5px 7px;
+}
+
+.lng-div {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    margin-right: 5px;
+}
+
+/* other div formatting ------------ */
+
+.description-div {
+    border-bottom: 2px solid black;
+    padding-bottom: 20px;
+}
+
+.description-area {
+    border: 2px solid black;
+    border-radius: 3px;
+    width: 98%;
+    background-color: rgb(225, 240, 255);
+    margin: 0px 0px;
+    height: 100px
+}
+
+.name-div {
+    border-bottom: 2px solid black;
+    padding-bottom: 20px;
+}
+
+.price-div {
+    border-bottom: 2px solid black;
+    padding-bottom: 20px;
+}
+
+.image-div {
+    border-bottom: 2px solid black;
+    padding-bottom: 20px;
+}
+
+.image-div__img {
+    margin: 20px 0px
+}
+
+.button-div {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.create-button {
+    margin: 0px 20px 20px 20px;
+    background-color: rgb(242, 101, 105);
+    box-shadow: 1px 1px 1px black;
+    color: white;
+}
+
+.create-button:hover {
+    box-shadow: 1px 1px 2px black;
+    border: 2px solid black;
+    font-weight: bold;
+}

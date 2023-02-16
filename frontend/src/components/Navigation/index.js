@@ -22,7 +22,7 @@ function Navigation({ isLoaded }) {
                         </button>
                     </NavLink>
                 </div>
-                <div>
+                <div className='profile-container'>
                     <ProfileButton user={sessionUser} />
                 </div>
             </div>

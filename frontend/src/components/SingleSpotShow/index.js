@@ -1,10 +1,10 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { getSingleSpot } from "../../store/spotsReducer"
 import SpotImageShow from "./SpotImageShow"
 
-function SingleSpotShow () {
+function SingleSpotShow() {
     const dispatch = useDispatch()
     const { spotId } = useParams()
 
@@ -15,6 +15,9 @@ function SingleSpotShow () {
     const currentSpotState = useSelector(state => state.spots.singleSpot)
     if (Object.values(currentSpotState).length === 0) return null
 
+    const clickHandler = (e) => {
+        alert("Feature coming soon")
+    }
 
     return (
         <div className="page-container">
@@ -45,9 +48,12 @@ function SingleSpotShow () {
                         <span className="booking__review">
                             {`${currentSpotState.spotData.numReviews} reviews`}
                         </span>
-                        <button className="booking__button">Reserve</button>
+                        <button className="booking__button" onClick={clickHandler}>Reserve</button>
                     </div>
                 </div>
+                <Link to={`/spots/${currentSpotState.spotData.id}/edit`}>
+                    TEMPORARY: Update Spot Click
+                </Link>
                 <div className="review container">
                     Reviews Placeholder
                 </div>
