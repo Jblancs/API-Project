@@ -10,7 +10,6 @@ function ManageSpots() {
     const history = useHistory()
 
     const userInfo = useSelector(state => state.session.user)
-    console.log(allSpotsArr)
 
     const dispatch = useDispatch()
 
