@@ -43,15 +43,17 @@ function SingleSpotShow() {
                         <span className="booking__price">
                             ${currentSpotState.spotData.price} night
                         </span>
-                        <span className="booking__rating">
-                            <i className="fa-solid fa-star" />
-                            {currentSpotState.spotData.numReviews !== 0 ? currentSpotState.spotData.avgStarRating : "new"}
-                            {/* <i className="fa-solid fa-circle" /> */}
-                        </span>
-                        <span className="dot-span">·</span>
-                        <span className="booking__review">
-                            {`${currentSpotState.spotData.numReviews} reviews`}
-                        </span>
+                        <div className="review-rating-div">
+                            <span className="booking__rating">
+                                <i className="fa-solid fa-star" />
+                                {currentSpotState.spotData.numReviews !== 0 ? currentSpotState.spotData.avgStarRating : "new"}
+                                {/* <i className="fa-solid fa-circle" /> */}
+                            </span>
+                            <span className="dot-span">·</span>
+                            <span className="booking__review">
+                                {`${currentSpotState.spotData.numReviews} reviews`}
+                            </span>
+                        </div>
                         <button className="booking__button" onClick={clickHandler}>Reserve</button>
                     </div>
                     {/* </div> */}

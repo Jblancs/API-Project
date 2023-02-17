@@ -246,9 +246,9 @@ function EditSpotForm({ user, spot }) {
                                 onChange={onChangeHandler} />
                         </div>
                     </div>
-                    <div className="image-edit">
+                    <h3 className="image-edit">
                         Edit Images Feature Coming Soon!
-                    </div>
+                    </h3>
                     {/* <div className="image-div">
                         <div className="image-text">
                             <h3>Liven up your spot with photos</h3>

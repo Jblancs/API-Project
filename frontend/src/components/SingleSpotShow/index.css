@@ -79,23 +79,34 @@ img[class*="other"] {
     grid-template-rows: repeat(3, 33%);
     grid-template-columns: 15% 15% 15% 15% 7% 17%;
     grid-template-areas:
-        "cost cost cost rate dot rev"
+        "cost cost cost review review review"
         "resv resv resv resv resv resv"
         "resv resv resv resv resv resv";
 }
 
-.dot-span {
-    grid-area: dot;
-    text-align: right;
-}
 
 .booking__price {
     grid-area: cost;
     margin: 0px 20px 20px 25px;
 }
 
+.review-rating-div {
+    grid-area: review;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 40% 20% 40%;
+    grid-template-areas:
+        "rate dot rev";
+
+}
+
 .booking__rating {
     grid-area: rate;
+    text-align: right;
+}
+
+.dot-span {
+    grid-area: dot;
     text-align: right;
 }
 
