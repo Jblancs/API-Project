@@ -25,19 +25,21 @@ function EditSpotForm() {
         image4: "",
     })
 
-    useEffect(() => {
-        dispatch(getSingleSpot(spotId))
-    }, [])
 
     const currentUser = useSelector(state => state.session.user)
     const currentSpotState = useSelector(state => state.spots.singleSpot)
 
-    if (!currentUser || currentUser.id !== currentSpotState.Owner.id) {
+    useEffect(() => {
+        dispatch(getSingleSpot(spotId))
+    }, [])
+
+    if (!currentUser || (currentUser && (currentUser.id !== currentSpotState?.Owner.id))) {
         history.push("/")
     }
 
     const spot = { ...currentSpotState }
     const { spotData } = spot
+
 
     useEffect(() => {
         setFormInfo({
@@ -56,7 +58,7 @@ function EditSpotForm() {
             // image3: "",
             // image4: "",
         })
-    }, [])
+    }, [spotData.country, spotData.address, spotData.city, spotData.state, spotData.lat, spotData.lng, spotData.description, spotData.name, spotData.price])
 
     if (Object.values(currentSpotState).length === 0) return null
 
@@ -64,8 +66,6 @@ function EditSpotForm() {
         formInfo[e.target.name] = e.target.value
         setFormInfo({ ...formInfo })
     }
-
-    console.log(formInfo)
 
     const submitHandler = async (e) => {
         e.preventDefault()
