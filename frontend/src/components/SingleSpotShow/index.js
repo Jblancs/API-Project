@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom"
 import { getSingleSpot, clearState } from "../../store/spotsReducer"
 import SpotImageShow from "./SpotImageShow"
 import ReviewRatings from "../ReviewRatings"
+import ReviewShow from "../Reviews/ReviewShow"
 
 
 function SingleSpotShow() {
@@ -50,7 +51,7 @@ function SingleSpotShow() {
                     </div>
                 </div>
                 <div className="review container">
-                    Reviews Placeholder
+                    <ReviewShow currentSpotState={currentSpotState} spotId={spotId}/>
                 </div>
             </div>
         </div>

@@ -1,13 +1,15 @@
 // frontend/src/store/index.js
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import reviewReducer from './Review';
 import sessionReducer from './session';
 import spotsReducer from './spotsReducer';
 
 // reducer
 const rootReducer = combineReducers({
     session: sessionReducer,
-    spots: spotsReducer
+    spots: spotsReducer,
+    reviews: reviewReducer
 });
 
 // middleware and enchancer
@@ -28,5 +30,3 @@ const configureStore = (preloadedState) => {
 };
 
 export default configureStore;
-
-
