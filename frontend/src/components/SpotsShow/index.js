@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
-import { getAllSpots } from "../../store/spotsReducer"
+import { getAllSpots, clearState } from "../../store/spotsReducer"
 import "./index.css"
 
 function SpotsShow() {
@@ -12,6 +12,7 @@ function SpotsShow() {
 
     useEffect(() => {
         dispatch(getAllSpots())
+        return () => dispatch(clearState())
     }, [dispatch])
 
     if (!allSpotsArr.length) return null

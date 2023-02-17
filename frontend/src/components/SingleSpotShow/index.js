@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
-import { getSingleSpot } from "../../store/spotsReducer"
+import { getSingleSpot, clearState } from "../../store/spotsReducer"
 import SpotImageShow from "./SpotImageShow"
+
 
 function SingleSpotShow() {
     const dispatch = useDispatch()
@@ -10,6 +11,7 @@ function SingleSpotShow() {
 
     useEffect(() => {
         dispatch(getSingleSpot(spotId))
+        return () => dispatch(clearState())
     }, [dispatch])
 
     const currentSpotState = useSelector(state => state.spots.singleSpot)

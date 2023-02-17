@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { Link, useHistory } from "react-router-dom"
-import { getCurrentSpots } from "../../store/spotsReducer"
+import { getCurrentSpots, clearState } from "../../store/spotsReducer"
 import "./index.css"
 import DeleteSpot from "../DeleteSpot"
 import OpenModalButton from "../OpenModalButton"
@@ -17,6 +17,7 @@ function ManageSpots() {
 
     useEffect(() => {
         dispatch(getCurrentSpots())
+        return () => dispatch(clearState())
     }, [dispatch])
 
     if (!userInfo) history.push("/")

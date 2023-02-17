@@ -32,6 +32,10 @@ const removeSpot = (spotId) => ({
     spotId
 })
 
+export const clearState = () => ({
+    type: CLEAR_STATE
+})
+
 
 // Landing Page: Load all spots Thunk -------------------------------
 export const getAllSpots = () => async dispatch => {
@@ -126,6 +130,8 @@ export const deleteUserSpot = (spotId) => async dispatch => {
         method: 'DELETE',
         headers: { "Content-Type": "application/json" }
     })
+
+    dispatch(removeSpot())
 }
 
 const initialState = {
@@ -169,6 +175,13 @@ const spotsReducer = (state = initialState, action) => {
             delete newState.allSpots[action.spot]
             const updatedSpotList = { ...newState.allSpots }
             newState.allSpots = updatedSpotList
+            return newState
+
+        case CLEAR_STATE:
+            const newAllSpots = {}
+            const newSingleSpot = {}
+            newState.allSpots = newAllSpots
+            newState.singleSpot = newSingleSpot
             return newState
 
         default:

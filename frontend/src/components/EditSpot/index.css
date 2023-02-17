@@ -152,3 +152,12 @@ input {
     justify-content: center;
     align-items: center;
 }
+
+.image-edit {
+    height: 100px;
+    width: 100%;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
