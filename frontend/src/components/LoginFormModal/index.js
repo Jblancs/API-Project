@@ -28,35 +28,40 @@ function LoginFormModal() {
     };
 
     return (
-        <>
-            <h1>Log In</h1>
-            <form onSubmit={handleSubmit}>
-                <ul>
-                    {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
-                    ))}
-                </ul>
-                <label>
-                    Username or Email
-                    <input
-                        type="text"
-                        value={credential}
-                        onChange={(e) => setCredential(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
-                    Password
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </label>
-                <button type="submit">Log In</button>
-            </form>
-        </>
+        <div className="login-container">
+            <div className="login-div">
+
+                <h1 className="login-text">Log In</h1>
+                <form onSubmit={handleSubmit}>
+                    <ul>
+                        {errors.map((error, idx) => (
+                            <li key={idx}>{error}</li>
+                        ))}
+                    </ul>
+                    <label>
+                        Username or Email
+                        <input
+                            type="text"
+                            value={credential}
+                            onChange={(e) => setCredential(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <label>
+                        Password
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <div className="login-btn-div">
+                        <button type="submit" className="login-btn">Log In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     );
 }
 

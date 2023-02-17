@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { getCurrentSpots } from "../../store/spotsReducer"
 import "./index.css"
@@ -79,7 +79,7 @@ function ManageSpots() {
                                         </Link>
                                         <OpenModalButton
                                             buttonText="Delete"
-                                            modalComponent={<DeleteSpot spotId={spot.id} />}
+                                            modalComponent={<DeleteSpot spotId={spot.id} userId={userInfo.id} />}
                                         />
                                         {/* <button type="button" className="curr__prev__btn__delete">Delete</button> */}
                                     </div>
