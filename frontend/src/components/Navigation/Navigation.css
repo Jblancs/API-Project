@@ -44,7 +44,7 @@
 
 /* profile ----------------------- */
 
-.profile-container{
+.profile-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -71,39 +71,40 @@
     border: none;
     background-color: white;
     color: rgb(37, 130, 151);
-    font-size: 13px;
+    font-size: 15px;
+    font-weight: bold;
     width: 150px;
     margin-top: 7px;
     /* border: 2px solid black; */
 }
 
 .nav-button__spot__btn:hover {
-    font-weight: bold;
+    text-decoration: underline;
 }
 
-.profile-button{
+.profile-button {
     border: 2px solid black;
     margin-bottom: 5px;
     border-radius: 15px;
     padding: 5px 15px;
-    width:50px;
-    height:30px;
+    width: 50px;
+    height: 30px;
 }
 
-.profile-username{
+.profile-username {
     border: none;
     background-color: white;
     text-align: left;
 }
 
-.profile-email{
+.profile-email {
     border: none;
     background-color: white;
     text-align: left;
     margin: 4px 0;
 }
 
-.profile-manage-btn{
+.profile-manage-btn {
     border-top: 1px solid black;
     font-size: 12px;
     background-color: white;
@@ -111,23 +112,23 @@
     padding: 3px 0;
 }
 
-.profile-manage-btn:hover{
+.profile-manage-btn:hover {
     font-weight: bold;
 }
 
 
-.profile-manage-div{
-     border-top: 1px solid black;
-     border-bottom: 1px solid black;
+.profile-manage-div {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
-.profile-logout-div{
+.profile-logout-div {
     display: flex;
     justify-content: center;
     margin: 3px 0;
 }
 
-.profile-logout-btn{
+.profile-logout-btn {
     border: 1px solid black;
     border-radius: 15px;
     font-size: 12px;
@@ -137,6 +138,20 @@
     text-align: center;
 }
 
-.profile-logout-btn:hover{
+.profile-logout-btn:hover {
     font-weight: bold;
 }
+
+/* .modal-buttons {
+    background-color: gray;
+    color: white;
+    width: 70px;
+    margin-right: 10px;
+
+    box-shadow: 2px 2px black;
+} */
+
+/* .modal-buttons:hover {
+    box-shadow: 3px 3px 3px black;
+    font-weight: bold;
+} */

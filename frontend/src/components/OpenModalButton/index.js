@@ -13,6 +13,7 @@ function OpenModalButton({
         if (typeof onButtonClick === 'function') onButtonClick();
         if (typeof onModalClose === 'function') setOnModalClose(onModalClose);
         setModalContent(modalComponent);
+        console.log("test modal**********")
     };
 
     return (

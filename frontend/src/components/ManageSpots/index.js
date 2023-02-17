@@ -3,6 +3,8 @@ import { useEffect } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { getCurrentSpots } from "../../store/spotsReducer"
 import "./index.css"
+import DeleteSpot from "../DeleteSpot"
+import OpenModalButton from "../DeleteSpot"
 
 function ManageSpots() {
     const allSpotsObj = useSelector(state => state.spots.allSpots)
@@ -75,7 +77,11 @@ function ManageSpots() {
                                         <Link to={`/spots/${spot.id}/edit`}>
                                             <button type="button" className="curr__prev__btn__update">Update</button>
                                         </Link>
-                                        <button type="button" className="curr__prev__btn__delete">Delete</button>
+                                        <OpenModalButton
+                                            buttonText="Delete"
+                                            modalComponent={<DeleteSpot />}
+                                        />
+                                        {/* <button type="button" className="curr__prev__btn__delete">Delete</button> */}
                                     </div>
                                 </div>
                             </div>

@@ -113,17 +113,16 @@
 .curr__prev__btn {
     /* border: 2px solid black; */
     display: flex;
-    width: 130px;
+    width: 160px;
     justify-content: flex-end;
-    padding-left: 40px;
+    /* padding-left: 30px; */
 }
 
 .curr__prev__btn__update {
     background-color: gray;
     color: white;
-    width: 60px;
+    width: 70px;
     margin-right: 10px;
-    /* padding: 2px 4px; */
     box-shadow: 2px 2px black;
 }
 
@@ -135,9 +134,8 @@
 .curr__prev__btn__delete {
     background-color: gray;
     color: white;
-    width: 60px;
+    width: 70px;
     margin-right: 10px;
-    /* padding: 2px 4px; */
     box-shadow: 2px 2px black;
 }
 
