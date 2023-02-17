@@ -141,3 +141,14 @@ input {
     border: 2px solid black;
     font-weight: bold;
 }
+
+.loading-div {
+    font-size: 18px;
+    font-style: italic;
+    font-weight: bold;
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
