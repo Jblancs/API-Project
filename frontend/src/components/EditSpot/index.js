@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
-import { getSingleSpot, updateSpot } from "../../store/spotsReducer"
+import { updateSpot } from "../../store/spotsReducer"
 import "./index.css"
 
-function EditSpotForm() {
+function EditSpotForm({ user, spot }) {
     const dispatch = useDispatch()
     const history = useHistory();
     const { spotId } = useParams()
@@ -25,42 +25,33 @@ function EditSpotForm() {
         image4: "",
     })
 
-
-    const currentUser = useSelector(state => state.session.user)
-    const currentSpotState = useSelector(state => state.spots.singleSpot)
-
-    useEffect(() => {
-        dispatch(getSingleSpot(spotId))
-    }, [])
-
-    if (!currentUser || (currentUser && (currentUser.id !== currentSpotState?.Owner.id))) {
+    if (!user) {
         history.push("/")
     }
-
-    const spot = { ...currentSpotState }
-    const { spotData } = spot
-
+    if (user) {
+        if (spot.Owner.id !== user.id) {
+            history.push("/")
+        }
+    }
 
     useEffect(() => {
         setFormInfo({
-            country: spotData.country,
-            address: spotData.address,
-            city: spotData.city,
-            state: spotData.state,
-            lat: spotData.lat,
-            lng: spotData.lng,
-            description: spotData.description,
-            name: spotData.name,
-            price: spotData.price,
-            // preview: spotData.preview,
+            country: spot.spotData.country,
+            address: spot.spotData.address,
+            city: spot.spotData.city,
+            state: spot.spotData.state,
+            lat: spot.spotData.lat,
+            lng: spot.spotData.lng,
+            description: spot.spotData.description,
+            name: spot.spotData.name,
+            price: spot.spotData.price,
+            // preview: "",
             // image1: "",
             // image2: "",
             // image3: "",
             // image4: "",
         })
-    }, [spotData.country, spotData.address, spotData.city, spotData.state, spotData.lat, spotData.lng, spotData.description, spotData.name, spotData.price])
-
-    if (Object.values(currentSpotState).length === 0) return null
+    }, [])
 
     const onChangeHandler = (e) => {
         formInfo[e.target.name] = e.target.value
