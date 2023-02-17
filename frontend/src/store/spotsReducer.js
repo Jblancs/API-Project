@@ -5,6 +5,7 @@ const GET_SPOT_DETAIL = 'spots/GET_SPOT_DETAIL'
 const ADD_NEW_SPOT = 'spots/ADD_NEW_SPOT'
 const ADD_NEW_IMAGE = 'spots/ADD_NEW_IMAGE'
 const DELETE_SPOT = 'spots/DELETE_SPOT'
+const CLEAR_STATE = 'spots/CLEAR_STATE'
 
 const loadAllSpots = spotsList => ({
     type: LOAD_ALL_SPOTS,
@@ -29,6 +30,10 @@ const addNewImage = spotId => ({
 const removeSpot = (spotId) => ({
     type: DELETE_SPOT,
     spotId
+})
+
+export const clearState = () => ({
+    type: CLEAR_STATE
 })
 
 
@@ -125,6 +130,8 @@ export const deleteUserSpot = (spotId) => async dispatch => {
         method: 'DELETE',
         headers: { "Content-Type": "application/json" }
     })
+
+    dispatch(removeSpot())
 }
 
 const initialState = {
@@ -168,6 +175,13 @@ const spotsReducer = (state = initialState, action) => {
             delete newState.allSpots[action.spot]
             const updatedSpotList = { ...newState.allSpots }
             newState.allSpots = updatedSpotList
+            return newState
+
+        case CLEAR_STATE:
+            const newAllSpots = {}
+            const newSingleSpot = {}
+            newState.allSpots = newAllSpots
+            newState.singleSpot = newSingleSpot
             return newState
 
         default:

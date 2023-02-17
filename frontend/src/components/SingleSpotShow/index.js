@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
-import { getSingleSpot } from "../../store/spotsReducer"
+import { getSingleSpot, clearState } from "../../store/spotsReducer"
 import SpotImageShow from "./SpotImageShow"
+
 
 function SingleSpotShow() {
     const dispatch = useDispatch()
@@ -10,6 +11,7 @@ function SingleSpotShow() {
 
     useEffect(() => {
         dispatch(getSingleSpot(spotId))
+        return () => dispatch(clearState())
     }, [dispatch])
 
     const currentSpotState = useSelector(state => state.spots.singleSpot)
@@ -36,6 +38,7 @@ function SingleSpotShow() {
                     <div className="detail__info__descript">
                         {currentSpotState.spotData.description}
                     </div>
+                    {/* <div className="booking__container"> */}
                     <div className="booking__div">
                         <span className="booking__price">
                             ${currentSpotState.spotData.price} night
@@ -45,11 +48,13 @@ function SingleSpotShow() {
                             {currentSpotState.spotData.numReviews !== 0 ? currentSpotState.spotData.avgStarRating : "new"}
                             {/* <i className="fa-solid fa-circle" /> */}
                         </span>
+                        <span className="dot-span">·</span>
                         <span className="booking__review">
                             {`${currentSpotState.spotData.numReviews} reviews`}
                         </span>
                         <button className="booking__button" onClick={clickHandler}>Reserve</button>
                     </div>
+                    {/* </div> */}
                 </div>
                 <div className="review container">
                     Reviews Placeholder
