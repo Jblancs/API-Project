@@ -32,7 +32,7 @@ function EditSpotForm() {
     const currentUser = useSelector(state => state.session.user)
     const currentSpotState = useSelector(state => state.spots.singleSpot)
 
-    if (!currentUser || currentUser.id !== currentSpotState.Owner.id) {
+    if (!currentUser || currentUser?.id !== currentSpotState.Owner.id) {
         history.push("/")
     }
 
@@ -64,8 +64,6 @@ function EditSpotForm() {
         formInfo[e.target.name] = e.target.value
         setFormInfo({ ...formInfo })
     }
-
-    console.log(formInfo)
 
     const submitHandler = async (e) => {
         e.preventDefault()

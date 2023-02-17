@@ -20,9 +20,6 @@ export function ModalProvider({ children }) {
         }
     };
 
-    useEffect(() => {
-        console.log("***********************", modalContent)
-    },[modalContent])
 
     const contextValue = {
         modalRef, // reference to modal div

@@ -5,15 +5,12 @@ function DeleteSpot() {
 
     const clickHandler = (e) => {
         e.preventDefault()
-        console.log("+++++++++++++++++++++")
         // return closeModal()
     }
 
     return (
         <div>
-            {/* <button onClick={clickHandler}>No(Keep Spot)</button> */}
-            <h1>test</h1>
-            <h1>modal</h1>
+            <button onClick={clickHandler}>No(Keep Spot)</button> 
         </div>
     )
 }

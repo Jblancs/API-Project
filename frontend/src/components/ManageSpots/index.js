@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom"
 import { getCurrentSpots } from "../../store/spotsReducer"
 import "./index.css"
 import DeleteSpot from "../DeleteSpot"
-import OpenModalButton from "../DeleteSpot"
+import OpenModalButton from "../OpenModalButton"
 
 function ManageSpots() {
     const allSpotsObj = useSelector(state => state.spots.allSpots)

@@ -142,16 +142,16 @@
     font-weight: bold;
 }
 
-/* .modal-buttons {
+.modal-buttons {
     background-color: gray;
     color: white;
     width: 70px;
     margin-right: 10px;
 
     box-shadow: 2px 2px black;
-} */
+}
 
-/* .modal-buttons:hover {
+.modal-buttons:hover {
     box-shadow: 3px 3px 3px black;
     font-weight: bold;
-} */
+}
