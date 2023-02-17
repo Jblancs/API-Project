@@ -5,6 +5,7 @@ const GET_SPOT_DETAIL = 'spots/GET_SPOT_DETAIL'
 const ADD_NEW_SPOT = 'spots/ADD_NEW_SPOT'
 const ADD_NEW_IMAGE = 'spots/ADD_NEW_IMAGE'
 const DELETE_SPOT = 'spots/DELETE_SPOT'
+const CLEAR_STATE = 'spots/CLEAR_STATE'
 
 const loadAllSpots = spotsList => ({
     type: LOAD_ALL_SPOTS,

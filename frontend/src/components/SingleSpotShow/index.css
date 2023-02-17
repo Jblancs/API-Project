@@ -38,19 +38,19 @@ img[class*="other"] {
 
 /* description formatting ----------------- */
 
-.detail__info{
+.detail__info {
     /* border: 2px solid black; */
     display: grid;
     border-bottom: 1px solid black;
     grid-template-rows: repeat(6, 65px);
     grid-template-columns: repeat(5, 20%);
     grid-template-areas:
-    "host host host book book"
-    "desc desc desc book book"
-    "desc desc desc book book"
-    "desc desc desc none none"
-    "desc desc desc none none"
-    "desc desc desc none none";
+        "host host host book book"
+        "desc desc desc book book"
+        "desc desc desc book book"
+        "desc desc desc none none"
+        "desc desc desc none none"
+        "desc desc desc none none";
 }
 
 .detail__info__owner {
@@ -66,44 +66,59 @@ img[class*="other"] {
     /* border: 2px solid black; */
 }
 
+/* booking --------------------------------- */
+
+.booking__container {}
+
 .booking__div {
     grid-area: book;
     border: 2px solid black;
+    width: 400px;
     border-radius: 10px;
     padding-top: 30px;
     margin: 30px 5px 30px 30px;
     display: grid;
     grid-template-rows: repeat(3, 33%);
-    grid-template-columns: repeat(6, 16.6%);
+    grid-template-columns: 15% 15% 15% 15% 7% 17%;
     grid-template-areas:
-    "cost cost cost rate rev rev"
-    "resv resv resv resv resv resv"
-    "resv resv resv resv resv resv";
+        "cost cost cost rate dot rev"
+        "resv resv resv resv resv resv"
+        "resv resv resv resv resv resv";
+}
+
+.dot-span {
+    grid-area: dot;
+    text-align: right;
 }
 
 .booking__price {
     grid-area: cost;
-    margin: 0px 20px 20px 20px;
+    margin: 0px 20px 20px 25px;
 }
+
 .booking__rating {
     grid-area: rate;
     text-align: right;
 }
+
 .booking__review {
+    width: 120px;
     grid-area: rev;
-    text-align: right;
+    text-align: center;
     margin-right: 20px;
 
 }
-.booking__button{
+
+.booking__button {
     grid-area: resv;
-    margin: 0px 20px 20px 20px;
+    margin: 0px 0px 20px 30px;
+    width: 100%;
     background-color: rgb(242, 101, 105);
     box-shadow: 2px 2px 1px black;
     color: white;
 }
 
-.booking__button:hover{
+.booking__button:hover {
     box-shadow: 2px 2px 2px black;
     border: 3px solid black;
     font-weight: bold;
