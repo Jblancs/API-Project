@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
 import { getSingleSpot, clearState } from "../../store/spotsReducer"
 import SpotImageShow from "./SpotImageShow"
+import ReviewRatings from "../ReviewRatings"
 
 
 function SingleSpotShow() {
@@ -38,25 +39,15 @@ function SingleSpotShow() {
                     <div className="detail__info__descript">
                         {currentSpotState.spotData.description}
                     </div>
-                    {/* <div className="booking__container"> */}
                     <div className="booking__div">
                         <span className="booking__price">
                             ${currentSpotState.spotData.price} night
                         </span>
                         <div className="review-rating-div">
-                            <span className="booking__rating">
-                                <i className="fa-solid fa-star" />
-                                {currentSpotState.spotData.numReviews !== 0 ? currentSpotState.spotData.avgStarRating : "new"}
-                                {/* <i className="fa-solid fa-circle" /> */}
-                            </span>
-                            <span className="dot-span">·</span>
-                            <span className="booking__review">
-                                {`${currentSpotState.spotData.numReviews} reviews`}
-                            </span>
+                            <ReviewRatings currentSpotState={currentSpotState} />
                         </div>
                         <button className="booking__button" onClick={clickHandler}>Reserve</button>
                     </div>
-                    {/* </div> */}
                 </div>
                 <div className="review container">
                     Reviews Placeholder
