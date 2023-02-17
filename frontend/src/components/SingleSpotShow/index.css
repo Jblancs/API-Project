@@ -68,8 +68,6 @@ img[class*="other"] {
 
 /* booking --------------------------------- */
 
-.booking__container {}
-
 .booking__div {
     grid-area: book;
     border: 2px solid black;
