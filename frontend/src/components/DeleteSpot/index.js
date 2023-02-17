@@ -3,7 +3,7 @@ import { useModal } from "../../context/Modal"
 import { deleteUserSpot, getCurrentSpots } from "../../store/spotsReducer"
 import "./index.css"
 
-function DeleteSpot({ spotId, setDeletedSpot }) {
+function DeleteSpot({ spotId, userId }) {
     const { closeModal } = useModal()
     const dispatch = useDispatch()
 
@@ -11,7 +11,7 @@ function DeleteSpot({ spotId, setDeletedSpot }) {
         e.preventDefault()
 
         const removeSpot = await dispatch(deleteUserSpot(spotId))
-        const reRender = await dispatch(getCurrentSpots(spotId))
+        const reRender = await dispatch(getCurrentSpots(userId))
 
         return closeModal()
     }
