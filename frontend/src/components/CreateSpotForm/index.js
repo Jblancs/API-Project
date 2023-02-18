@@ -21,13 +21,7 @@ function CreateSpotForm() {
         image3: "",
         image4: "",
     })
-    const [imageErrors, setImageErrors] = useState({
-        preview: "",
-        image1: "",
-        image2: "",
-        image3: "",
-        image4: ""
-    })
+    const [anyErrors, setAnyErrors] = useState(false)
     const [formInfo, setFormInfo] = useState({
         country: "",
         address: "",
@@ -57,6 +51,25 @@ function CreateSpotForm() {
     const submitHandler = async (e) => {
         e.preventDefault()
 
+        setErrors({
+            country: "",
+            address: "",
+            city: "",
+            state: "",
+            lat: "",
+            lng: "",
+            description: "",
+            name: "",
+            price: "",
+            preview: "",
+            image1: "",
+            image2: "",
+            image3: "",
+            image4: "",
+        })
+
+        console.log("before",errors)
+
         const { country, address, city, state, lat, lng, description, name, price, preview, image1, image2, image3, image4 } = formInfo
 
         const newSpotInfo = {
@@ -79,6 +92,24 @@ function CreateSpotForm() {
             image4
         }
 
+        let possibleErrors = {
+            address: "Street address is required",
+            city: "City is required",
+            state: "State required",
+            country: "Country is required",
+            lat: "Lat is not valid",
+            lng: "Lng is not valid",
+            name: "Name is required and max 50 characters",
+            description: "Description is required and min 30 characters",
+            price: "Price per day is required",
+            preview: "Preview image required and must end with .png, .jpg or .jpeg",
+            image1: "Image url must end with .png, .jpg or .jpeg",
+            image2: "Image url must end with .png, .jpg or .jpeg",
+            image3: "Image url must end with .png, .jpg or .jpeg",
+            image4: "Image url must end with .png, .jpg or .jpeg"
+        }
+
+        const imageErrorKeys = ["image1", "image2", "image3", "image4"]
         const imgUrlCheck = ["jpg", "png", "jpeg"]
 
         const endingCheck = (url) => {
@@ -87,32 +118,44 @@ function CreateSpotForm() {
             return imgUrlCheck.includes(ending)
         }
 
-        for (let imgKey in newImagesInfo) {
-            if (!preview || imgKey === "preview" && !endingCheck(newImagesInfo[imgKey])) {
-                imageErrors[imgKey] = "Preview image required and must end with .png, .jpg or .jpeg"
-                setImageErrors({
-                    ...imageErrors,
-                })
+        for (let key in possibleErrors) {
+            if (!imageErrorKeys.includes(key) && formInfo[key] === "") {
+                errors[key] = possibleErrors[key]
             }
-            if (imgKey !== "preview" && newImagesInfo[imgKey] !== "" && !endingCheck(newImagesInfo[imgKey])) {
-                imageErrors[imgKey] = "Image url must end with .png, .jpg or .jpeg"
-                setImageErrors({
-                    ...imageErrors,
-                })
+            else if ((key === "lat" || key === "lng") && isNaN(formInfo[key])) {
+                errors[key] = possibleErrors[key]
+            }
+            else if (key === "name" && formInfo[key].length > 50) {
+                errors[key] = possibleErrors[key]
+            }
+            else if (key === "description" && formInfo[key].length < 30) {
+                errors[key] = possibleErrors[key]
+            }
+            else if (key === "preview" && !endingCheck(formInfo[key])) {
+                errors[key] = possibleErrors[key]
+            }
+            else if (imageErrorKeys.includes(key) && formInfo[key] !== "" && !endingCheck(formInfo[key])) {
+                errors[key] = possibleErrors[key]
+            }else{
+                errors[key] = ""
             }
         }
 
-        const createdSpot = await dispatch(createNewSpot(newSpotInfo)).catch(
-            async (res) => {
-                const data = await res.json();
-                if (data && data.errors) {
-                    return setErrors({
-                        ...errors,
-                        ...data.errors
-                    })
-                }
+        setErrors({
+            ...errors
+        })
+
+        console.log("after",errors)
+
+        for (let errorVal in errors) {
+            if (errors[errorVal]) {
+                return setAnyErrors(true)
             }
-        )
+        }
+
+        setAnyErrors(false)
+
+        const createdSpot = await dispatch(createNewSpot(newSpotInfo))
 
         if (createdSpot) {
             const createdSpotId = createdSpot.id
@@ -295,7 +338,7 @@ function CreateSpotForm() {
                                 placeholder="Preview Image URL"
                                 value={formInfo.preview}
                                 onChange={onChangeHandler} />
-                            <span className="error-msg">{imageErrors.preview}</span>
+                            <span className="error-msg">{errors.preview}</span>
                         </div>
                         <div className="image-div__img">
                             <input
@@ -304,7 +347,7 @@ function CreateSpotForm() {
                                 placeholder="Image URL"
                                 value={formInfo.image1}
                                 onChange={onChangeHandler} />
-                            <span className="error-msg">{imageErrors.image1}</span>
+                            <span className="error-msg">{errors.image1}</span>
                         </div>
                         <div className="image-div__img">
                             <input
@@ -313,7 +356,7 @@ function CreateSpotForm() {
                                 placeholder="Image URL"
                                 value={formInfo.image2}
                                 onChange={onChangeHandler} />
-                            <span className="error-msg">{imageErrors.image2}</span>
+                            <span className="error-msg">{errors.image2}</span>
                         </div>
                         <div className="image-div__img">
                             <input
@@ -322,7 +365,7 @@ function CreateSpotForm() {
                                 placeholder="Image URL"
                                 value={formInfo.image3}
                                 onChange={onChangeHandler} />
-                            <span className="error-msg">{imageErrors.image3}</span>
+                            <span className="error-msg">{errors.image3}</span>
                         </div>
                         <div className="image-div__img">
                             <input
@@ -331,7 +374,7 @@ function CreateSpotForm() {
                                 placeholder="Image URL"
                                 value={formInfo.image4}
                                 onChange={onChangeHandler} />
-                            <span className="error-msg">{imageErrors.image4}</span>
+                            <span className="error-msg">{errors.image4}</span>
                         </div>
                     </div>
                     <div className="button-div">
