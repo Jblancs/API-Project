@@ -69,6 +69,8 @@ export const createNewSpot = (spotInfo) => async dispatch => {
         const newSpotDetail = await res.json()
         dispatch(addNewSpot(newSpotDetail))
         return newSpotDetail
+    }else{
+        return res
     }
 }
 
@@ -110,6 +112,8 @@ export const updateSpot = (updatedInfo, spotId) => async dispatch => {
         const updatedSpotInfo = await res.json()
         dispatch(addNewSpot(updatedSpotInfo))
         return updatedSpotInfo
+    }else{
+        return res
     }
 }
 

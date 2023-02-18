@@ -208,12 +208,12 @@ router.post('/', requireAuth, async (req, res, next) => {
     let possibleErrors = {
         address: "Street address is required",
         city: "City is required",
-        state: "State is required",
+        state: "State required",
         country: "Country is required",
-        lat: "Latitude is not valid",
-        lng: "Longitude is not valid",
-        name: "Name must be less than 50 characters",
-        description: "Description is required",
+        lat: "Lat is not valid",
+        lng: "Lng is not valid",
+        name: "Name is required and max 50 characters",
+        description: "Description is required and min 30 characters",
         price: "Price per day is required"
     }
 
@@ -227,6 +227,9 @@ router.post('/', requireAuth, async (req, res, next) => {
             errorObj[key] = possibleErrors[key]
         }
         if (key === "name" && req.body[key].length > 50) {
+            errorObj[key] = possibleErrors[key]
+        }
+        if (key === "description" && req.body[key].length < 30) {
             errorObj[key] = possibleErrors[key]
         }
     }
@@ -315,12 +318,12 @@ router.put('/:spotId', requireAuth, async (req, res, next) => {
     let possibleErrors = {
         address: "Street address is required",
         city: "City is required",
-        state: "State is required",
+        state: "State required",
         country: "Country is required",
-        lat: "Latitude is not valid",
-        lng: "Longitude is not valid",
-        name: "Name must be less than 50 characters",
-        description: "Description is required",
+        lat: "Lat is not valid",
+        lng: "Lng is not valid",
+        name: "Name is required and max 50 characters",
+        description: "Description is required and min 30 characters",
         price: "Price per day is required"
     }
 
@@ -334,6 +337,9 @@ router.put('/:spotId', requireAuth, async (req, res, next) => {
             errorObj[key] = possibleErrors[key]
         }
         if (key === "name" && req.body[key].length > 50) {
+            errorObj[key] = possibleErrors[key]
+        }
+        if (key === "description" && req.body[key].length < 30) {
             errorObj[key] = possibleErrors[key]
         }
     }
