@@ -36,7 +36,6 @@ function ReviewShow({ currentSpotState, spotId }) {
     let reviewText;
     let reviewSpan;
     let reviewCards;
-    let reviewButton
 
     if (reviewCount === 1) reviewText = "Review"
     if (reviewCount > 1) reviewText = "Reviews"
@@ -76,6 +75,27 @@ function ReviewShow({ currentSpotState, spotId }) {
         )
     }
 
+    // Hide review button conditionals
+    const reviewUserIdArr = []
+
+    for (let review of reviewArrSorted) {
+
+        if (currentUser && review.userId === currentUser.id) {
+            reviewUserIdArr.push(review)
+        }
+    }
+
+    let reviewButton;
+    if (currentUser && currentUser.id !== currentSpotState.Owner.id && !reviewUserIdArr.length) {
+        reviewButton = (
+            <OpenModalButton
+                buttonText="Post Your Review"
+                nameClass="reviewModal"
+                modalComponent={<PostReview spotId={spotId} />}
+            />
+        )
+    }
+
     return (
         <div className="review-container">
             <div className="review-rating-header">
@@ -86,11 +106,7 @@ function ReviewShow({ currentSpotState, spotId }) {
                 {reviewSpan}
             </div>
             <div className="review-post-btn">
-                <OpenModalButton
-                    buttonText="Post Your Review"
-                    nameClass="reviewModal"
-                    modalComponent={<PostReview spotId={spotId}/>}
-                />
+                {reviewButton}
             </div>
             {reviewCards}
         </div>
