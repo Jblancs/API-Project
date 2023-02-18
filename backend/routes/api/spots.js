@@ -223,7 +223,7 @@ router.post('/', requireAuth, async (req, res, next) => {
         if (!req.body[key] || req.body[key] === "") {
             errorObj[key] = possibleErrors[key]
         }
-        if ((key === "lat" || key === "lng") && typeof req.body[key] !== "number") {
+        if ((key === "lat" || key === "lng") && isNaN(req.body[key])) {
             errorObj[key] = possibleErrors[key]
         }
         if (key === "name" && req.body[key].length > 50) {
