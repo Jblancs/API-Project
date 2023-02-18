@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSpotReviews, clearReviewState } from "../../store/Review";
+import PostReview from "./PostReview";
+import OpenModalButton from "../OpenModalButton";
 import './index.css'
 
 function ReviewShow({ currentSpotState, spotId }) {
@@ -19,6 +21,7 @@ function ReviewShow({ currentSpotState, spotId }) {
 
     const reviewArrSorted = currentSpotReviewsArr.sort((a, b) => a.id - b.id)
 
+    // date creator function
     const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
     const getDate = (date) => {
@@ -28,10 +31,12 @@ function ReviewShow({ currentSpotState, spotId }) {
         return `${revMonth} ${revYear}`
     }
 
+    // JSX output depending on number of reviews
     const reviewCount = currentSpotState.spotData.numReviews
     let reviewText;
     let reviewSpan;
     let reviewCards;
+    let reviewButton
 
     if (reviewCount === 1) reviewText = "Review"
     if (reviewCount > 1) reviewText = "Reviews"
@@ -65,24 +70,31 @@ function ReviewShow({ currentSpotState, spotId }) {
         )
     }
 
-    if (reviewCount === 0 && currentUser && currentUser.id !== currentSpotState.Owner.id ) {
+    if (reviewCount === 0 && currentUser && currentUser.id !== currentSpotState.Owner.id) {
         reviewCards = (
             <div className="first-review-text">Be the first to post a review!</div>
         )
     }
 
-        return (
-            <div className="review-container">
-                <div className="review-rating-header">
-                    <span className="review-rating-avg">
-                        <i className="fa-solid fa-star" />
-                        {currentSpotState.spotData.numReviews !== 0 ? currentSpotState.spotData.avgStarRating : "new"}
-                    </span>
-                    {reviewSpan}
-                </div>
-                {reviewCards}
+    return (
+        <div className="review-container">
+            <div className="review-rating-header">
+                <span className="review-rating-avg">
+                    <i className="fa-solid fa-star" />
+                    {currentSpotState.spotData.numReviews !== 0 ? currentSpotState.spotData.avgStarRating : "new"}
+                </span>
+                {reviewSpan}
             </div>
-        )
+            <div className="review-post-btn">
+                <OpenModalButton
+                    buttonText="Post Your Review"
+                    nameClass="reviewModal"
+                    modalComponent={<PostReview spotId={spotId}/>}
+                />
+            </div>
+            {reviewCards}
+        </div>
+    )
 }
 
 export default ReviewShow

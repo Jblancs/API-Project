@@ -9,27 +9,37 @@
     padding: 0px 10px;
 }
 
-.review-card-container{
+.review-card-container {
     padding-bottom: 30px;
 
 }
 
-.review-card-name{
+.review-card-name {
     font-weight: bold;
     font-size: 16px;
 }
 
-.review-card-date{
-    padding:2px 0px;
+.review-card-date {
+    padding: 2px 0px;
     font-weight: bold;
     font-size: 14px;
 }
 
-.review-card-text{
+.review-card-text {
     font-size: 14px;
 }
 
-.first-review-text{
+.first-review-text {
     font-size: 16px;
     font-weight: bold;
+}
+
+.review-post-btn {
+    padding-bottom: 15px;
+}
+
+.reviewModal{
+    width: 140px;
+    height: 25px;
+    font-size: 13px;
 }
