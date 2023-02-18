@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import { useModal } from "../../context/Modal"
 import { createNewReview } from "../../store/Review"
 import { getSingleSpot } from "../../store/spotsReducer"
+import { getSpotReviews } from "../../store/Review"
 import './PostReview.css'
 
 function PostReview({ spotId }) {
@@ -20,7 +21,7 @@ function PostReview({ spotId }) {
         }
 
         const createdReview = await dispatch(createNewReview(reviewInfo, spotId))
-        const spotDetailRender = await dispatch(getSingleSpot(spotId))
+        const spotDetailRender = await dispatch(getSpotReviews(spotId))
 
         setReview("")
         setStars("")

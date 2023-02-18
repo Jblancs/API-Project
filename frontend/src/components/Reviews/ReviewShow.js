@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSpotReviews, clearReviewState } from "../../store/Review";
 import PostReview from "./PostReview";
+import DeleteReviewModal from "./DeleteReviewModal";
 import OpenModalButton from "../OpenModalButton";
 import './index.css'
 
@@ -52,7 +53,7 @@ function ReviewShow({ currentSpotState, spotId }) {
 
         reviewCards = (
             <div className="review-list-div">
-                {reviewArrSorted.length && currentSpotReviewsArr.map(review => (
+                {reviewArrSorted.length && reviewArrSorted.map(review => (
                     <div className="review-card-container" key={review.id}>
                         <div className="review-card-name">
                             {review.User.firstName}
@@ -63,6 +64,7 @@ function ReviewShow({ currentSpotState, spotId }) {
                         <div className="review-card-text">
                             {review.review}
                         </div>
+                        {currentUser && currentUser.id === review.userId ? <OpenModalButton buttonText="Delete" modalComponent={<DeleteReviewModal reviewId={review.id} spotId={spotId}/>} /> : ""}
                     </div>
                 ))}
             </div>
