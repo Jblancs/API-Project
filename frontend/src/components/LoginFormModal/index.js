@@ -27,6 +27,20 @@ function LoginFormModal() {
             )
     };
 
+    const clickHandler = () => {
+        setCredential("Demo-lition")
+        setPassword("password")
+        return dispatch(sessionActions.login({ credential, password }))
+            .then(closeModal)
+            .then(history.push("/"))
+            .catch(
+                async (res) => {
+                    const data = await res.json();
+                    if (data && data.errors) setErrors(data.errors);
+                }
+            )
+    }
+
     return (
         <div className="login-container">
             <div className="login-div">
@@ -57,7 +71,10 @@ function LoginFormModal() {
                         />
                     </label>
                     <div className="login-btn-div">
-                        <button type="submit" className="login-btn">Log In</button>
+                        <button type="submit" className="login-btn" disabled={credential.length < 4 || password < 6 ? true : false}>Log In</button>
+                    </div>
+                    <div className="demo-user-div">
+                        <button onClick={clickHandler} className="demo-btn">Demo User</button>
                     </div>
                 </form>
             </div>
