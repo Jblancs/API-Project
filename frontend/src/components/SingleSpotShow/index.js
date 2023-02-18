@@ -51,7 +51,7 @@ function SingleSpotShow() {
                     </div>
                 </div>
                 <div className="review container">
-                    <ReviewShow currentSpotState={currentSpotState} spotId={spotId}/>
+                    <ReviewShow currentSpotState={currentSpotState} spotId={spotId} />
                 </div>
             </div>
         </div>

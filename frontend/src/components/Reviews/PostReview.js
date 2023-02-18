@@ -51,7 +51,7 @@ function PostReview({ spotId }) {
                         onChange={textHandler} />
                 </div>
                 <div className="post-rev-stars">
-                    <body className="rate-body">
+                    <div className="rate-div">
                         <div className="rate">
                             <input type="radio" id="star5" name="rate" value="5" onChange={starHandler} />
                             <label for="star5" title="text">5 stars</label>
@@ -65,9 +65,9 @@ function PostReview({ spotId }) {
                             <label for="star1" title="text">1 star</label>
                         </div>
                         <span className="rate-text">Stars</span>
-                    </body>
+                    </div>
                 </div>
-                <button onClick={submitHandler} className="post-rev-submit">
+                <button onClick={submitHandler} className="post-rev-submit" disabled={(review.length > 10 && stars !== "") ? false : true}>
                     Submit Your Review
                 </button>
             </div>
