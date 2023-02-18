@@ -27,7 +27,7 @@ export const getSpotReviews = (spotId) => async dispatch => {
     }
 }
 
-//Add new spot review -------------------------------
+// Add new spot review -------------------------------
 export const createNewReview = (reviewInfo, spotId) => async dispatch => {
     const res = await csrfFetch(`/api/spots/${spotId}/reviews`, {
         method: 'POST',
@@ -35,7 +35,19 @@ export const createNewReview = (reviewInfo, spotId) => async dispatch => {
         body: JSON.stringify(reviewInfo)
     })
 
-    if(res.ok){
+    if (res.ok) {
+        dispatch(getSpotReviews(spotId))
+    }
+}
+
+// Delete spot review --------------------------------
+export const deleteReview = (reviewId, spotId) => async dispatch => {
+    const res = await csrfFetch(`/api/reviews/${reviewId}`, {
+        method: 'DELETE',
+        headers: { "Content-Type": "application/json" },
+    })
+
+    if (res.ok) {
         dispatch(getSpotReviews(spotId))
     }
 }
@@ -47,7 +59,7 @@ const initialState = {
 
 const reviewReducer = (state = initialState, action) => {
     let newState = { ...state }
-    switch(action.type) {
+    switch (action.type) {
         case CLEAR_REVIEWS:
             newState.spot = {}
             newState.user = {}
