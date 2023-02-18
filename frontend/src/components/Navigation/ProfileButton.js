@@ -42,7 +42,7 @@ function ProfileButton({ user }) {
                 <i className="fa-solid fa-user" />
             </button>
             <div className={profileClassName} ref={ulRef}>
-                <div className="profile-username">Hello, {user.username}</div>
+                <div className="profile-username">Hello, {user.firstName}</div>
                 <div className="profile-email">{user.email}</div>
                 <div className="profile-button-div">
                     <div className="profile-manage-div">

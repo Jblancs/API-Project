@@ -1,4 +1,5 @@
 import { csrfFetch } from "./csrf"
+import { getSingleSpot } from "./spotsReducer"
 
 const CLEAR_REVIEWS = 'reviews/CLEAR_REVIEWS'
 const LOAD_SPOT_REVIEWS = 'reviews/LOAD_SPOT_REVIEWS'
@@ -13,9 +14,6 @@ const loadSpotReviews = reviewList => ({
     reviewList
 })
 
-const addNewReview = () => ({
-    type: ADD_REVIEW
-})
 
 // Load spot reviews -------------------------------
 export const getSpotReviews = (spotId) => async dispatch => {
@@ -37,6 +35,8 @@ export const createNewReview = (reviewInfo, spotId) => async dispatch => {
 
     if (res.ok) {
         dispatch(getSpotReviews(spotId))
+        dispatch(getSingleSpot(spotId))
+
     }
 }
 
@@ -49,6 +49,7 @@ export const deleteReview = (reviewId, spotId) => async dispatch => {
 
     if (res.ok) {
         dispatch(getSpotReviews(spotId))
+        dispatch(getSingleSpot(spotId))
     }
 }
 
