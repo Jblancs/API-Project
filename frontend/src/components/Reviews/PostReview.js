@@ -21,7 +21,7 @@ function PostReview({ spotId }) {
         }
 
         const createdReview = await dispatch(createNewReview(reviewInfo, spotId))
-        const spotDetailRender = await dispatch(getSpotReviews(spotId))
+        // const spotDetailRender = await dispatch(getSingleSpot(spotId))
 
         setReview("")
         setStars("")

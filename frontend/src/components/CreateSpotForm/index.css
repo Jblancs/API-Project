@@ -134,6 +134,7 @@ input {
 .create-button {
     margin: 0px 20px 20px 20px;
     background-color: rgb(242, 101, 105);
+    padding: 0px 5px;
     box-shadow: 1px 1px 1px black;
     color: white;
 }

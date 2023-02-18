@@ -33,3 +33,23 @@
     box-shadow: 2px 2px 2px black;
     font-weight: bold;
 }
+
+.demo-user-div{
+    display: flex;
+    justify-content: center;
+}
+
+.demo-btn{
+    padding: 2px;
+    margin-top: 20px;
+    width: 90px;
+
+    background-color: rgb(242, 101, 105);
+    box-shadow: 1px 1px 1px black;
+    color: white;
+}
+
+.demo-btn:hover{
+    box-shadow: 2px 2px 2px black;
+    font-weight: bold;
+}

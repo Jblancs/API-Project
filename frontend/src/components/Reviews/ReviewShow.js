@@ -20,7 +20,7 @@ function ReviewShow({ currentSpotState, spotId }) {
 
     if (Object.values(currentSpotState).length === 0) return null
 
-    const reviewArrSorted = currentSpotReviewsArr.sort((a, b) => a.id - b.id)
+    const reviewArrSorted = currentSpotReviewsArr.sort((b, a) => a.id - b.id)
 
     // date creator function
     const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -64,7 +64,7 @@ function ReviewShow({ currentSpotState, spotId }) {
                         <div className="review-card-text">
                             {review.review}
                         </div>
-                        {currentUser && currentUser.id === review.userId ? <OpenModalButton buttonText="Delete" modalComponent={<DeleteReviewModal reviewId={review.id} spotId={spotId}/>} /> : ""}
+                        {currentUser && currentUser.id === review.userId ? <OpenModalButton buttonText="Delete" modalComponent={<DeleteReviewModal reviewId={review.id} spotId={spotId} />} /> : ""}
                     </div>
                 ))}
             </div>
