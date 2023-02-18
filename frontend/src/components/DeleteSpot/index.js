@@ -11,7 +11,7 @@ function DeleteSpot({ spotId, userId }) {
         e.preventDefault()
 
         const removeSpot = await dispatch(deleteUserSpot(spotId))
-        // const reRender = await dispatch(getCurrentSpots(userId))
+        const reRender = await dispatch(getCurrentSpots(userId))
 
         return closeModal()
     }
