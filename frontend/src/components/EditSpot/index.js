@@ -8,6 +8,23 @@ function EditSpotForm({ user, spot }) {
     const dispatch = useDispatch()
     const history = useHistory();
     const { spotId } = useParams()
+
+    const [errors, setErrors] = useState({
+        country: "",
+        address: "",
+        city: "",
+        state: "",
+        lat: "",
+        lng: "",
+        description: "",
+        name: "",
+        price: "",
+        preview: "",
+        image1: "",
+        image2: "",
+        image3: "",
+        image4: "",
+    })
     const [formInfo, setFormInfo] = useState({
         country: "",
         address: "",
@@ -75,7 +92,18 @@ function EditSpotForm({ user, spot }) {
             price: Number(price)
         }
 
-        const updatedSpot = await dispatch(updateSpot(updatedSpotInfo, spotId))
+        const updatedSpot = await dispatch(updateSpot(updatedSpotInfo, spotId)).catch(
+            async (res) => {
+                const data = await res.json();
+                console.log(data)
+                if (data && data.errors) {
+                    return setErrors({
+                        ...errors,
+                        ...data.errors
+                    })
+                }
+            }
+        )
 
         if (updatedSpot) {
             history.push(`/spots/${spotId}`)
@@ -104,17 +132,17 @@ function EditSpotForm({ user, spot }) {
             <div className="form-container">
                 <div className="form-header">
                     <h2 className="form-header__title">
-                        Update Your Spot
+                        Create a new Spot
                     </h2>
                 </div>
                 <form className="create-spot-form" onSubmit={submitHandler}>
                     <div className="location-div">
                         <h3>Where's your place located?</h3>
-                        <p>Guests will only get your exact address once they booked a
+                        <p className="edit-text">Guests will only get your exact address once they booked a
                             reservation.</p>
                         <div className="country-div">
-                            <div className="country-text">
-                                Country
+                            <div className="country-text edit-text">
+                                Country <span className="error-msg">{errors.country}</span>
                             </div>
                             <input
                                 type="text"
@@ -122,33 +150,30 @@ function EditSpotForm({ user, spot }) {
                                 placeholder="Country"
                                 min="1"
                                 max="100"
-                                required
                                 value={formInfo.country}
                                 onChange={onChangeHandler} />
                         </div>
                         <div className="address-div">
-                            <div className="address-text">
-                                Street Address
+                            <div className="address-text edit-text">
+                                Street Address <span className="error-msg">{errors.address}</span>
                             </div>
                             <input
                                 type="text"
                                 name="address"
                                 placeholder="Address"
-                                required
                                 value={formInfo.address}
                                 onChange={onChangeHandler} />
                         </div>
                         <div className="city-state-div">
                             <div className="city-div">
-                                <div className="city-text">
-                                    City
+                                <div className="city-text edit-text">
+                                    City <span className="error-msg">{errors.city}</span>
                                 </div>
                                 <input
                                     className="input-city"
                                     type="text"
                                     name="city"
                                     placeholder="City"
-                                    required
                                     value={formInfo.city}
                                     onChange={onChangeHandler} />
                             </div>
@@ -156,23 +181,22 @@ function EditSpotForm({ user, spot }) {
                                 ,
                             </div>
                             <div className="state-div">
-                                <div className="state-text">
-                                    State
+                                <div className="state-text edit-text">
+                                    State <span className="error-msg">{errors.state}</span>
                                 </div>
                                 <input
                                     className="input-state"
                                     type="text"
                                     name="state"
                                     placeholder="STATE"
-                                    required
                                     value={formInfo.state}
                                     onChange={onChangeHandler} />
                             </div>
                         </div>
                         <div className="lat-lng-div">
                             <div className="lat-div">
-                                <div className="lat-text">
-                                    Latitude
+                                <div className="lat-text edit-text">
+                                    Latitude <span className="error-msg">{errors.lat}</span>
                                 </div>
                                 <input
                                     className="input-lat"
@@ -186,8 +210,8 @@ function EditSpotForm({ user, spot }) {
                                 ,
                             </div>
                             <div className="lng-div">
-                                <div className="lng-text">
-                                    Longitude
+                                <div className="lng-text edit-text">
+                                    Longitude <span className="error-msg">{errors.lng}</span>
                                 </div>
                                 <input
                                     className="input-lng"
@@ -202,7 +226,7 @@ function EditSpotForm({ user, spot }) {
                     <div className="description-div">
                         <div className="description-text">
                             <h3>Describe your place to guests</h3>
-                            <p>Mention the best features of your space, any special amentities like
+                            <p className="edit-text">Mention the best features of your space, any special amentities like
                                 fast wifi or parking, and what you love about the neighborhood</p>
                         </div>
                         <textarea
@@ -210,28 +234,28 @@ function EditSpotForm({ user, spot }) {
                             type="text"
                             name="description"
                             placeholder="Please write at least 30 characters"
-                            required
                             value={formInfo.description}
                             onChange={onChangeHandler} />
+                        <span className="error-msg">{errors.description}</span>
                     </div>
                     <div className="name-div">
                         <div className="name-text">
                             <h3>Create a title for your spot</h3>
-                            <p>Catch guests' attention with a spot title that highlights what makes
+                            <p className="edit-text">Catch guests' attention with a spot title that highlights what makes
                                 your place special.</p>
                         </div>
                         <input
                             type="text"
                             name="name"
                             placeholder="Name of your spot"
-                            required
                             value={formInfo.name}
                             onChange={onChangeHandler} />
+                        <span className="error-msg">{errors.name}</span>
                     </div>
                     <div className="price-div">
                         <div className="price-text">
                             <h3>Set a base price for your spot</h3>
-                            <p>Competitive pricing can help your listing stand out and rank higher
+                            <p className="edit-text">Competitive pricing can help your listing stand out and rank higher
                                 in search results.</p>
                         </div>
                         <div>
@@ -241,9 +265,9 @@ function EditSpotForm({ user, spot }) {
                                 type="number"
                                 name="price"
                                 placeholder="Price per night (USD)"
-                                required
                                 value={formInfo.price}
                                 onChange={onChangeHandler} />
+                            <span className="error-msg">{errors.price}</span>
                         </div>
                     </div>
                     <h3 className="image-edit">

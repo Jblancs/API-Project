@@ -2,11 +2,13 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    /* border: 2px solid black; */
 }
 
 .form-container {
+    /* border: 2px solid black; */
     /* margin: 5px 350px; */
-    width: 330px;
+    width: 360px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -51,7 +53,7 @@ input {
     width: 4%;
     display: flex;
     align-items: flex-end;
-    margin: 0 0 5px 7px;
+    margin: 0 0 10px 7px;
 }
 
 .state-div {
@@ -64,7 +66,7 @@ input {
 
 .lat-lng-div {
     display: flex;
-    height: 50px;
+    height: 40px;
 }
 
 .lat-div {
@@ -78,7 +80,7 @@ input {
     width: 4%;
     display: flex;
     align-items: flex-end;
-    margin: 0 0 5px 7px;
+    margin: 0 0 10px 7px;
 }
 
 .lng-div {
@@ -140,4 +142,13 @@ input {
     box-shadow: 1px 1px 2px black;
     border: 2px solid black;
     font-weight: bold;
+}
+
+.edit-text {
+    font-size: 12px;
+}
+
+.error-msg {
+    color: red;
+    font-size: 12px;
 }
