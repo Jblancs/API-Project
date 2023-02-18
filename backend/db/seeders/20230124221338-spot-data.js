@@ -82,6 +82,18 @@ module.exports = {
         name: 'malesuada fames',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dapibus ultrices in iaculis nunc sed augue. Donec adipiscing tristique risus nec feugiat in. Magna etiam tempor orci eu lobortis elementum. Massa eget egestas purus viverra accumsan in nisl. Vulputate odio ut enim blandit volutpat maecenas volutpat. Sagittis orci a scelerisque purus semper eget duis at tellus. Faucibus ornare suspendisse sed nisi lacus sed viverra tellus in. Volutpat diam ut venenatis tellus. Nisi vitae suscipit tellus mauris a diam maecenas. Fringilla urna porttitor rhoncus dolor purus non enim praesent elementum. Scelerisque felis imperdiet proin fermentum leo vel orci. Sit amet mauris commodo quis. Netus et malesuada fames ac turpis egestas. Volutpat sed cras ornare arcu dui vivamus.',
         price: 425.00
+      },
+      {
+        ownerId: 1,
+        address: '2432 Frankford St',
+        city: 'Philadelphia',
+        state: 'PA',
+        country: 'USA',
+        lat: 27.687479,
+        lng: 57.332589,
+        name: 'Demo New House',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dapibus ultrices in iaculis nunc sed augue. Donec adipiscing tristique risus nec feugiat in. Magna etiam tempor orci eu lobortis elementum. Massa eget egestas purus viverra accumsan in nisl. Vulputate odio ut enim blandit volutpat maecenas volutpat. Sagittis orci a scelerisque purus semper eget duis at tellus. Faucibus ornare suspendisse sed nisi lacus sed viverra tellus in. Volutpat diam ut venenatis tellus. Nisi vitae suscipit tellus mauris a diam maecenas. Fringilla urna porttitor rhoncus dolor purus non enim praesent elementum. Scelerisque felis imperdiet proin fermentum leo vel orci. Sit amet mauris commodo quis. Netus et malesuada fames ac turpis egestas. Volutpat sed cras ornare arcu dui vivamus.',
+        price: 425.00
       }
     ], {});
   },
