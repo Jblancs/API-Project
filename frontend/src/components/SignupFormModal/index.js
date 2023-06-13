@@ -43,7 +43,6 @@ function SignupFormModal() {
         btn()
     }, [email, username, firstName, lastName, password, confirmPassword, errors])
 
-    console.log(disableBtn)
 
     const { closeModal } = useModal();
 

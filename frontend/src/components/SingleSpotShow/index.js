@@ -5,6 +5,7 @@ import { getSingleSpot, clearState } from "../../store/spotsReducer"
 import SpotImageShow from "./SpotImageShow"
 import ReviewRatings from "../ReviewRatings"
 import ReviewShow from "../Reviews/ReviewShow"
+import Bookings from "../Bookings"
 
 
 function SingleSpotShow() {
@@ -40,15 +41,7 @@ function SingleSpotShow() {
                     <div className="detail__info__descript">
                         {currentSpotState.spotData.description}
                     </div>
-                    <div className="booking__div">
-                        <span className="booking__price">
-                            ${currentSpotState.spotData.price} night
-                        </span>
-                        <div className="review-rating-div">
-                            <ReviewRatings currentSpotState={currentSpotState} />
-                        </div>
-                        <button className="booking__button" onClick={clickHandler}>Reserve</button>
-                    </div>
+                    <Bookings currentSpotState={currentSpotState}/>
                 </div>
                 <div className="review container">
                     <ReviewShow currentSpotState={currentSpotState} spotId={spotId} />
