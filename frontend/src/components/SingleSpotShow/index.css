@@ -122,7 +122,7 @@ img[class*="other"] {
     grid-area: resv;
     margin: 0px 0px 20px 30px;
     width: 100%;
-    background-color: rgb(242, 101, 105);
+    background-color: var(--global-pink);
     box-shadow: 2px 2px 1px black;
     color: white;
 }
