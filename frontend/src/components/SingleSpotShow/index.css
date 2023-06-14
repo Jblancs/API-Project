@@ -5,10 +5,11 @@
 /* image show formatting ----------------- */
 
 .detail__img {
-    /* border: 2px solid black; */
     display: grid;
     grid-template-rows: repeat(2, 300px);
     grid-template-columns: repeat(4, minmax(350px, 1fr));
+    border-radius: 30px;
+    overflow: hidden;
     grid-template-areas:
         "a a b b"
         "a a b b";
@@ -20,14 +21,13 @@
     object-fit: cover;
     object-position: center;
     height: 99%;
-    padding: 1px 3px;
+    /* padding: 1px 3px; */
 }
 
 .detail__img__small {
     grid-area: b;
     display: flex;
     flex-wrap: wrap;
-    /* border: 2px solid black; */
     height: 100%;
     width: 100%
 }
@@ -43,7 +43,6 @@ img[class*="other"] {
 /* description formatting ----------------- */
 
 .detail__info {
-    /* border: 2px solid black; */
     display: grid;
     border-bottom: 1px solid var(--global-gray);
     grid-template-rows: repeat(6, 65px);
@@ -61,12 +60,9 @@ img[class*="other"] {
     grid-area: host;
     display: flex;
     align-items: center;
-    /* border: 2px solid black; */
 }
 
 .detail__info__descript {
     grid-area: desc;
     overflow-wrap: break-word;
-    /* border: 2px solid black; */
 }
-

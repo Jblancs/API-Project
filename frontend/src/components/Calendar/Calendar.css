@@ -1,0 +1,37 @@
+.calendar-container{
+    width: 100%;
+    margin: 15px 0px;
+    border: 1px solid var(--global-gray);
+    border-radius: 10px;
+    padding: 10px 0 0 0;
+}
+
+.calendar-text{
+    padding-left: 17px;
+    display: flex;
+    width: 100%;
+    font-size: 13px;
+}
+
+.calendar-checkin{
+    padding-right: 23%;
+}
+
+.calendar-component{
+    width: 100%;
+}
+
+.react-daterange-picker__wrapper{
+    border: none;
+    width: 100%;
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 0px 15px;
+}
+
+.react-daterange-picker__inputGroup{
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    min-width: none;
+}
