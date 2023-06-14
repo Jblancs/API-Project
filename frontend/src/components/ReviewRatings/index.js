@@ -10,8 +10,8 @@ function ReviewRatings({ currentSpotState }) {
     if (reviewCount > 0) {
         reviewSpan = (
             <>
-                <span className="dot-span">·</span>
-                <span className="booking__review">
+                <span className="dot-span">&#8226;</span>
+                <span className="booking-review">
                     {`${currentSpotState.spotData.numReviews} ${reviewText}`}
                 </span>
             </>
@@ -19,13 +19,13 @@ function ReviewRatings({ currentSpotState }) {
     }
 
     return (
-        <>
-            <span className="booking__rating">
+        <div className="booking-rating-div">
+            <span className="booking-rating">
                 <i className="fa-solid fa-star" />
-                {currentSpotState.spotData.numReviews !== 0 ? currentSpotState.spotData.avgStarRating : "new"}
+                {currentSpotState.spotData.numReviews !== 0 ? ` ${currentSpotState.spotData.avgStarRating}` : "new"}
             </span>
             {reviewSpan}
-        </>
+        </div>
     )
 }
 

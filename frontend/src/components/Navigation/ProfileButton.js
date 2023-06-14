@@ -37,7 +37,7 @@ function ProfileButton({ user }) {
     const profileClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
     return (
-        <>
+        <div>
             <button className="profile-button" onClick={openMenu}>
                 <i className="fa-solid fa-user" />
             </button>
@@ -55,7 +55,7 @@ function ProfileButton({ user }) {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

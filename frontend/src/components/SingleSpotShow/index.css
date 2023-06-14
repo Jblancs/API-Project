@@ -45,16 +45,16 @@ img[class*="other"] {
 .detail__info {
     /* border: 2px solid black; */
     display: grid;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--global-gray);
     grid-template-rows: repeat(6, 65px);
     grid-template-columns: repeat(5, 20%);
     grid-template-areas:
         "host host host book book"
         "desc desc desc book book"
         "desc desc desc book book"
-        "desc desc desc none none"
-        "desc desc desc none none"
-        "desc desc desc none none";
+        "desc desc desc book book"
+        "desc desc desc book book"
+        "desc desc desc book book";
 }
 
 .detail__info__owner {
@@ -70,69 +70,3 @@ img[class*="other"] {
     /* border: 2px solid black; */
 }
 
-/* booking --------------------------------- */
-
-.booking__div {
-    grid-area: book;
-    border: 2px solid black;
-    width: 400px;
-    border-radius: 10px;
-    padding-top: 30px;
-    margin: 30px 5px 30px 30px;
-    display: grid;
-    grid-template-rows: repeat(3, 33%);
-    grid-template-columns: 15% 15% 15% 15% 7% 17%;
-    grid-template-areas:
-        "cost cost cost review review review"
-        "resv resv resv resv resv resv"
-        "resv resv resv resv resv resv";
-}
-
-
-.booking__price {
-    grid-area: cost;
-    margin: 0px 20px 20px 25px;
-}
-
-.review-rating-div {
-    grid-area: review;
-    display: grid;
-    width: 100%;
-    grid-template-columns: 40% 20% 40%;
-    grid-template-areas:
-        "rate dot rev";
-
-}
-
-.booking__rating {
-    grid-area: rate;
-    text-align: right;
-}
-
-.dot-span {
-    grid-area: dot;
-    text-align: right;
-}
-
-.booking__review {
-    width: 120px;
-    grid-area: rev;
-    text-align: center;
-    margin-right: 20px;
-
-}
-
-.booking__button {
-    grid-area: resv;
-    margin: 0px 0px 20px 30px;
-    width: 100%;
-    background-color: var(--global-pink);
-    box-shadow: 2px 2px 1px black;
-    color: white;
-}
-
-.booking__button:hover {
-    box-shadow: 2px 2px 2px black;
-    border: 3px solid black;
-    font-weight: bold;
-}

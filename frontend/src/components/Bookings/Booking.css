@@ -1,0 +1,63 @@
+/* booking --------------------------------- */
+.booking-container{
+    grid-area: book;
+}
+
+
+.booking-div {
+    border: 2px solid var(--global-gray);
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px var(--global-gray);
+    padding-top: 30px;
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.booking-price-review-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0px 5%;
+    width: 90%;
+}
+
+.booking-price-num{
+    font-size: 25px;
+}
+
+/* review rating display ------------------------- */
+.review-rating-div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.dot-span{
+    padding: 0px 5px;
+}
+
+.booking-review{
+    color: var(--global-gray-text);
+}
+
+/* -------------------------------------------------- */
+
+.booking-button {
+    margin: 30px 5%;
+    width: 90%;
+    height: 70px;
+    border-radius: 10px;
+    border: 1px solid var(--global-pink);
+    background-color: var(--global-pink);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.booking-button:hover {
+    box-shadow: 2px 2px 10px var(--global-gray);
+    border: 1px solid var(--global-gray);
+    font-weight: bold;
+}

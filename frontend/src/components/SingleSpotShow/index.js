@@ -3,7 +3,6 @@ import { useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
 import { getSingleSpot, clearState } from "../../store/spotsReducer"
 import SpotImageShow from "./SpotImageShow"
-import ReviewRatings from "../ReviewRatings"
 import ReviewShow from "../Reviews/ReviewShow"
 import Bookings from "../Bookings"
 
@@ -41,7 +40,9 @@ function SingleSpotShow() {
                     <div className="detail__info__descript">
                         {currentSpotState.spotData.description}
                     </div>
-                    <Bookings currentSpotState={currentSpotState}/>
+                    <div className="booking-container">
+                        <Bookings currentSpotState={currentSpotState} />
+                    </div>
                 </div>
                 <div className="review container">
                     <ReviewShow currentSpotState={currentSpotState} spotId={spotId} />
