@@ -1,5 +1,11 @@
-.detail-container {
-    margin: 0 50px
+.page-container{
+    display: flex;
+    justify-content: center;
+}
+
+.detail-container{
+    width: 80%;
+    min-width: 1500px;
 }
 
 /* image show formatting ----------------- */
@@ -42,11 +48,11 @@ img[class*="other"] {
 
 /* description formatting ----------------- */
 
-.detail__info {
+.detail-info {
     display: grid;
     border-bottom: 1px solid var(--global-gray);
-    grid-template-rows: repeat(6, 65px);
-    grid-template-columns: repeat(5, 20%);
+    grid-template-rows: 120px repeat(5, 1fr);
+    grid-template-columns: repeat(5, minmax(250px, 1fr));
     grid-template-areas:
         "host host host book book"
         "desc desc desc book book"
@@ -56,13 +62,17 @@ img[class*="other"] {
         "desc desc desc book book";
 }
 
-.detail__info__owner {
+.detail-info-owner {
     grid-area: host;
     display: flex;
     align-items: center;
 }
 
-.detail__info__descript {
+.detail-other-info-container {
     grid-area: desc;
-    overflow-wrap: break-word;
+    min-width: 600px;
+}
+
+.booking-container{
+    grid-area: book;
 }

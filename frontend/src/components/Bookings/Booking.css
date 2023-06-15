@@ -1,8 +1,4 @@
 /* booking --------------------------------- */
-.booking-container{
-    grid-area: book;
-}
-
 
 .booking-div {
     border: 2px solid var(--global-gray);
@@ -23,7 +19,19 @@
     width: 90%;
 }
 
+.booking-price{
+    display: flex;
+    align-items: flex-end;
+}
+
+.booking-price-night{
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+
 .booking-price-num{
+    display: flex;
+    align-items: flex-end;
     font-size: 25px;
 }
 
@@ -31,6 +39,7 @@
 .review-rating-div {
     display: flex;
     justify-content: space-around;
+    padding-bottom: 5px;
 }
 
 .dot-span{

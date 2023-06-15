@@ -17,7 +17,7 @@
     padding-right: 23%;
 }
 
-.calendar-component{
+.date-range-component{
     width: 100%;
 }
 
@@ -34,4 +34,11 @@
     width: 200px;
     height: 50px;
     min-width: none;
+}
+
+.calendar-component{
+    position: absolute;
+    border: 1px solid var(--global-gray);
+    border-radius: 5px;
+    top: 5px;
 }

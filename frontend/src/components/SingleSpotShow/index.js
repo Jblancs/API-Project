@@ -5,6 +5,7 @@ import { getSingleSpot, clearState } from "../../store/spotsReducer"
 import SpotImageShow from "./SpotImageShow"
 import ReviewShow from "../Reviews/ReviewShow"
 import Bookings from "../Bookings"
+import SpotDetails from "./SpotDetails"
 
 
 function SingleSpotShow() {
@@ -26,19 +27,19 @@ function SingleSpotShow() {
     return (
         <div className="page-container">
             <div className="detail-container">
-                <h1 className="detail__name">
+                <h1 className="detail-name">
                     {currentSpotState.spotData.name}
                 </h1>
-                <h2 className="detail__loc">
+                <h2 className="detail-loc">
                     {currentSpotState.spotData.city}, {currentSpotState.spotData.state}, {currentSpotState.spotData.country}
                 </h2>
                 <SpotImageShow images={currentSpotState.SpotImages} />
-                <div className="detail__info">
-                    <h1 className="detail__info__owner">
-                        Hosted by {currentSpotState.Owner.firstName} {currentSpotState.Owner.lastName}
+                <div className="detail-info">
+                    <h1 className="detail-info-owner">
+                        Entire home hosted by {currentSpotState.Owner.firstName} {currentSpotState.Owner.lastName}
                     </h1>
-                    <div className="detail__info__descript">
-                        {currentSpotState.spotData.description}
+                    <div className="detail-other-info-container">
+                        <SpotDetails currentSpotState={currentSpotState} />
                     </div>
                     <div className="booking-container">
                         <Bookings currentSpotState={currentSpotState} />

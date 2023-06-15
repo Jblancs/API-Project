@@ -18,7 +18,13 @@ function Calendar() {
                 CHECK-OUT
             </div>
         </div>
-        <DateRangePicker onChange={onChange} value={value} rangeDivider="" className="calendar-component" />
+        <DateRangePicker
+            onChange={onChange}
+            value={value}
+            rangeDivider=""
+            className="date-range-component"
+            calendarClassName="calendar-component"
+        />
     </div>
   );
 }
