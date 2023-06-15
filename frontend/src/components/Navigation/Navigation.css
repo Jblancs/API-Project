@@ -76,11 +76,12 @@
 .nav-button__spot__btn {
     border: none;
     background-color: white;
-    color: rgb(37, 130, 151);
+    color: var(--global-gray-text);
     font-size: 15px;
     font-weight: bold;
     width: 150px;
     margin-top: 7px;
+    cursor: pointer;
     /* border: 2px solid black; */
 }
 

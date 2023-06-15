@@ -55,7 +55,9 @@ function ManageSpots() {
                             <div className="image-div-container">
                                 <Link key={`link${spot.id}`} className="curr-link" to={`/spots/${spot.id}`}>
                                     <div className="hover-container">
-                                        <img key={`img${spot.id}`} className="curr__prev__img" src={spot.previewImage} />
+                                        <div className="curr__prev__img__div">
+                                            <img key={`img${spot.id}`} className="curr__prev__img" src={spot.previewImage} />
+                                        </div>
                                         <div key={`curr__prev__locrate${spot.id}`} className="curr__prev__locrate">
                                             <div key={`loc${spot.id}`} className="curr__prev__loc">
                                                 {spot.city}, {spot.state}

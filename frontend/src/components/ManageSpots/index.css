@@ -81,13 +81,25 @@
     /* border: 2px solid black; */
     width: 270px;
     height: 250px;
-    margin: 5px;
     display: flex;
     justify-content: center;
+    object-fit: cover;
+    object-position: center;
+    transition-timing-function: ease-in-out;
+    transition-duration: 300ms;
 }
 
-.hover-container:hover>img {
-    box-shadow: 6px 6px 6px gray;
+.curr__prev__img__div{
+    width: 270px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.hover-container:hover>.curr__prev__img__div>.curr__prev__img {
+    width: 280px;
+    height: 260px;
+    filter: brightness(0.8);
 }
 
 .curr__prev__locrate {

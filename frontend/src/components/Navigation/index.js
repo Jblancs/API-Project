@@ -18,7 +18,7 @@ function Navigation({ isLoaded }) {
                 <div className='nav-button__spot'>
                     <NavLink to="/spots/new">
                         <button className='nav-button__spot__btn'>
-                            Create a New Spot
+                            PearBnb your home
                         </button>
                     </NavLink>
                 </div>
