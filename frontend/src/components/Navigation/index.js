@@ -29,15 +29,10 @@ function Navigation({ isLoaded }) {
         );
     } else {
         sessionLinks = (
-            <div>
-                <OpenModalButton
-                    buttonText="Log In"
-                    modalComponent={<LoginFormModal />}
-                />
-                <OpenModalButton
-                    buttonText="Sign Up"
-                    modalComponent={<SignupFormModal />}
-                />
+            <div className='nav-button-div-no-user'>
+                <div className='profile-container-no-user'>
+                    <ProfileButton user={sessionUser} />
+                </div>
             </div>
         );
     }
@@ -45,16 +40,16 @@ function Navigation({ isLoaded }) {
     return (
         <nav className='nav__container'>
             <div className='nav__bar'>
-            <NavLink exact to="/" style={{ textDecoration: 'none' }}>
-                <div className='nav__logo'>
-                    <img className="nav__logo__img" src={pearHouse} alt="pearImage" />
-                    <span className="nav__logo__text">Pearbnb</span>
+                <NavLink exact to="/" style={{ textDecoration: 'none' }}>
+                    <div className='nav__logo'>
+                        <img className="nav__logo__img" src={pearHouse} alt="pearImage" />
+                        <span className="nav__logo__text">Pearbnb</span>
+                    </div>
+                </NavLink>
+                <div className='nav__buttons'>
+                    {isLoaded && sessionLinks}
                 </div>
-            </NavLink>
-            <div className='nav__buttons'>
-                {isLoaded && sessionLinks}
             </div>
-        </div>
         </nav>
     );
 }

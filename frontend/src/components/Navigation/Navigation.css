@@ -24,7 +24,6 @@
 .nav__buttons {
     grid-area: button;
     display: flex;
-    justify-content: center;
     margin-top: 10px;
     height: 100%;
     width: 100%;
@@ -56,6 +55,14 @@
     margin: 5px 0 0 0px;
 }
 
+.profile-container-no-user{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 5px 0 0 0px;
+    width: 100%;
+}
+
 
 .profile-dropdown {
     position: relative;
@@ -70,8 +77,20 @@
     z-index: 5;
 }
 
+.no-user-drop{
+    position: relative;
+    right: 0px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.profile-button-no-user{
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-button-div-no-user,
 .nav-button-div {
-    /* position: relative; */
     display: flex;
     height: 60px;
     width: 100%;
@@ -100,8 +119,18 @@
     background-color: var(--global-gray);
 }
 
+.profile-button-container-no-user,
+.profile-button-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-button-container-no-user{
+    align-items: flex-end;
+    padding-right: 42px;
+}
+
 .profile-button {
-    /* position: relative; */
     border: 2px solid var(--global-gray);
     background-color: transparent;
     border-radius: 30px;
@@ -192,11 +221,27 @@
     color: white;
     width: 70px;
     margin-right: 10px;
-
     box-shadow: 2px 2px black;
 }
 
 .modal-buttons:hover {
     box-shadow: 3px 3px 3px black;
     font-weight: bold;
+}
+
+.button-drop-no-user{
+    width: 100%;
+    padding: 10px 10px;
+    margin: 0;
+    background-color: transparent;
+    color: black;
+    border: none;
+    text-align: left;
+    box-shadow: none;
+    font-size: 17px;
+}
+
+.button-drop-no-user:hover{
+    box-shadow: none;
+    background-color: var(--global-gray);
 }
