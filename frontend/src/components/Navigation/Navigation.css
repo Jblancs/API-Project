@@ -2,10 +2,16 @@
     display: none
 }
 
-.nav__bar {
+.nav__container{
+    display: flex;
+    justify-content: center;
     border-bottom: 1px solid lightgrey;
+}
+
+.nav__bar {
     padding: 30px 10px;
     text-decoration: none;
+    width: 1500px;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(3, 20px);
@@ -31,7 +37,7 @@
 }
 
 .nav__logo__img {
-    width: 80px;
+    width: 70px;
 }
 
 .nav__logo__text {
