@@ -25,3 +25,8 @@ code {
 .border{
   border: 1px solid blue;
 }
+
+.sticky{
+  position: sticky;
+  top: 1%;
+}

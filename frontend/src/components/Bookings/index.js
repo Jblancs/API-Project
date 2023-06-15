@@ -6,7 +6,7 @@ import Calendar from "../Calendar";
 function Bookings({ currentSpotState }) {
 
     return (
-        <div className="booking-container">
+        <div className="booking-container sticky">
             <div className="booking-div">
                 <div className="booking-price-review-div">
                     <div className="booking-price">
