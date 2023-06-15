@@ -24,10 +24,10 @@
 .nav__buttons {
     grid-area: button;
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 5px;
-    margin-top: 20px;
+    justify-content: center;
+    margin-top: 10px;
+    height: 100%;
+    width: 100%;
 }
 
 .nav__logo {
@@ -52,71 +52,107 @@
 .profile-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    /* border: 2px solid black; */
+    height: auto;
+    margin: 5px 0 0 0px;
 }
 
+
 .profile-dropdown {
-    position: absolute;
-    right: 15px;
-    font-size: 12px;
+    position: relative;
+    font-size: 17px;
     padding: 4px 5px 0px 5px;
-    width: 110px;
-    border: 1px solid black;
+    margin-top: 15px;
+    border-radius: 10px;
+    background-color: white;
+    width: 200px;
+    right: 110px;
+    border: 1px solid var(--global-gray);
+    z-index: 5;
 }
 
 .nav-button-div {
+    /* position: relative; */
     display: flex;
+    height: 60px;
+    width: 100%;
 }
 
 .nav-button__spot {
-    margin: 0px 5px;
+    margin: 7px 5px;
 }
 
 .nav-button__spot__btn {
     border: none;
     background-color: white;
     color: var(--global-gray-text);
-    font-size: 15px;
+    font-size: 16px;
     font-weight: bold;
-    width: 150px;
-    margin-top: 7px;
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    margin-top: 5px;
     cursor: pointer;
-    /* border: 2px solid black; */
+    transition-timing-function: ease-in-out;
+    transition-duration: 200ms;
 }
 
 .nav-button__spot__btn:hover {
-    text-decoration: underline;
+    background-color: var(--global-gray);
 }
 
 .profile-button {
-    border: 2px solid black;
-    margin-bottom: 5px;
-    border-radius: 15px;
-    padding: 5px 15px;
-    width: 50px;
-    height: 30px;
+    /* position: relative; */
+    border: 2px solid var(--global-gray);
+    background-color: transparent;
+    border-radius: 30px;
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition-timing-function: ease-in-out;
+    transition-duration: 200ms;
+}
+
+.profile-button:hover{
+    box-shadow: 2px 2px 5px var(--global-gray);
+}
+
+.user-icon{
+    padding: 8px;
+    margin-left: 5px;
+}
+
+.fa-user{
+    border: 1px solid gray;
+    background-color: gray;
+    width: 20px;
+    border-radius: 30px;
+    color: white;
 }
 
 .profile-username {
     border: none;
     background-color: white;
     text-align: left;
+    padding: 10px 10px 0 10px;
 }
 
 .profile-email {
     border: none;
     background-color: white;
     text-align: left;
-    margin: 4px 0;
+    padding: 10px;
 }
 
 .profile-manage-btn {
-    border-top: 1px solid black;
-    font-size: 12px;
+    /* border-top: 1px solid var(--global-gray); */
+    font-size: 17px;
     background-color: white;
     text-align: left;
-    padding: 3px 0;
+    padding: 10px;
 }
 
 .profile-manage-btn:hover {
@@ -125,11 +161,12 @@
 
 
 .profile-manage-div {
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    border-top: 1px solid var(--global-gray);
+    border-bottom: 1px solid var(--global-gray);
 }
 
 .profile-logout-div {
+    padding: 10px;
     display: flex;
     justify-content: center;
     margin: 3px 0;
@@ -138,7 +175,8 @@
 .profile-logout-btn {
     border: 1px solid black;
     border-radius: 15px;
-    font-size: 12px;
+    font-size: 17px;
+    width: 100%;
     color: white;
     padding: 5px;
     background-color: gray;
