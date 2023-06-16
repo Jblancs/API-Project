@@ -6,6 +6,7 @@ import SpotImageShow from "./SpotImageShow"
 import ReviewShow from "../Reviews/ReviewShow"
 import Bookings from "../Bookings"
 import SpotDetails from "./SpotDetails"
+import { getBookings } from "../../store/booking"
 
 
 function SingleSpotShow() {
@@ -14,11 +15,12 @@ function SingleSpotShow() {
 
     useEffect(() => {
         dispatch(getSingleSpot(spotId))
+        dispatch(getBookings(spotId))
         return () => dispatch(clearState())
     }, [dispatch])
 
     const currentSpotState = useSelector(state => state.spots.singleSpot)
-    if (Object.values(currentSpotState).length === 0) return null
+    if (Object.values(currentSpotState).length === 0) return <div className='loading-div'><img src='/images/loading.gif' alt='loading' /></div>
 
     return (
         <div className="page-container">

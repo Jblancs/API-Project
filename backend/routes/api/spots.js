@@ -520,7 +520,7 @@ router.get('/:spotId/bookings', async (req, res, next) => {
             where: {
                 spotId: req.params.spotId
             },
-            attributes: ["spotId", "startDate", "endDate"]
+            // attributes: ["spotId", "startDate", "endDate"]
         })
 
         bookings.forEach(booking => {
