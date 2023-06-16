@@ -56,11 +56,10 @@
     margin: 0 5%;
 }
 
-/* ------------------------------------------------- */
 .booking-button {
     margin: 15px 5% 30px 5%;
     width: 90%;
-    height: 70px;
+    height: 60px;
     border-radius: 10px;
     border: 1px solid var(--global-pink);
     background-color: var(--global-pink);
@@ -70,7 +69,42 @@
 }
 
 .booking-button:hover {
-    box-shadow: 2px 2px 10px var(--global-gray);
+    box-shadow: 2px 2px 5px var(--global-gray);
     border: 1px solid var(--global-gray);
     font-weight: bold;
+    color: rgb(227, 227, 227);
+}
+
+/* booking cost display ------------------------------- */
+.booking-cost-container{
+    width: 90%;
+    margin: 30px 5%;
+    margin-top: 0;
+    font-size: 18px;
+    color: var(--global-gray-text);
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    max-height: 0px;
+}
+
+.show-booking-detail{
+    max-height: 500px;
+}
+
+.booking-cost-total-div,
+.booking-cost-div{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.booking-cost-type{
+    text-decoration: underline;
+}
+
+.booking-cost-total-div{
+    border-top: 1px solid var(--global-gray);
+    margin-top: 10px;
+    padding-top: 15px;
+    color: black;
 }

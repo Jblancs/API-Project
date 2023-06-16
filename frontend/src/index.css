@@ -1,7 +1,7 @@
 :root{
   --global-pink: #ff385c;
   --global-gray: rgb(221, 221, 221);
-  --global-gray-text: #717171;
+  --global-gray-text: #575757;
 }
 
 body {
@@ -28,5 +28,5 @@ code {
 
 .sticky{
   position: sticky;
-  top: 1%;
+  top: 10%;
 }

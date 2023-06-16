@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DateRangePicker from '@wojtekmaj/react-daterange-picker';
 import '@wojtekmaj/react-daterange-picker/dist/DateRangePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import './Calendar.css'
 
-function Calendar() {
-  const [value, onChange] = useState([new Date(), new Date()]);
-  console.log(value)
+function Calendar({setStartDate, setEndDate}) {
+    const [value, setValue] = useState([]);
 
-  return (
+    useEffect(() => {
+        if(value.length === 2){
+            setStartDate(value[0])
+            setEndDate(value[1])
+        }
+    }, [value])
+
+    return (
     <div className='calendar-container'>
         <div className='calendar-text'>
             <div className='calendar-checkin'>
@@ -19,14 +25,15 @@ function Calendar() {
             </div>
         </div>
         <DateRangePicker
-            onChange={onChange}
+            onChange={setValue}
             value={value}
             rangeDivider=""
             className="date-range-component"
             calendarClassName="calendar-component"
+            clearIcon={null}
         />
     </div>
-  );
-}
+    );
+    }
 
 export default Calendar

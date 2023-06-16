@@ -8,6 +8,10 @@
     min-width: 1500px;
 }
 
+.detail-title-div{
+    padding: 20px 0;
+}
+
 /* image show formatting ----------------- */
 
 .detail__img {

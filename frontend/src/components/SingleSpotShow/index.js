@@ -20,19 +20,17 @@ function SingleSpotShow() {
     const currentSpotState = useSelector(state => state.spots.singleSpot)
     if (Object.values(currentSpotState).length === 0) return null
 
-    const clickHandler = (e) => {
-        alert("Feature coming soon")
-    }
-
     return (
         <div className="page-container">
             <div className="detail-container">
-                <h1 className="detail-name">
-                    {currentSpotState.spotData.name}
-                </h1>
-                <h2 className="detail-loc">
-                    {currentSpotState.spotData.city}, {currentSpotState.spotData.state}, {currentSpotState.spotData.country}
-                </h2>
+                <div className="detail-title-div">
+                    <h1 className="detail-name">
+                        {currentSpotState.spotData.name}
+                    </h1>
+                    <h2 className="detail-loc">
+                        {currentSpotState.spotData.city}, {currentSpotState.spotData.state}, {currentSpotState.spotData.country}
+                    </h2>
+                </div>
                 <SpotImageShow images={currentSpotState.SpotImages} />
                 <div className="detail-info">
                     <h1 className="detail-info-owner">
