@@ -25,7 +25,7 @@ export const getBookings = (spotId) => async dispatch => {
 }
 
 const initialState = {
-    bookings: {}
+    bookings: null
 }
 
 const bookingReducer = (state = initialState, action) => {

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import ReviewRatings from "../ReviewRatings"
 import "./Booking.css"
-import Calendar from "../Calendar";
+import CalendarComponent from "../Calendar";
 
-function Bookings({ currentSpotState }) {
+function Bookings({ currentSpotState, bookings, user }) {
     const [startDate, setStartDate] = useState("")
     const [endDate, setEndDate] = useState("")
+    // console.log(startDate)
 
     // Helper functions ------------------------------------------------------------------------
     const getDayDiff = (start, end) => {
@@ -16,7 +17,6 @@ function Bookings({ currentSpotState }) {
         let dayDiff = Math.floor(diff / (1000 * 60 * 60 * 24))
         return dayDiff
     }
-
 
     // Cost Display ----------------------------------------------------------------------------
     let nightTotal = Number(currentSpotState.spotData.price * getDayDiff(startDate, endDate)).toFixed(2)
@@ -78,9 +78,9 @@ function Bookings({ currentSpotState }) {
                 </div>
                 <form>
                     <div className="booking-form-container">
-                        <Calendar setStartDate={setStartDate} setEndDate={setEndDate} />
+                        <CalendarComponent setStartDate={setStartDate} setEndDate={setEndDate} startDate={startDate} endDate={endDate} bookings={bookings}/>
                     </div>
-                    <button className="booking-button bold">Reserve</button>
+                    <button className="booking-button bold" disabled={user ? false : true}>Reserve</button>
                 </form>
                 {costDisplay}
             </div>
