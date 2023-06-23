@@ -14,10 +14,6 @@ function CalendarComponent({ setStartDate, setEndDate, startDate, endDate, booki
             setShowCalendar(false)
         }
     }, [startDate, endDate])
-    console.log("current startDate: ",startDate, " --------Original startDate > ", oldStartDate)
-    console.log("current endDate: ",endDate, " --------Original endDate > ", oldEndDate)
-
-
 
     // calendar Ref useEffect ----------------------------------------------------------------------------
     useEffect(() => {
