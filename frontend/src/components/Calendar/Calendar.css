@@ -14,12 +14,13 @@
     font-size: 13px;
 }
 
+
 .calendar-checkin-div,
 .calendar-checkout-div{
     display: flex;
     flex-direction: column;
     width: 46%;
-    padding: 3% 3% 3% 3%;
+    padding: 3%;
     height: 96%;
     cursor: pointer;
 }
@@ -31,6 +32,13 @@
 .calendar-checkout-text,
 .calendar-checkin-text{
     width: 100%;
+}
+
+.double-calender-clear{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    padding: 0px 20px;
 }
 
 .booking-date-input{
@@ -61,6 +69,31 @@
 
 .double-calendar-div{
     display: flex;
+}
+
+.double-calendar-checkout-div,
+.double-calendar-checkin-div{
+    display: flex;
+    justify-content: space-between;
+    width: 46%;
+    padding: 3%;
+    height: 96%;
+}
+
+.double-calender-clear{
+    cursor: pointer;
+}
+
+.double-calendar-checkin-div{
+    border-right: 1px solid var(--global-gray);
+}
+
+.end-calendar{
+    padding-left: 3%;
+}
+
+.start-calendar{
+    padding-right: 3%;
 }
 
 .end-calendar,

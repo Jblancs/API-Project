@@ -42,7 +42,7 @@ function CalendarComponent({ setStartDate, setEndDate, startDate, endDate, booki
     const formatDisplayDate = (date) => {
         let day = (new Date(date)).getDate()
         let month = (new Date(date)).getMonth() + 1
-        let year = (new Date(date)).getYear()
+        let year = (new Date(date)).getFullYear()
 
         return `${month} / ${day} / ${year}`
     }
@@ -54,16 +54,22 @@ function CalendarComponent({ setStartDate, setEndDate, startDate, endDate, booki
         let pastDates = date <= new Date()
 
         // Disable dates within existing bookings
+        let isWithinRange;
         if (bookingList.length > 0) {
-            const isWithinRange = bookingList.some((range) => {
+            isWithinRange = bookingList.some((range) => {
                 let start = new Date(range.startDate)
                 let end = new Date(range.endDate)
                 return date >= start && date <= end;
             });
-
-            return pastDates || isWithinRange;
         }
-        return pastDates
+
+        // disable dates based on start/end dates
+        let basedOnDatePick;
+        if(endDate){
+            basedOnDatePick = date >= endDate
+        }
+
+        return pastDates || isWithinRange;
     };
 
     const tileDisabledEnd = ({ date }) => {
@@ -71,16 +77,22 @@ function CalendarComponent({ setStartDate, setEndDate, startDate, endDate, booki
         let pastDates = date <= new Date()
 
         // Disable dates within existing bookings
+        let isWithinRange;
         if (bookingList.length > 0) {
-            const isWithinRange = bookingList.some((range) => {
+            isWithinRange = bookingList.some((range) => {
                 let start = new Date(range.startDate)
                 let end = new Date(range.endDate)
                 return date >= start && date <= end;
             });
-
-            return pastDates || isWithinRange;
         }
-        return pastDates
+
+        // disable dates based on start/end dates
+        let basedOnDatePick;
+        if(startDate){
+            basedOnDatePick = date <= startDate
+        }
+
+        return pastDates || isWithinRange || basedOnDatePick
     };
 
     // Event Handler --------------------------------------------------------------------------------------
@@ -94,20 +106,30 @@ function CalendarComponent({ setStartDate, setEndDate, startDate, endDate, booki
         calendarDisplay = (
             <div className='double-calendar-container' ref={calendarRef}>
                 <div className='calendar-check-container'>
-                    <div className='calendar-checkin-div'>
-                        <div className='double-calendar-checkin-text bold'>
-                            CHECK-IN
+                    <div className='double-calendar-checkin-div'>
+                        <div className="double-calendar-text-div">
+                            <div className='double-calendar-checkin-text bold'>
+                                CHECK-IN
+                            </div>
+                            <div className='booking-date-input-display'>
+                                {startDate ? formatDisplayDate(startDate) : "MM / DD / YYYY"}
+                            </div>
                         </div>
-                        <div className='booking-date-input-display'>
-                            {startDate ? formatDisplayDate(startDate) : "MM / DD / YYYY"}
+                        <div className='double-calender-clear'>
+                            <i className="fas fa-multiply" onClick={() => setStartDate("")}/>
                         </div>
                     </div>
-                    <div className='calendar-checkout-div'>
-                        <div className='double-calendar-checkout-text bold'>
-                            CHECK-OUT
+                    <div className='double-calendar-checkout-div'>
+                        <div className="double-calendar-text-div">
+                            <div className='double-calendar-checkout-text bold'>
+                                CHECK-OUT
+                            </div>
+                            <div className='booking-date-input-display'>
+                                {endDate ? formatDisplayDate(endDate) : "MM / DD / YYYY"}
+                            </div>
                         </div>
-                        <div className='booking-date-input-display'>
-                            {endDate ? formatDisplayDate(endDate) : "MM / DD / YYYY"}
+                        <div className='double-calender-clear' onClick={() => setEndDate("")}>
+                            <i className="fas fa-multiply" />
                         </div>
                     </div>
                 </div>
