@@ -56,8 +56,9 @@
     padding: 20px;
     border: 1px solid var(--global-gray);
     border-radius: 10px;
-    right: 0px;
-    top: 100px;
+    right: -3px;
+    top: -3px;
+
     background-color: white;
 }
 

@@ -2,20 +2,22 @@ import React, { useEffect, useState, useRef } from 'react';
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 import './Calendar.css'
-// import DateRangePicker from '@wojtekmaj/react-daterange-picker';
-// import '@wojtekmaj/react-daterange-picker/dist/DateRangePicker.css';
 
 function CalendarComponent({ setStartDate, setEndDate, startDate, endDate, bookings }) {
     const calendarRef = useRef();
-    const [value, setValue] = useState([]);
     const [showCalendar, setShowCalendar] = useState(false);
+    const [oldStartDate, setOldStartDate] = useState("")
+    const [oldEndDate, setOldEndDate] = useState("")
 
     useEffect(() => {
-        if (value.length === 2) {
-            setStartDate(value[0])
-            setEndDate(value[1])
+        if(startDate && endDate && startDate !== oldStartDate && endDate !== oldEndDate){
+            setShowCalendar(false)
         }
-    }, [value])
+    }, [startDate, endDate])
+    console.log("current startDate: ",startDate, " --------Original startDate > ", oldStartDate)
+    console.log("current endDate: ",endDate, " --------Original endDate > ", oldEndDate)
+
+
 
     // calendar Ref useEffect ----------------------------------------------------------------------------
     useEffect(() => {
@@ -174,6 +176,18 @@ function CalendarComponent({ setStartDate, setEndDate, startDate, endDate, booki
     // Event Handler --------------------------------------------------------------------------------------
     const showCalendarClick = () => {
         setShowCalendar(!showCalendar)
+        setOldStartDate(startDate)
+        setOldEndDate(endDate)
+    }
+
+    const startDateOnChange = (date) => {
+        setOldStartDate(startDate)
+        setStartDate(date)
+    }
+
+    const endDateOnChange = (date) => {
+        setOldEndDate(endDate)
+        setEndDate(date)
     }
 
     // Double Calendar Display ----------------------------------------------------------------------------
@@ -213,14 +227,14 @@ function CalendarComponent({ setStartDate, setEndDate, startDate, endDate, booki
                     <div className='start-calendar-div'>
                         <Calendar
                             className='start-calendar'
-                            onChange={setStartDate}
+                            onChange={startDateOnChange}
                             tileDisabled={tileDisabledStart}
                         />
                     </div>
                     <div className='end-calendar-div'>
                         <Calendar
                             className='end-calendar'
-                            onChange={setEndDate}
+                            onChange={endDateOnChange}
                             tileDisabled={tileDisabledEnd}
                         />
                     </div>
@@ -240,16 +254,6 @@ function CalendarComponent({ setStartDate, setEndDate, startDate, endDate, booki
                     <div className='booking-date-input'>
                         {startDate ? formatDisplayDate(startDate) : "MM / DD / YYYY"}
                     </div>
-                    {/* <input
-                        className='booking-date-input'
-                        type='text'
-                        value={startDate ? formatDisplayDate(startDate) : ""}
-                        placeholder="MM / DD / YYYY"
-                        // onChange={startOnChange}
-                        // onClick={onClickShowCalender}
-                        // disabled={disableField}
-                        readOnly
-                    /> */}
                 </div>
                 <div className='calendar-checkout-div'>
                     <div className='calendar-checkout-text bold'>
@@ -258,28 +262,9 @@ function CalendarComponent({ setStartDate, setEndDate, startDate, endDate, booki
                     <div className='booking-date-input'>
                         {endDate ? formatDisplayDate(endDate) : "MM / DD / YYYY"}
                     </div>
-                    {/* <input
-                        className='booking-date-input'
-                        type='text'
-                        value={endDate ? formatDisplayDate(endDate) : ""}
-                        placeholder="MM / DD / YYYY"
-                        // onChange={startOnChange}
-                        // onClick={onClickShowCalender}
-                        // disabled={disableField}
-                        readOnly
-                    /> */}
                 </div>
             </div>
             {calendarDisplay}
-            {/* <DateRangePicker
-                onChange={setValue}
-                value={value}
-                rangeDivider=""
-                className="date-range-component"
-                calendarClassName="calendar-component"
-                clearIcon={null}
-                tileDisabled={tileDisabled}
-                /> */}
         </div>
 
     );
