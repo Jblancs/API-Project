@@ -14,7 +14,7 @@ const loadBookings = bookingList => ({
 })
 
 
-// Load spot bookings -------------------------------
+// Load spot bookings -----------------------------------------------------
 export const getBookings = (spotId) => async dispatch => {
     const res = await csrfFetch((spotId ? `/api/spots/${spotId}/bookings` : "/api/bookings/current"));
 
@@ -24,6 +24,21 @@ export const getBookings = (spotId) => async dispatch => {
     }
 }
 
+// Create spot bookings ---------------------------------------------------
+export const createBooking = (bookingData, spotId) => async dispatch => {
+    const res = await csrfFetch(`/api/spots/${spotId}/bookings`, {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(bookingData)
+    })
+
+    if (res.ok) {
+        const booking = await res.json()
+        dispatch(getBookings(spotId))
+    }
+}
+
+// bookings reducer -------------------------------------------------------
 const initialState = {
     bookings: null
 }

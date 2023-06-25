@@ -2,10 +2,11 @@ import React, { useEffect, useState, useRef } from 'react';
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 import './Calendar.css'
+import { useShowCalendar } from '../../context/Calendar';
 
 function CalendarComponent({ setStartDate, setEndDate, startDate, endDate, bookings }) {
     const calendarRef = useRef();
-    const [showCalendar, setShowCalendar] = useState(false);
+    const {showCalendar, setShowCalendar} = useShowCalendar();
     const [oldStartDate, setOldStartDate] = useState("")
     const [oldEndDate, setOldEndDate] = useState("")
 

@@ -6,7 +6,6 @@ import CalendarComponent from "../Calendar";
 function Bookings({ currentSpotState, bookings, user }) {
     const [startDate, setStartDate] = useState("")
     const [endDate, setEndDate] = useState("")
-    // console.log(startDate)
 
     // Helper functions ------------------------------------------------------------------------
     const getDayDiff = (start, end) => {
@@ -16,6 +15,23 @@ function Bookings({ currentSpotState, bookings, user }) {
         let diff = endMS - startMS
         let dayDiff = Math.floor(diff / (1000 * 60 * 60 * 24))
         return dayDiff
+    }
+
+    // Reserve Button text display -------------------------------------------------------------
+    let buttonText;
+    if(user && user?.id === currentSpotState.Owner.id){
+        buttonText = "Cannot book your own spot"
+    } else if (startDate && endDate){
+        buttonText = "Reserve"
+    } else {
+        buttonText = "Check availability"
+    }
+
+    // event handler ---------------------------------------------------------------------------
+    const onClickHandler = () => {
+        if(!startDate || !endDate){
+            
+        }
     }
 
     // Cost Display ----------------------------------------------------------------------------
@@ -80,7 +96,7 @@ function Bookings({ currentSpotState, bookings, user }) {
                     <div className="booking-form-container">
                         <CalendarComponent setStartDate={setStartDate} setEndDate={setEndDate} startDate={startDate} endDate={endDate} bookings={bookings}/>
                     </div>
-                    <button className="booking-button bold" disabled={user ? false : true}>Reserve</button>
+                    <button className="booking-button bold" disabled={!user || currentSpotState.Owner.id === user?.id ? true : false}>{user ? buttonText : "Log in to book this spot"}</button>
                 </form>
                 {costDisplay}
             </div>
