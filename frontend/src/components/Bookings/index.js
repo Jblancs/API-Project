@@ -2,8 +2,15 @@ import React, { useEffect, useState } from "react";
 import ReviewRatings from "../ReviewRatings"
 import "./Booking.css"
 import CalendarComponent from "../Calendar";
+import { useShowCalendar } from '../../context/Calendar';
+import { useDispatch } from "react-redux";
+import { createBooking } from "../../store/booking";
 
 function Bookings({ currentSpotState, bookings, user }) {
+    const dispatch = useDispatch()
+    let spotId = currentSpotState.spotData.id
+
+    const { setShowCalendar } = useShowCalendar();
     const [startDate, setStartDate] = useState("")
     const [endDate, setEndDate] = useState("")
 
@@ -19,19 +26,37 @@ function Bookings({ currentSpotState, bookings, user }) {
 
     // Reserve Button text display -------------------------------------------------------------
     let buttonText;
-    if(user && user?.id === currentSpotState.Owner.id){
+    if (user && user?.id === currentSpotState.Owner.id) {
         buttonText = "Cannot book your own spot"
-    } else if (startDate && endDate){
+    } else if (startDate && endDate) {
         buttonText = "Reserve"
     } else {
         buttonText = "Check availability"
     }
 
     // event handler ---------------------------------------------------------------------------
-    const onClickHandler = () => {
-        if(!startDate || !endDate){
-            
+    const onClickHandler = (e) => {
+        if (!startDate || !endDate) {
+            e.preventDefault()
+            setShowCalendar(true)
         }
+    }
+
+    const onSubmitHandler = async (e) => {
+        e.preventDefault()
+
+        const bookingData = {
+            startDate: new Date(startDate),
+            endDate: new Date(endDate)
+        }
+
+        await dispatch(createBooking(bookingData, spotId))
+
+        setStartDate("")
+        setEndDate("")
+        setShowCalendar(false)
+
+        alert("Booking Confirmed!")
     }
 
     // Cost Display ----------------------------------------------------------------------------
@@ -92,11 +117,11 @@ function Bookings({ currentSpotState, bookings, user }) {
                         <ReviewRatings currentSpotState={currentSpotState} />
                     </div>
                 </div>
-                <form>
+                <form onSubmit={onSubmitHandler}>
                     <div className="booking-form-container">
-                        <CalendarComponent setStartDate={setStartDate} setEndDate={setEndDate} startDate={startDate} endDate={endDate} bookings={bookings}/>
+                        <CalendarComponent setStartDate={setStartDate} setEndDate={setEndDate} startDate={startDate} endDate={endDate} bookings={bookings} />
                     </div>
-                    <button className="booking-button bold" disabled={!user || currentSpotState.Owner.id === user?.id ? true : false}>{user ? buttonText : "Log in to book this spot"}</button>
+                    <button className="booking-button bold" onClick={onClickHandler} disabled={!user || currentSpotState.Owner.id === user?.id ? true : false}>{user ? buttonText : "Log in to book this spot"}</button>
                 </form>
                 {costDisplay}
             </div>
