@@ -5,7 +5,7 @@ function SpotImageShow({ images }) {
 
     let prevLink = null
     let otherImages = []
-    
+
 
     for (let i = 0; i <= 4; i++) {
         if (images[i]?.preview === true) {

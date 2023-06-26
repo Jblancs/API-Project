@@ -5,7 +5,7 @@ import ProfileButton from './ProfileButton';
 import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
-import pearHouse from './images/pear-house.png'
+import pearHouse from './images/pear-logo.png'
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
@@ -18,7 +18,7 @@ function Navigation({ isLoaded }) {
                 <div className='nav-button__spot'>
                     <NavLink to="/spots/new">
                         <button className='nav-button__spot__btn'>
-                            Create a New Spot
+                            PearBnb your home
                         </button>
                     </NavLink>
                 </div>
@@ -29,29 +29,26 @@ function Navigation({ isLoaded }) {
         );
     } else {
         sessionLinks = (
-            <div>
-                <OpenModalButton
-                    buttonText="Log In"
-                    modalComponent={<LoginFormModal />}
-                />
-                <OpenModalButton
-                    buttonText="Sign Up"
-                    modalComponent={<SignupFormModal />}
-                />
+            <div className='nav-button-div-no-user'>
+                <div className='profile-container-no-user'>
+                    <ProfileButton user={sessionUser} />
+                </div>
             </div>
         );
     }
 
     return (
-        <nav className='nav__bar'>
-            <NavLink exact to="/" style={{ textDecoration: 'none' }}>
-                <div className='nav__logo'>
-                    <img className="nav__logo__img" src={pearHouse} alt="pearImage" />
-                    <span className="nav__logo__text">Pearbnb</span>
+        <nav className='nav__container'>
+            <div className='nav__bar'>
+                <NavLink exact to="/" style={{ textDecoration: 'none' }}>
+                    <div className='nav__logo'>
+                        <img className="nav__logo__img" src={pearHouse} alt="pearImage" />
+                        <span className="nav__logo__text">Pearbnb</span>
+                    </div>
+                </NavLink>
+                <div className='nav__buttons'>
+                    {isLoaded && sessionLinks}
                 </div>
-            </NavLink>
-            <div className='nav__buttons'>
-                {isLoaded && sessionLinks}
             </div>
         </nav>
     );

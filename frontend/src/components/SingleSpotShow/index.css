@@ -1,14 +1,25 @@
-.detail-container {
-    margin: 0 50px
+.page-container{
+    display: flex;
+    justify-content: center;
+}
+
+.detail-container{
+    /* width: 80%; */
+    width: 1500px;
+}
+
+.detail-title-div{
+    padding: 20px 0;
 }
 
 /* image show formatting ----------------- */
 
 .detail__img {
-    /* border: 2px solid black; */
     display: grid;
-    grid-template-rows: repeat(2, 208px);
-    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: repeat(2, 300px);
+    grid-template-columns: repeat(4, minmax(350px, 1fr));
+    border-radius: 30px;
+    overflow: hidden;
     grid-template-areas:
         "a a b b"
         "a a b b";
@@ -17,118 +28,74 @@
 .detail__img__prev {
     grid-area: a;
     width: 99%;
-    height: 412px;
-    padding: 1px 3px;
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    /* padding: 1px 3px; */
 }
 
 .detail__img__small {
     grid-area: b;
     display: flex;
     flex-wrap: wrap;
-    /* border: 2px solid black; */
-    height: 412px;
-    width: 100%
+    height: 100%;
+    width: 100%;
+    padding-left: 5px;
+
 }
 
 img[class*="other"] {
+    object-fit: cover;
+    object-position: center;
     width: 49%;
-    height: 205px;
-    padding: 1px 1px;
+    height: 49%;
+    object-fit: cover;
+    object-position: center;
 }
+
+.detail__img__other__0{
+    padding-right: 12px;
+    padding-bottom: 12px;
+}
+
+.detail__img__other__1{
+    padding-bottom: 12px;
+}
+
+.detail__img__other__2{
+    padding-right: 12px;
+}
+
+
+
 
 /* description formatting ----------------- */
 
-.detail__info {
-    /* border: 2px solid black; */
+.detail-info {
     display: grid;
-    border-bottom: 1px solid black;
-    grid-template-rows: repeat(6, 65px);
-    grid-template-columns: repeat(5, 20%);
+    border-bottom: 1px solid var(--global-gray);
+    grid-template-rows: 120px repeat(5, 1fr);
+    grid-template-columns: repeat(5, minmax(250px, 1fr));
     grid-template-areas:
         "host host host book book"
         "desc desc desc book book"
         "desc desc desc book book"
-        "desc desc desc none none"
-        "desc desc desc none none"
-        "desc desc desc none none";
+        "desc desc desc book book"
+        "desc desc desc book book"
+        "desc desc desc book book";
 }
 
-.detail__info__owner {
+.detail-info-owner {
     grid-area: host;
     display: flex;
     align-items: center;
-    /* border: 2px solid black; */
 }
 
-.detail__info__descript {
+.detail-other-info-container {
     grid-area: desc;
-    overflow-wrap: break-word;
-    /* border: 2px solid black; */
+    min-width: 600px;
 }
 
-/* booking --------------------------------- */
-
-.booking__div {
+.booking-container{
     grid-area: book;
-    border: 2px solid black;
-    width: 400px;
-    border-radius: 10px;
-    padding-top: 30px;
-    margin: 30px 5px 30px 30px;
-    display: grid;
-    grid-template-rows: repeat(3, 33%);
-    grid-template-columns: 15% 15% 15% 15% 7% 17%;
-    grid-template-areas:
-        "cost cost cost review review review"
-        "resv resv resv resv resv resv"
-        "resv resv resv resv resv resv";
-}
-
-
-.booking__price {
-    grid-area: cost;
-    margin: 0px 20px 20px 25px;
-}
-
-.review-rating-div {
-    grid-area: review;
-    display: grid;
-    width: 100%;
-    grid-template-columns: 40% 20% 40%;
-    grid-template-areas:
-        "rate dot rev";
-
-}
-
-.booking__rating {
-    grid-area: rate;
-    text-align: right;
-}
-
-.dot-span {
-    grid-area: dot;
-    text-align: right;
-}
-
-.booking__review {
-    width: 120px;
-    grid-area: rev;
-    text-align: center;
-    margin-right: 20px;
-
-}
-
-.booking__button {
-    grid-area: resv;
-    margin: 0px 0px 20px 30px;
-    width: 100%;
-    background-color: rgb(242, 101, 105);
-    box-shadow: 2px 2px 1px black;
-    color: white;
-}
-
-.booking__button:hover {
-    box-shadow: 2px 2px 2px black;
-    border: 3px solid black;
-    font-weight: bold;
 }

@@ -1,0 +1,60 @@
+.detail-perks-div{
+    border-top: 1px solid var(--global-gray);
+}
+
+.detail-perk{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    padding: 20px 0;
+}
+
+.detail-perk-text{
+    font-size: 18px;
+    color: var(--global-gray-text);
+}
+
+
+.detail-perk-image{
+    width: 60px;
+    font-size: 30px;
+}
+
+/* Description -------------------------------------- */
+
+.detail-other-info-descript{
+    padding: 50px 0;
+    font-size: 20px;
+    border-top: 1px solid var(--global-gray);
+}
+
+/* Ameneties --------------------------------------- */
+
+.detail-amen-div{
+    padding: 50px 0;
+    border-top: 1px solid var(--global-gray);
+}
+
+.detail-amen-title{
+    font-size: 25px;
+    padding-bottom: 20px;
+}
+
+.detail-amen-whole{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+.detail-amen-left{
+    padding-right: 100px;
+}
+
+.detail-amen{
+    display: flex;
+    padding: 10px 0;
+}
+
+.detail-amen-image{
+    width: 50px;
+}

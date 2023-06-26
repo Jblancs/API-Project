@@ -8,6 +8,7 @@ import SingleSpotShow from "./components/SingleSpotShow";
 import CreateSpotForm from "./components/CreateSpotForm";
 import ManageSpots from "./components/ManageSpots";
 import PreloadedFormData from "./components/EditSpot/PreloadedFormData";
+import ManageBookings from "./components/ManageBookings";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ function App() {
           <Route path="/spots/current" component={ManageSpots} />
           <Route path="/spots/:spotId/edit" component={PreloadedFormData} />
           <Route path="/spots/:spotId" component={SingleSpotShow} />
+          <Route path="/bookings/current" component={ManageBookings} />
         </Switch>
       )}
     </>

@@ -3,8 +3,10 @@ import { useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
 import { getSingleSpot, clearState } from "../../store/spotsReducer"
 import SpotImageShow from "./SpotImageShow"
-import ReviewRatings from "../ReviewRatings"
 import ReviewShow from "../Reviews/ReviewShow"
+import Bookings from "../Bookings"
+import SpotDetails from "./SpotDetails"
+import { clearBookingState, getBookings } from "../../store/booking"
 
 
 function SingleSpotShow() {
@@ -13,41 +15,40 @@ function SingleSpotShow() {
 
     useEffect(() => {
         dispatch(getSingleSpot(spotId))
-        return () => dispatch(clearState())
+        dispatch(getBookings(spotId))
+        return () => {
+            dispatch(clearState())
+            dispatch(clearBookingState())
+        }
     }, [dispatch])
 
     const currentSpotState = useSelector(state => state.spots.singleSpot)
-    if (Object.values(currentSpotState).length === 0) return null
+    const bookings = useSelector(state => state.bookings.bookings)
+    const user = useSelector(state => state.session.user)
 
-    const clickHandler = (e) => {
-        alert("Feature coming soon")
-    }
+    if (Object.values(currentSpotState).length === 0 || !bookings) return <div className='loading-div'><img src='/images/loading.gif' alt='loading' /></div>
 
     return (
         <div className="page-container">
             <div className="detail-container">
-                <h1 className="detail__name">
-                    {currentSpotState.spotData.name}
-                </h1>
-                <h2 className="detail__loc">
-                    {currentSpotState.spotData.city}, {currentSpotState.spotData.state}, {currentSpotState.spotData.country}
-                </h2>
-                <SpotImageShow images={currentSpotState.SpotImages} />
-                <div className="detail__info">
-                    <h1 className="detail__info__owner">
-                        Hosted by {currentSpotState.Owner.firstName} {currentSpotState.Owner.lastName}
+                <div className="detail-title-div">
+                    <h1 className="detail-name">
+                        {currentSpotState.spotData.name}
                     </h1>
-                    <div className="detail__info__descript">
-                        {currentSpotState.spotData.description}
+                    <h2 className="detail-loc">
+                        {currentSpotState.spotData.city}, {currentSpotState.spotData.state}, {currentSpotState.spotData.country}
+                    </h2>
+                </div>
+                <SpotImageShow images={currentSpotState.SpotImages} />
+                <div className="detail-info">
+                    <h1 className="detail-info-owner">
+                        Entire home hosted by {currentSpotState.Owner.firstName} {currentSpotState.Owner.lastName}
+                    </h1>
+                    <div className="detail-other-info-container">
+                        <SpotDetails currentSpotState={currentSpotState} />
                     </div>
-                    <div className="booking__div">
-                        <span className="booking__price">
-                            ${currentSpotState.spotData.price} night
-                        </span>
-                        <div className="review-rating-div">
-                            <ReviewRatings currentSpotState={currentSpotState} />
-                        </div>
-                        <button className="booking__button" onClick={clickHandler}>Reserve</button>
+                    <div className="booking-container">
+                        <Bookings currentSpotState={currentSpotState} bookings={bookings} user={user}/>
                     </div>
                 </div>
                 <div className="review container">

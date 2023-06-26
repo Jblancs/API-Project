@@ -1,0 +1,110 @@
+/* booking --------------------------------- */
+
+.booking-div {
+    border: 2px solid var(--global-gray);
+    width: 450px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px var(--global-gray);
+    padding-top: 30px;
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.booking-price-review-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0px 5% 15px 5%;
+    width: 90%;
+}
+
+.booking-price{
+    display: flex;
+    align-items: flex-end;
+}
+
+.booking-price-night{
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+
+.booking-price-num{
+    display: flex;
+    align-items: flex-end;
+    font-size: 25px;
+}
+
+/* review rating display ------------------------- */
+.review-rating-div {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 5px;
+}
+
+.dot-span{
+    padding: 0px 5px;
+}
+
+.booking-review{
+    color: var(--global-gray-text);
+}
+
+/* booking form ------------------------------------ */
+.booking-form-container{
+    width: 90%;
+    margin: 0 5%;
+}
+
+.booking-button {
+    margin: 15px 5% 30px 5%;
+    width: 90%;
+    height: 60px;
+    border-radius: 10px;
+    border: 1px solid var(--global-pink);
+    background-color: var(--global-pink);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.booking-button:hover {
+    box-shadow: 2px 2px 5px var(--global-gray);
+    border: 1px solid var(--global-gray);
+    font-weight: bold;
+    color: rgb(227, 227, 227);
+}
+
+/* booking cost display ------------------------------- */
+.booking-cost-container{
+    width: 90%;
+    margin: 30px 5%;
+    margin-top: 0;
+    font-size: 18px;
+    color: var(--global-gray-text);
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    max-height: 0px;
+}
+
+.show-booking-detail{
+    max-height: 500px;
+}
+
+.booking-cost-total-div,
+.booking-cost-div{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.booking-cost-type{
+    text-decoration: underline;
+}
+
+.booking-cost-total-div{
+    border-top: 1px solid var(--global-gray);
+    margin-top: 10px;
+    padding-top: 15px;
+    color: black;
+}

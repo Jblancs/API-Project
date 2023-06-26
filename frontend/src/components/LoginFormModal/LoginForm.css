@@ -24,7 +24,7 @@
     padding: 8px;
     margin-top: 20px;
     width:150px;
-    background-color: rgb(242, 101, 105);
+    background-color: var(--global-pink);
     box-shadow: 1px 1px 1px black;
     color: white;
 }
@@ -44,7 +44,7 @@
     margin-top: 20px;
     width: 90px;
 
-    background-color: rgb(242, 101, 105);
+    background-color: var(--global-pink);
     box-shadow: 1px 1px 1px black;
     color: white;
 }

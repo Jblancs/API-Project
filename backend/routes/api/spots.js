@@ -495,11 +495,6 @@ router.post('/:spotId/reviews', requireAuth, async (req, res, next) => {
 
 //--------------------------- GET bookings based on spotId
 router.get('/:spotId/bookings', async (req, res, next) => {
-    if (!req.user) {
-        let err = new Error("Authentication required")
-        err.status = 401
-        return next(err)
-    }
 
     const spot = await Spot.findOne({
         where: {
@@ -515,12 +510,12 @@ router.get('/:spotId/bookings', async (req, res, next) => {
 
     let bookingsList = []
 
-    if (req.user.id !== spot.toJSON().ownerId) {
+    if (!req.user || req.user.id !== spot.toJSON().ownerId) {
         const bookings = await Booking.findAll({
             where: {
                 spotId: req.params.spotId
             },
-            attributes: ["spotId", "startDate", "endDate"]
+            // attributes: ["spotId", "startDate", "endDate"]
         })
 
         bookings.forEach(booking => {
@@ -547,7 +542,11 @@ router.get('/:spotId/bookings', async (req, res, next) => {
     }
 
     let returnObj = {}
-    returnObj.Bookings = bookingsList
+    if(bookingsList.length){
+        returnObj.Bookings = bookingsList
+    } else {
+        returnObj.Bookings = {error: "no bookings for this spot"}
+    }
 
     return res.json(returnObj)
 })

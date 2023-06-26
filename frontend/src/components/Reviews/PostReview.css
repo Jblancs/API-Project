@@ -89,7 +89,7 @@
 .post-rev-submit {
     height: 35px;
     width: 100%;
-    background-color: rgb(242, 101, 105);
+    background-color: var(--global-pink);
     box-shadow: 2px 2px 1px black;
     color: white;
 }

@@ -23,16 +23,15 @@ function SpotsShow() {
                 {allSpotsArr && allSpotsArr.map(spot => (
                     <Link key={`link${spot.id}`} className="spots-link" to={`/spots/${spot.id}`}>
                         <div key={`spots__prev${spot.id}`} className="spots__prev">
-                            <img key={`img${spot.id}`} className="spots__prev__img" src={spot.previewImage} />
+                            <div className="spots__prev__img__div">
+                                <img key={`img${spot.id}`} className="spots__prev__img" src={spot.previewImage} />
+                            </div>
                             <div key={`spots__prev__locrate${spot.id}`} className="spots__prev__locrate">
-                                {/* <div key={`loc${spot.id}`} className="spots__prev__loc">
-                                        {spot.city}, {spot.state}
-                                    </div> */}
                                 <div key={`name${spot.id}`} className="spots__prev__name">
                                     {spot.name}
                                 </div>
                                 <div key={`rate${spot.id}`} className="spots__prev__rate">
-                                    <i className="fa-solid fa-star" />
+                                    <i className="fa-solid fa-star spot-card-rating" />
                                     {spot.avgRating === "NaN" ? "new" : spot.avgRating}
                                 </div>
                             </div>
