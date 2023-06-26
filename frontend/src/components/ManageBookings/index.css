@@ -1,0 +1,64 @@
+.manage-book-container{
+    display: flex;
+    justify-content: center;
+}
+
+.manage-book-div{
+    width: 1175px;
+    padding-top: 10px;
+}
+
+.manage-book-header{
+    padding: 30px 0;
+}
+
+.no-book-text{
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    padding: 50px;
+}
+
+.booking-card{
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--global-gray);
+    border-radius: 10px;
+    width: 800px;
+}
+
+.booking-spot-img-div{
+    width: 125px;
+    height: 90px;
+    overflow: hidden;
+    margin: 20px;
+    border: 1px solid var(--global-gray);
+    border-radius: 10px;
+
+
+}
+
+.booking-spot-img{
+    width: 125px;
+    height: 90px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.booking-card-info{
+    padding-right: 40px;
+}
+
+.delete-book-btn{
+    padding: 10px 30px;
+    border-radius: 5px;
+    background-color: var(--global-pink);
+    border: 1px solid var(--global-pink);
+    color: white;
+
+}
+
+.delete-book-btn:hover{
+    box-shadow: 2px 2px 6px rgba(128, 128, 128, 0.62);
+    filter: grayscale(10%);
+}

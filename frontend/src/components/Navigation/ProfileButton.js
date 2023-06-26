@@ -50,6 +50,9 @@ function ProfileButton({ user }) {
                         <Link to="/spots/current">
                             <button className="profile-manage-btn" style={{ border: "none" }}>Manage Spots</button>
                         </Link>
+                        <Link to="/bookings/current">
+                            <button className="profile-manage-btn" style={{ border: "none" }}>Manage Bookings</button>
+                        </Link>
                     </div>
                     <div className="profile-logout-div">
                         <button className="profile-logout-btn" onClick={logout}>Log Out</button>
