@@ -24,7 +24,14 @@
     align-items: center;
     border: 1px solid var(--global-gray);
     border-radius: 10px;
-    width: 830px;
+    margin-top: 20px;
+    width: 80%;
+    transition-timing-function: ease-in-out;
+    transition-duration: 300ms;
+}
+
+.booking-card:hover{
+    box-shadow: 2px 2px 5px var(--global-gray);
 }
 
 .booking-spot-img-div{
@@ -34,8 +41,6 @@
     margin: 20px;
     border: 1px solid var(--global-gray);
     border-radius: 10px;
-
-
 }
 
 .booking-spot-img{
@@ -48,6 +53,11 @@
 
 .booking-card-info{
     padding-right: 40px;
+    width: 60%;
+}
+
+.delete-book-div{
+    margin: 10px;
 }
 
 .delete-book-btn{

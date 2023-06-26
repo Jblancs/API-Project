@@ -7,6 +7,7 @@
 .spots__container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     width: 1500px;
     font-size: 14px;
     font-weight: bold;
@@ -17,8 +18,9 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    width: 350px;
-    height: 385px;
+    width: 325px;
+    height: 360px;
+    margin-top: 40px;
     padding: 8px;
     /* border: 2px solid black; */
     grid-template-areas:
@@ -36,8 +38,8 @@
 .spots__prev__img {
     grid-area: a;
     box-shadow: 4px 4px 4px rgb(128, 128, 128);
-    width: 340px;
-    height: 320px;
+    width: 320px;
+    height: 300px;
     display: flex;
     object-fit: cover;
     object-position: center;
@@ -47,15 +49,15 @@
 }
 
 .spots__prev__img__div{
-    width: 340px;
-    height: 320px;
+    width: 320px;
+    height: 300px;
     overflow: hidden;
     border-radius: 8px;
 }
 
 .spots__prev:hover>.spots__prev__img__div>.spots__prev__img {
-    width: 350px;
-    height: 330px;
+    width: 330px;
+    height: 310px;
     filter: brightness(0.8);
 }
 
