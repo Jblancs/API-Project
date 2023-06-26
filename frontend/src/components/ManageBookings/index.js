@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { clearState, getAllSpots } from '../../store/spotsReducer';
 import { clearBookingState, getBookings } from '../../store/booking';
+import OpenModalButton from '../OpenModalButton';
 import "./index.css"
+import DeleteBooking from '../BookingModal/DeleteBooking';
 
 function ManageBookings() {
     const history = useHistory()
@@ -20,12 +22,15 @@ function ManageBookings() {
 
     const userInfo = useSelector(state => state.session.user)
     const bookings = useSelector(state => state.bookings.bookings)
+    console.log(bookings)
     const spots = useSelector(state => state.spots.allSpots)
 
     if (!userInfo) history.push("/")
 
+    if (!bookings) return <div className='loading-div'><img src='/images/loading.gif' alt='loading' /></div>
+
     let bookingsList;
-    if (bookings) {
+    if (bookings && !bookings.error) {
         let bookinglistUnsorted = Object.values(bookings)
         bookingsList = bookinglistUnsorted.sort((a, b) => {
             return b.id - a.id
@@ -43,7 +48,7 @@ function ManageBookings() {
 
     // Booking Display ----------------------------------------------------------------------------
     let bookingDisplay;
-    if (!bookings) {
+    if (bookings.error) {
         bookingDisplay = (
             <div className='no-book-text bold'>
                 You do not have any scheduled bookings.
@@ -55,7 +60,7 @@ function ManageBookings() {
                 {bookingsList.map((booking) => (
                     <div key={booking.id} className='booking-card'>
                         <div className='booking-spot-img-div'>
-                            <img className='booking-spot-img' src={spots[booking?.spotId]?.previewImage} alt='house image' />
+                            <img className='booking-spot-img' src={spots[booking?.spotId]?.previewImage} alt='house image' onClick={() => history.push(`/spots/${booking?.spotId}`)}/>
                         </div>
                         <div className='booking-card-info'>
                             <div className='booking-spot-name bold'>
@@ -66,7 +71,11 @@ function ManageBookings() {
                             </div>
                         </div>
                         <div className='delete-book-div'>
-                            <button className='delete-book-btn bold'>Delete</button>
+                            <OpenModalButton
+                                buttonText="Delete"
+                                nameClass="delete-book-btn bold"
+                                modalComponent={<DeleteBooking spots={spots} formatDate={formatDate} booking={booking} dispatch={dispatch}/>}
+                            />
                         </div>
                     </div>
                 ))}

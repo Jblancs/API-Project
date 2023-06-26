@@ -1,0 +1,39 @@
+.delete-book-container{
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.delete-book-body{
+    padding: 20px 0;
+}
+
+.delete-book-button-div{
+    width: 100%;
+    display: flex;
+
+}
+
+.delete-book-btn-modal{
+    width: 200px;
+    margin-right: 20px;
+    height: 40px;
+    border-radius: 5px;
+    color: white;
+    background-color: var(--global-pink);
+    border: 1px solid var(--global-pink);
+    cursor: pointer;
+}
+
+.delete-cancel-btn-modal{
+    background-color: gray;
+    border: 1px solid black;
+}
+
+.delete-book-btn-modal:hover{
+    box-shadow: 2px 2px 6px rgba(128, 128, 128, 0.62);
+    filter: grayscale(10%);
+}

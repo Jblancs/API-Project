@@ -15,7 +15,7 @@
 .no-book-text{
     display: flex;
     justify-content: center;
-    font-size: 30px;
+    font-size: 20px;
     padding: 50px;
 }
 
@@ -24,7 +24,7 @@
     align-items: center;
     border: 1px solid var(--global-gray);
     border-radius: 10px;
-    width: 800px;
+    width: 830px;
 }
 
 .booking-spot-img-div{
@@ -43,6 +43,7 @@
     height: 90px;
     object-fit: cover;
     object-position: center;
+    cursor: pointer;
 }
 
 .booking-card-info{
@@ -54,8 +55,10 @@
     border-radius: 5px;
     background-color: var(--global-pink);
     border: 1px solid var(--global-pink);
+    box-shadow: none;
     color: white;
-
+    width: 100px;
+    cursor: pointer;
 }
 
 .delete-book-btn:hover{
