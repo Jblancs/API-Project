@@ -542,7 +542,11 @@ router.get('/:spotId/bookings', async (req, res, next) => {
     }
 
     let returnObj = {}
-    returnObj.Bookings = bookingsList
+    if(bookingsList.length){
+        returnObj.Bookings = bookingsList
+    } else {
+        returnObj.Bookings = {error: "no bookings for this spot"}
+    }
 
     return res.json(returnObj)
 })

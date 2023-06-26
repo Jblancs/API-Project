@@ -26,7 +26,7 @@ function SingleSpotShow() {
     const bookings = useSelector(state => state.bookings.bookings)
     const user = useSelector(state => state.session.user)
 
-    if (Object.values(currentSpotState).length === 0) return <div className='loading-div'><img src='/images/loading.gif' alt='loading' /></div>
+    if (Object.values(currentSpotState).length === 0 || !bookings) return <div className='loading-div'><img src='/images/loading.gif' alt='loading' /></div>
 
     return (
         <div className="page-container">
