@@ -83,7 +83,7 @@
     font-size: 18px;
     color: var(--global-gray-text);
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
+    transition: max-height 0.3s ease-in;
     max-height: 0px;
 }
 

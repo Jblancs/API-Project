@@ -21,7 +21,7 @@ const spotSeed = () => {
   let upArray = []
   for(let i = 0; i < 20; i++){
     let spot = {
-      ownerId: getRandomInt(1,8),
+      ownerId: getRandomInt(1,7),
       address: `${1400 + i} Manton St`,
       city: 'Denver',
       state: 'CO',

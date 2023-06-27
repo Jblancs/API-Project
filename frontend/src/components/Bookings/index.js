@@ -60,10 +60,10 @@ function Bookings({ currentSpotState, bookings, user }) {
     }
 
     // Cost Display ----------------------------------------------------------------------------
-    let nightTotal = Number(currentSpotState.spotData.price * getDayDiff(startDate, endDate)).toFixed(2)
-    let cleaningFee = Number(nightTotal * .1).toFixed(2)
-    let serviceFee = Number(nightTotal * .14).toFixed(2)
-    let totalCost = Number(+nightTotal + +cleaningFee + +serviceFee).toFixed(2)
+    let nightTotal = startDate && endDate ? Number(currentSpotState.spotData.price * getDayDiff(startDate, endDate)).toFixed(2) : "-"
+    let cleaningFee = startDate && endDate ? Number(nightTotal * .1).toFixed(2) : "-"
+    let serviceFee = startDate && endDate ? Number(nightTotal * .14).toFixed(2) : "-"
+    let totalCost = startDate && endDate ? Number(+nightTotal + +cleaningFee + +serviceFee).toFixed(2) : "-"
 
 
     let costDisplay = (
