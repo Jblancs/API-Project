@@ -39,7 +39,7 @@ function ManageBookings() {
 
     // Helper Functions ---------------------------------------------------------------------------
     const formatDate = (date) => {
-        const options = { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' };
+        const options = { weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' };
 
         let dateInput = new Date(date)
         let dateString = dateInput.toLocaleDateString(undefined, options)

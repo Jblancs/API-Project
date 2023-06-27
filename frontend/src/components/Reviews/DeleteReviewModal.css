@@ -23,7 +23,7 @@
 
 .delete-rev-btn-yes {
     padding: 8px;
-    background-color: rgb(242, 101, 105);
+    background-color: var(--global-pink);
     box-shadow: 1px 1px 1px black;
     color: white;
 }

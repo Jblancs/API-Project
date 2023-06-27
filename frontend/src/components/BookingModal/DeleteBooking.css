@@ -7,14 +7,21 @@
     overflow: hidden;
 }
 
+.delete-book-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .delete-book-body{
     padding: 20px 0;
+    text-align: center;
 }
 
 .delete-book-button-div{
     width: 100%;
     display: flex;
-
+    justify-content: center;
 }
 
 .delete-book-btn-modal{
