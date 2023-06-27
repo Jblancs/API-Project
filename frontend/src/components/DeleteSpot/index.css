@@ -23,13 +23,14 @@
 
 .delete-btn-yes{
     padding: 8px;
-    background-color: rgb(242, 101, 105);
-    box-shadow: 1px 1px 1px black;
+    background-color: var(--global-pink);
+    border-color: var(--global-pink);
+    border-radius: 5px;
     color: white;
 }
 
 .delete-btn-yes:hover{
-    box-shadow: 2px 2px 2px black;
+    box-shadow: 2px 2px 5px var(--global-gray);
     font-weight: bold;
 }
 
@@ -37,11 +38,11 @@
     margin-top: 10px;
     padding: 8px;
     background-color: gray;
-    box-shadow: 1px 1px 1px black;
+    border-radius: 5px;
     color: white;
 }
 
 .delete-btn-no:hover{
-    box-shadow: 2px 2px 2px black;
+    box-shadow: 2px 2px 5px var(--global-gray);
     font-weight: bold;
 }
