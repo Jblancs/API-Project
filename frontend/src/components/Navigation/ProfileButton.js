@@ -48,10 +48,10 @@ function ProfileButton({ user }) {
                 <div className="profile-button-div">
                     <div className="profile-manage-div">
                         <Link to="/spots/current">
-                            <button className="profile-manage-btn" style={{ border: "none" }}>Manage Spots</button>
+                            <button className="profile-manage-btn" style={{ border: "none" }} onClick={() => setShowMenu(false)}>Manage Spots</button>
                         </Link>
                         <Link to="/bookings/current">
-                            <button className="profile-manage-btn" style={{ border: "none" }}>Manage Bookings</button>
+                            <button className="profile-manage-btn" style={{ border: "none" }} onClick={() => setShowMenu(false)}>Manage Bookings</button>
                         </Link>
                     </div>
                     <div className="profile-logout-div">
