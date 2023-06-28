@@ -23,7 +23,6 @@ Hi Welcome to PearBnb, my clone of AirBnb by [Jordan Blancaflor](https://www.lin
     ![](https://media.giphy.com/media/BUsMPMDuppu1Bqrh0U/giphy.gif)
     ![](https://media.giphy.com/media/aMRn856gCSl8tiSqLm/giphy.gif)
     
-
 ### ------- Create/Edit/Remove Spot functionality 
 **Note: You can log in using the Demo User to experience all of the sites features.
 - A logged in user can can post a spot by clicking "PearBnb Your Home" on the home page
