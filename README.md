@@ -3,10 +3,7 @@
 Hi Welcome to PearBnb, my clone of AirBnb by [Jordan Blancaflor](https://www.linkedin.com/in/jordan-blancaflor-a4577584/)
 
 ## Wiki
-- [Redux Store](https://github.com/Jblancs/robinhood-clone/wiki/Redux-Store)
-- [Features List](https://github.com/Jblancs/robinhood-clone/wiki/Features-List)
-- [User Stories](https://github.com/Jblancs/robinhood-clone/wiki/User-Stories)
-- [Schema](https://github.com/Jblancs/robinhood-clone/wiki/Schema)
+- [Redux Store](https://github.com/Jblancs/API-Project/wiki/Redux-Store)
 
 ## Overview & Functionality:
 **Note: You can log in using the Demo User to experience all of the sites features.**
