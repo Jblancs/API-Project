@@ -4,6 +4,7 @@ Hi Welcome to PearBnb, my clone of AirBnb by [Jordan Blancaflor](https://www.lin
 
 ## Wiki
 - [Redux Store](https://github.com/Jblancs/API-Project/wiki/Redux-Store)
+- [Database Schema](https://github.com/Jblancs/API-Project/wiki/Schema)
 
 # Overview & Functionality:
 **Note: You can log in using the Demo User to experience all of the sites features.**
