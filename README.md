@@ -8,12 +8,12 @@ Hi Welcome to PearBnb, my clone of AirBnb by [Jordan Blancaflor](https://www.lin
 # Overview & Functionality:
 **Note: You can log in using the Demo User to experience all of the sites features.**
 
-## ------- Account Signup and login 
+## ------- Account Signup and login ----------------------
 **Note: You can log in using the Demo User to experience all of the sites features.
 - Users can create a new account or sign in with an existing account.
 
 
-## ------- Browsing the website 
+## ------- Browsing the website --------------------------
 **Note: Must be logged in to perform specific actions. You can log in using the Demo User to experience all of the sites features.
   - You can view the current spots avaialable on the website at the home
   - Your portfolio graph is shown on [home page](https://jordan-auth-me.onrender.com/)
@@ -26,7 +26,7 @@ Hi Welcome to PearBnb, my clone of AirBnb by [Jordan Blancaflor](https://www.lin
 
 
     
-## ------- Create/Edit/Remove Spot functionality 
+## ------- Create/Edit/Remove Spot functionality -------
 **Note: You can log in using the Demo User to experience all of the sites features.
 - A logged in user can can post a spot by clicking "PearBnb Your Home" on the home page
 - Users can also manage spots they have posted by clicking [Manage Spots](https://jordan-auth-me.onrender.com/spots/current) in the profile dropdown.
@@ -36,7 +36,7 @@ Hi Welcome to PearBnb, my clone of AirBnb by [Jordan Blancaflor](https://www.lin
 
 
 
-## ------- Create/Delete Review functionality 
+## ------- Create/Delete Review functionality ----------
 - From the [Spot Detail](https://jordan-auth-me.onrender.com/spots/1), a logged in user can post a review on a spot they do not own or have already posted a review for.
 - Once a review is posted you can delete it be clicking the delete butting next to a review the user has posted.
 
@@ -44,7 +44,7 @@ Hi Welcome to PearBnb, my clone of AirBnb by [Jordan Blancaflor](https://www.lin
 
 
   
-## ------- Create/Delete Bookings functionality 
+## ------- Create/Delete Bookings functionality -------
 - From the [Spot Detail](https://jordan-auth-me.onrender.com/spots/1), a logged in user can book a spot they do not own.
 - Click on the "Check Availability" button or the date box in the bookings component to choose a start date and end date for the booking.
 - You can also visit the [Manage Bookings page](https://jordan-auth-me.onrender.com/bookings/current) by clicking on "Manage Bookings" in the profile drop down.
@@ -54,7 +54,7 @@ Hi Welcome to PearBnb, my clone of AirBnb by [Jordan Blancaflor](https://www.lin
 
 
 
-## ------- Technologies & Libraries Used 
+## ------- Technologies & Libraries Used ---------------
 
 - React
 - Redux
