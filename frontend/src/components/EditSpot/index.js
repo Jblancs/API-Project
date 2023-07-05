@@ -95,7 +95,6 @@ function EditSpotForm({ user, spot }) {
         const updatedSpot = await dispatch(updateSpot(updatedSpotInfo, spotId)).catch(
             async (res) => {
                 const data = await res.json();
-                console.log(data)
                 if (data && data.errors) {
                     return setErrors({
                         ...errors,

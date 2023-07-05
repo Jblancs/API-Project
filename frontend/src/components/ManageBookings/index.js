@@ -22,7 +22,6 @@ function ManageBookings() {
 
     const userInfo = useSelector(state => state.session.user)
     const bookings = useSelector(state => state.bookings.bookings)
-    console.log(bookings)
     const spots = useSelector(state => state.spots.allSpots)
 
     if (!userInfo) history.push("/")
