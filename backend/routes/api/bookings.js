@@ -162,7 +162,7 @@ router.put('/:bookingId', requireAuth, async (req, res, next) => {
 //--------------------------- DELETE booking
 router.delete('/:bookingId', requireAuth, async (req, res, next) => {
     const booking = await Booking.findByPk(req.params.bookingId)
-    console.log(" %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ",booking)
+
     if (!booking) {
         let err = new Error("Booking couldn't be found")
         err.status = 404

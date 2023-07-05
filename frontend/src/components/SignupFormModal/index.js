@@ -15,35 +15,6 @@ function SignupFormModal() {
     const [errors, setErrors] = useState([]);
     const [disableBtn, setDisableBtn] = useState(false)
 
-    const formInfoObj = {
-        email,
-        username,
-        firstName,
-        lastName,
-        password,
-        confirmPassword
-    }
-
-    useEffect(() => {
-        const btn = () => {
-            for (let key in formInfoObj) {
-                if (formInfoObj[key] === "") {
-                    return setDisableBtn(true)
-                }
-            }
-            setDisableBtn(false)
-
-            if (username.length < 4) return setDisableBtn(true)
-            else if (password.length < 6) return setDisableBtn(true)
-            else if (password !== confirmPassword) return setDisableBtn(true)
-            else return setDisableBtn(false)
-
-        }
-
-        btn()
-    }, [email, username, firstName, lastName, password, confirmPassword, errors])
-
-
     const { closeModal } = useModal();
 
     const handleSubmit = (e) => {
@@ -66,61 +37,67 @@ function SignupFormModal() {
             <div className="sign-div">
                 <h1 className="sign-text">Sign Up</h1>
                 <form onSubmit={handleSubmit}>
-                    <ul>
+                    <ul className="sign-error-list">
                         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
                     <label>
                         Email
                         <input
+                            className="sign-input"
                             type="text"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                        // required
+                            required
                         />
                     </label>
                     <label>
                         Username
                         <input
+                            className="sign-input"
                             type="text"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
-                        // required
+                            required
                         />
                     </label>
                     <label>
                         First Name
                         <input
+                            className="sign-input"
                             type="text"
                             value={firstName}
                             onChange={(e) => setFirstName(e.target.value)}
-                        // required
+                            required
                         />
                     </label>
                     <label>
                         Last Name
                         <input
+                            className="sign-input"
                             type="text"
                             value={lastName}
                             onChange={(e) => setLastName(e.target.value)}
-                        // required
+                            required
                         />
                     </label>
                     <label>
                         Password
                         <input
+                            className="sign-input"
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                        // required
+                            required
                         />
                     </label>
                     <label>
                         Confirm Password
                         <input
+                            className="sign-input"
                             type="password"
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
-                        // required
+                            required
                         />
                     </label>
                     <div className="sign-btn-div">

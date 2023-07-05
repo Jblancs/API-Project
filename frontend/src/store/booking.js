@@ -20,7 +20,6 @@ export const getBookings = (spotId) => async dispatch => {
 
     if (res.ok) {
         const bookingsList = await res.json()
-        console.log(bookingsList)
         dispatch(loadBookings(bookingsList))
     }
 }

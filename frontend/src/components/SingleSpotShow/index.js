@@ -7,10 +7,12 @@ import ReviewShow from "../Reviews/ReviewShow"
 import Bookings from "../Bookings"
 import SpotDetails from "./SpotDetails"
 import { clearBookingState, getBookings } from "../../store/booking"
+import { useShowCalendar } from '../../context/Calendar';
 
 
 function SingleSpotShow() {
     const dispatch = useDispatch()
+    const { setShowCalendar} = useShowCalendar();
     const { spotId } = useParams()
 
     useEffect(() => {
@@ -19,6 +21,7 @@ function SingleSpotShow() {
         return () => {
             dispatch(clearState())
             dispatch(clearBookingState())
+            setShowCalendar(false)
         }
     }, [dispatch])
 

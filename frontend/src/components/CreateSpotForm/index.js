@@ -68,7 +68,6 @@ function CreateSpotForm() {
             image4: "",
         })
 
-        console.log("before",errors)
 
         const { country, address, city, state, lat, lng, description, name, price, preview, image1, image2, image3, image4 } = formInfo
 
@@ -144,8 +143,6 @@ function CreateSpotForm() {
         setErrors({
             ...errors
         })
-
-        console.log("after",errors)
 
         for (let errorVal in errors) {
             if (errors[errorVal]) {

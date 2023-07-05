@@ -24,11 +24,14 @@ const validateSignup = [
         .withMessage('Please provide a username with at least 4 characters.'),
 
     check('firstName')
-        .notEmpty()
-        .withMessage('First Name is required'),
+        .exists({ checkFalsy: true })
+        .isLength({ min: 4 })
+        .withMessage('Please provide a firstname with at least 4 characters.'),
+
     check('lastName')
-        .notEmpty()
-        .withMessage('Last Name is required'),
+        .exists({ checkFalsy: true })
+        .isLength({ min: 4 })
+        .withMessage('Please provide a lastname with at least 4 characters.'),
 
     check('username')
         .not()
