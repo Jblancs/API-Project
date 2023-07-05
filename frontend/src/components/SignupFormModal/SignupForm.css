@@ -1,7 +1,7 @@
 .sign-container {
     display: flex;
     justify-content: center;
-    width: 330px;
+    width: 530px;
     border: 4px solid black;
 }
 
@@ -25,11 +25,22 @@
     margin-top: 20px;
     width: 150px;
     background-color: var(--global-pink);
-    box-shadow: 1px 1px 1px black;
+    border-radius: 5px;
+    border-color: var(--global-pink);
     color: white;
 }
 
 .sign-btn:hover {
-    box-shadow: 2px 2px 2px black;
+    box-shadow: 2px 2px 5px gray;
     font-weight: bold;
+}
+
+.sign-error-list{
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+.sign-input{
+    height: 25px;
+    margin-bottom: 10px;
 }
